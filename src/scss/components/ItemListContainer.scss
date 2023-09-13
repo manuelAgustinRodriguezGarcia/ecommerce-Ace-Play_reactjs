@@ -1,0 +1,26 @@
+.itemListContainer {
+  @include d-flex-row;
+  color: #fff;
+  justify-content: center;
+  border-bottom: solid 1px white;
+  transition: .5s;
+  h2 {
+    transition: .5s;
+    width: 60%;
+    font-size: 80px;
+  }
+  i {
+    transition: .5s;
+    font-size: 300px;
+    color: rgba(0, 255, 255) ;
+  }
+  &:hover {
+    background-color: rgb(18, 18, 18);
+    h2 {
+      color: #ffde59;
+    }
+    i {
+      color: #c600d0;
+    }
+  }
+}

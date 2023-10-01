@@ -1,0 +1,43 @@
+.inicio {
+  margin-top: 50px;
+  width: 70%;
+  height: 550px;
+  @include d-flex-col;
+  align-items: center;
+  h1 {
+    font-size: 80px;
+    align-self: flex-start;
+    color: #ffde59;
+  }
+  p {
+    color: #fff;
+    font-size: 21px;
+  }
+  &-categorias {
+    margin-top: 60px;
+    padding-bottom: 50px;
+    @include d-flex-row;
+    align-items: center;
+    gap: 25px;
+    width: 100%;
+    img {
+      transition: .3s;
+      width: 650px;
+      border-radius: 10px;
+      &:hover {
+        scale: 1.015;
+      }
+    }
+    h2 {
+      color: #fff;
+      font-size: 35px;
+      a {
+        color: #ffde59;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

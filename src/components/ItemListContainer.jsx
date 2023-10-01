@@ -1,12 +1,18 @@
-const ItemListContainer = (props) => {
+import allGames from "../utils/allGames"
+import ItemList from "./ItemList";
+
+import { NavLink ,useParams } from "react-router-dom";
+const ItemListContainer = () => {
+  const { categoria } = useParams()
+  const juegos = allGames.filter((x) => x.categoria.toLowerCase().includes(categoria.toLowerCase()))
   return(
-    <div className="itemListContainer">
-      <h2>{props.greeting}</h2>
-      <i className = "bi bi-controller"></i>
-    </div>
+    <section className="itemListContainer">
+      <NavLink to={`/categorias`} className={"linkCategorias"}>Volver a categorías...</NavLink>
+      <h1>{categoria.toUpperCase()}</h1>
+      <div className= "itemListContainer-items">
+        {<ItemList games={juegos} />}
+      </div>
+    </section>
   )
 }
-//crear el texto del h2 usando props
 export default ItemListContainer;
-
-//ENCONTRÁ EL JUEGO QUE BUSCAS, SOMOS ACE PLAY. TU TIENDA DE CONFIANZA!

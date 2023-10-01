@@ -1,26 +1,32 @@
 .itemListContainer {
-  @include d-flex-row;
-  color: #fff;
+  @include d-flex-col;
+  position: relative;
+  width: 100%;
   justify-content: center;
-  border-bottom: solid 1px white;
-  transition: .5s;
-  h2 {
-    transition: .5s;
-    width: 60%;
-    font-size: 80px;
+  align-items: center;
+  padding-top: 40px;
+  h1 {
+    color: #ffde59;
+    font-size: 40px;
   }
-  i {
-    transition: .5s;
-    font-size: 300px;
-    color: rgba(0, 255, 255) ;
+  &-items {
+    @include d-flex-row;
+    justify-content: center;
+    width: 80%;
+    flex-wrap: wrap;
   }
+}
+.linkCategorias {
+  position: absolute;
+  top: 15px;
+  left: 15%;
+  align-self: flex-start;
+  font-size: 25px;
+  transition: .3s;
+  opacity: 70%;
+  font-weight: bold;
   &:hover {
-    background-color: rgb(18, 18, 18);
-    h2 {
-      color: #ffde59;
-    }
-    i {
-      color: #c600d0;
-    }
+    opacity: 100%;
+    text-decoration: underline;
   }
 }

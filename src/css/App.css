@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap");
 * {
+  color: #fff;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -20,10 +21,6 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-h1 {
-  color: #fff;
 }
 
 .nav {
@@ -103,6 +100,7 @@ h1 {
   filter: opacity(1);
 }
 .cart p {
+  color: #000;
   height: 20px;
   width: 20px;
   text-align: center;
@@ -355,14 +353,38 @@ a {
   display: flex;
   flex-direction: row;
   align-items: center;
+  gap: 15px;
+}
+.detail-game-buttons p {
+  font-size: 18px;
+}
+.detail-game-buttons button {
+  transition: 0.3s;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.6);
+  background-color: rgb(80, 80, 80);
+  border: none;
+  border-radius: 5px;
+  font-size: 25px;
+  width: 55px;
+}
+.detail-game-buttons button:hover {
+  background-color: rgb(100, 100, 100);
+  color: #fff;
+}
+.detail-game-buttons-add {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   justify-content: right;
   gap: 15px;
   width: 100%;
 }
-.detail-game-buttons button {
+.detail-game-buttons-add button {
+  outline: none;
   color: rgba(255, 255, 255, 0.6);
   transition: 0.3s;
-  width: 200px;
+  width: 180px;
   height: 40px;
   border: none;
   font-size: 18px;
@@ -370,16 +392,16 @@ a {
   cursor: pointer;
   background-color: rgb(80, 80, 80);
 }
-.detail-game-buttons button:nth-child(1):hover {
+.detail-game-buttons-add button:nth-child(1):hover {
   color: #fff;
   background-color: #ff00ff;
-  box-shadow: 0px 0px 8px 5px rgba(255, 0, 255, 0.7);
+  box-shadow: 0px 0px 10px 4px rgba(255, 0, 255, 0.7);
   opacity: 100;
 }
-.detail-game-buttons button:nth-child(2):hover {
+.detail-game-buttons-add button:nth-child(2):hover {
   color: #fff;
   background-color: #ff9900;
-  box-shadow: 0px 0px 8px 5px rgba(255, 153, 0, 0.7);
+  box-shadow: 0px 0px 10px 4px rgba(255, 153, 0, 0.7);
 }
 
 .inicio {
@@ -426,6 +448,90 @@ a {
 }
 .inicio-categorias h2 a:hover {
   text-decoration: underline;
+}
+
+.carrito {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.carrito h2 {
+  width: 65%;
+  font-size: 30px;
+}
+.carrito-list {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+}
+.carrito-list-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 10px;
+  justify-content: space-between;
+  width: 100%;
+  background-color: #252525;
+  padding-right: 20px;
+}
+.carrito-list-item img {
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px 0px 0px 10px;
+}
+.carrito-list-item button {
+  cursor: pointer;
+  transition: 0.3s;
+  height: 30px;
+  width: 80px;
+  background-color: #373737;
+  border: none;
+}
+.carrito-list-item button:hover {
+  background-color: #444444;
+}
+.carrito-list-item-title {
+  width: 30%;
+}
+.carrito-list-item-title h2 {
+  font-size: 25px;
+}
+.carrito-list-item-title a {
+  transition: 0.3s;
+  font-size: 15px;
+  opacity: 0.6;
+}
+.carrito-list-item-title a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+.carrito-list-item-data {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 200px;
+  justify-content: space-between;
+}
+.carrito-list-item-data-cantidad {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 90px;
+  justify-content: space-between;
+}
+.carrito-list-item-data-cantidad p {
+  width: 30px;
+  font-size: 20px;
+  text-align: center;
+}
+.carrito-list-item-data-cantidad button {
+  width: 30px;
+  font-size: 20px;
 }
 
 /*# sourceMappingURL=App.css.map */

@@ -3,7 +3,7 @@
   width: 100%;
   align-items: center;
   position: relative;
-  a {
+  &-link {
     transition: .3s;
     position: absolute;
     opacity: 70%;
@@ -29,6 +29,17 @@
     width: 65%;
     height: auto;
     background-color: rgb(54, 54, 54);
+    i {
+      position: absolute;
+      transition: .3s;
+      top: 30px;
+      right: 20px;
+      font-size: 25px;
+      &:hover {
+        color: #ff00ff;
+        cursor: pointer;
+      }
+    }
     &-data {
       @include d-flex-row;
       gap: 15px;
@@ -57,10 +68,13 @@
     &-buttons {
       @include d-flex-row;
       gap: 15px;
-      p {
+      &-cant {
         font-size: 18px;
+        &-hide {
+          display: none;
+        }
       }
-      button {
+      &-btn {
         transition: .3s;
         cursor: pointer;
         color: rgba(255, 255, 255, 0.6);
@@ -73,40 +87,118 @@
           background-color: rgb(100, 100, 100);
           color: #fff;
         }
+        &-hide {
+          display: none;
+        }
       }
-      &-add {
+      &-add{
+        outline: none;
+        color: rgba(255, 255, 255, 0.6);
+        transition: .3s;
+        width: 180px;
+        height: 40px;
+        border: none;
+        font-size: 18px;
+        border-radius: 10px;
+        cursor: pointer;
+        background-color: rgb(80, 80, 80);
+        &:hover {
+          color: #fff;
+          background-color: #ff00ff;
+          box-shadow: 0px 0px 10px 4px rgba(255, 0, 255, 0.7);
+        }
+      }
+      &-apretado {
+        cursor: default;
         @include d-flex-row;
-        justify-content: right;
-        gap: 15px;
-        width: 100%;
-        button {
-          outline: none;
-          color: rgba(255, 255, 255, 0.6);
-          transition: .3s;
-          width: 180px;
-          height: 40px;
-          border: none;
-          font-size: 18px;
-          border-radius: 10px;
-          cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        background: none;
+        outline: none;
+        border: none;
+        width: 180px;
+        a {
+          @include d-flex-row;
+          align-items: center;
+          justify-content: center;
           background-color: rgb(80, 80, 80);
-          &:nth-child(1) {
-            &:hover {
-              color: #fff;
-              background-color: #ff00ff;
-              box-shadow: 0px 0px 10px 4px rgba(255, 0, 255, 0.7);
-              opacity: 100;
-            }
-          }
-          &:nth-child(2) {
-            &:hover {
-              color: #fff;
-              background-color: #ff9900;
-              box-shadow: 0px 0px 10px 4px rgb(255, 153, 0, 0.7);
-            }
+          transition: .3s;
+          height: 40px;
+          border-radius: 10px;
+          width: 100%;
+          font-size: 18px;
+          &:hover {
+            opacity: 100;
+            background-color: #ff00ff;
+            box-shadow: 0px 0px 10px 4px rgba(255, 0, 255, 0.7);
           }
         }
       }
     }
+  }
+  &-suggest {
+    @include d-flex-row;
+    justify-content: space-around;
+    background-color: #363636;
+    align-items: center;
+    margin-top: 60px;
+    width: 100%;
+    flex-wrap: wrap;
+    padding: 40px 20px;
+    padding: 50px 20px 10px 20px;
+    position: relative;
+    h2 {
+      position: absolute;
+      top: 20px;
+    }
+    &-item {
+      width: 410px;
+      border-radius: 10px;
+      position: relative;
+      text-align: center;
+      margin-top: 20px;
+      overflow: hidden;
+      img {
+        transition: .3s;
+        border-radius: 10px;
+        width: 100%;
+      }
+      h3 {
+        transition: .3s;
+        font-size: 18px;
+        opacity: 70%;
+      }
+      p {
+        position: absolute;
+        top: 100px;
+        left: 150px;
+        opacity: 0;
+        font-size: 20px;
+        font-weight: bold;
+        text-shadow: 0px 0px 5px black;
+        transition: .3s;
+      }
+      &:hover {
+        img {
+          filter: blur(4px);
+        }
+        p {
+          opacity: 100%;
+        }
+        h3 {
+          opacity: 100%;
+        }
+      }
+    }
+  }
+  &-loading {
+    height: 80vh;
+    width: 100%;
+    @include d-flex-row;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: #ffde59;
   }
 }

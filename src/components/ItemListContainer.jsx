@@ -1,10 +1,14 @@
-import allGames from "../utils/allGames"
+import { useContext, useEffect, useState } from "react";
 import ItemList from "./ItemList";
-
 import { NavLink ,useParams } from "react-router-dom";
+import AllGames from "../contexts/AllGames";
+
 const ItemListContainer = () => {
+  const contextJuegos = useContext(AllGames)
+  const listaJuegos = contextJuegos.productos
+
   const { categoria } = useParams()
-  const juegos = allGames.filter((x) => x.categoria.toLowerCase().includes(categoria.toLowerCase()))
+  const juegos = listaJuegos.filter((x) => x.categoria.toLowerCase().includes(categoria.toLowerCase()))
   return(
     <section className="itemListContainer">
       <NavLink to={`/categorias`} className={"linkCategorias"}>Volver a categorías...</NavLink>

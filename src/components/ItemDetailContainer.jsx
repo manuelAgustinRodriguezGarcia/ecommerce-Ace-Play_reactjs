@@ -1,18 +1,31 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useParams, NavLink } from "react-router-dom";
-import allGames from "../utils/allGames";
 import ItemDetail from "./ItemDetail";
+import AllGames from "../contexts/AllGames";
 
 const ItemDetailContainer = () => {
   const { id } = useParams()
-  const juego = allGames.find((x) => x.id === parseInt(id))
-  const categoriaActual = juego.categoria
-
+  const contextJuegos = useContext(AllGames)
+  const listaJuegos = contextJuegos.productos
+  const juego = listaJuegos.find((x) => x.id === id)
+  if (!juego) {
+    return <div className="detail-loading">Cargando...</div>
+  }
+  const otrosJuegos = listaJuegos.filter((x) => x.id !== id)
   return(
-    <div className="detail">
-      <NavLink to={`/categorias/${categoriaActual}`}>Volver...</NavLink>
+    <section className="detail">
+      <NavLink className={"detail-link"} to={`/categorias/${juego.categoria}`}>Volver...</NavLink>
       <ItemDetail game={juego}/>
-    </div> 
+      <div className="detail-suggest">
+      <h2>Juegos recomendados</h2>
+        {otrosJuegos.map(x => 
+          <NavLink key={x.id} className={"detail-suggest-item"} to={`/game/${x.id}`}>
+            <img src={x.img}></img>
+            <p>Ver Detalles</p>
+            <h3>{x.nombre}</h3>
+          </NavLink>)}
+      </div>
+    </section> 
   )
 }
 

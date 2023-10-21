@@ -1,0 +1,62 @@
+.favoritos {
+  @include d-flex-col;
+  align-items: center;
+  width: 100%;
+  &-list {
+    @include d-flex-row;
+    gap: 25px;
+    width: 65%;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-top: 20px;
+    &-item {
+      @include d-flex-col;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0px 0px 10px #363636;
+      border-radius: 5px;
+      background-color: #363636;
+      height: 250px;
+      width: 350px;
+      position: relative;
+      overflow: hidden;
+      &:hover {
+        img {
+          scale: 1.05
+        }
+      }
+      a {
+        @include d-flex-col;
+        align-items: center;
+        img {
+          transition: .3s;
+          width: 100%;
+          height: 175px;
+          border-radius: 5px 5px 0px 0px;
+        }
+        h3 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+      }
+      button {
+        transition: .3s;
+        background-color: #363636;
+        height: 35px;
+        border: none;
+        border-top: 1px solid #464646;
+        width: 100%;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 0px 0px 5px 5px;
+        opacity: 25%;
+        &:hover {
+          background-color: #fff;
+          opacity: 100%;
+          color: #000;
+        }
+      }
+    }
+  }
+}

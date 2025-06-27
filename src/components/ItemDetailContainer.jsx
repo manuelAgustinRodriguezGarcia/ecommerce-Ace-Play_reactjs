@@ -14,7 +14,7 @@ const ItemDetailContainer = () => {
   const otrosJuegos = listaJuegos.filter((x) => x.id !== id)
   return(
     <section className="detail">
-      <NavLink className={"detail-link"} to={`/categorias/${juego.categoria}`}>Volver...</NavLink>
+      <NavLink className={"detail-link"} to={`/categorias/${juego.category}`}>Volver...</NavLink>
       <ItemDetail game={juego}/>
       <div className="detail-suggest">
       <h2>Juegos recomendados</h2>
@@ -22,7 +22,7 @@ const ItemDetailContainer = () => {
           <NavLink key={x.id} className={"detail-suggest-item"} to={`/game/${x.id}`}>
             <img src={x.img}></img>
             <p>Ver Detalles</p>
-            <h3>{x.nombre}</h3>
+            <h3>{x.name}</h3>
           </NavLink>)}
       </div>
     </section> 

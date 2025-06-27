@@ -11,25 +11,21 @@ import { useState, useEffect } from 'react';
 import Carrito from './pages/Carrito';
 import Checkout from './pages/Checkout';
 import AllGames from './contexts/AllGames';
-import { db } from '.';
-import { collection, getDocs } from 'firebase/firestore';
 import FavoritesData from './contexts/FavoritesData';
 
 function App() {
   const [ contCart, setContCart ] = useState(0)
   const [ productosCarrito, setProductosCarrito ] = useState([]);
-  const [ productos, setProductos ] = useState([])
+  const [ productos, setProductos ] = useState([]);
   const [ favoritos, setFavoritos ] = useState([]);
 
   useEffect (() => {
     const getProducts = async()=>{
       try {
-        const querySnapshot = await getDocs(collection(db, 'products'))
-        const productosDB = []
-        querySnapshot.forEach((producto)=> {
-          productosDB.push({...producto.data(), id: producto.id})
-        })
-        setProductos(productosDB)
+        const response = await fetch('/data/games.json')
+        const allGames = await response.json()
+        console.log(allGames)
+        setProductos(allGames)
       }catch (error) {
         console.log(error)
       }
@@ -49,7 +45,7 @@ function App() {
                 <Route path='/categorias' element={<Categorias />}></Route>
                 <Route path='/favoritos' element={<Favoritos />}></Route>
                 <Route path='/carrito' element={<Carrito />}></Route>
-                <Route path='/categorias/:categoria' element={<ItemListContainer />}></Route>
+                <Route path='/categorias/:category' element={<ItemListContainer />}></Route>
                 <Route path='/game/:id' element={<ItemDetailContainer />}></Route>
                 <Route path='/checkout' element={<Checkout />}></Route>
               </Routes>

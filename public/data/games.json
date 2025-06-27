@@ -1,0 +1,164 @@
+[
+  {
+    "id": 1,
+    "category": "accion",
+    "info": "Shooter en primera persona ambientado en un futuro donde la humanidad lucha contra alienígenas.",
+    "img": "https://upload.wikimedia.org/wikipedia/en/3/32/Halo_Infinite.png",
+    "launchDate": "2021-12-08",
+    "name": "Halo Infinite",
+    "price": 59.99
+  },
+  {
+    "id": 2,
+    "category": "aventura",
+    "info": "Un juego de mundo abierto donde exploras Hyrule con total libertad.",
+    "img": "https://upload.wikimedia.org/wikipedia/en/0/0b/The_Legend_of_Zelda_Breath_of_the_Wild.jpg",
+    "launchDate": "2017-03-03",
+    "name": "The Legend of Zelda: Breath of the Wild",
+    "price": 59.99
+  },
+  {
+    "id": 3,
+    "category": "carreras",
+    "info": "Juego de carreras arcade con personajes del universo de Mario.",
+    "img": "https://upload.wikimedia.org/wikipedia/en/2/21/Mario_Kart_8_Boxart.png",
+    "launchDate": "2014-05-30",
+    "name": "Mario Kart 8 Deluxe",
+    "price": 59.99
+  },
+  {
+    "id": 4,
+    "category": "accion",
+    "info": "Juego de sigilo y accion basado en una saga de espionaje futurista.",
+    "img": "https://upload.wikimedia.org/wikipedia/en/3/38/Cyberpunk_2077_box_art.jpg",
+    "launchDate": "2020-12-10",
+    "name": "Cyberpunk 2077",
+    "price": 49.99
+  },
+  {
+    "id": 5,
+    "category": "aventura",
+    "info": "Una aventura postapocalíptica con una protagonista que lucha contra máquinas.",
+    "img": "https://upload.wikimedia.org/wikipedia/en/0/00/Horizon_Zero_Dawn.jpg",
+    "launchDate": "2017-02-28",
+    "name": "Horizon Zero Dawn",
+    "price": 39.99
+  },
+  {
+    "id": 6,
+    "category": "carreras",
+    "info": "Simulador de carreras con gráficos realistas y física detallada.",
+    "img": "https://upload.wikimedia.org/wikipedia/en/b/b5/Gran_Turismo_7_cover_art.jpg",
+    "launchDate": "2022-03-04",
+    "name": "Gran Turismo 7",
+    "price": 69.99
+  },
+  {
+    "id": 7,
+    "category": "accion",
+    "info": "Un shooter táctico multijugador con personajes con habilidades únicas.",
+    "img": "https://upload.wikimedia.org/wikipedia/en/f/f9/Valorant_cover_art.jpg",
+    "launchDate": "2020-06-02",
+    "name": "Valorant",
+    "price": 0
+  },
+  {
+    "id": 8,
+    "category": "aventura",
+    "info": "Juego narrativo en tercera persona con fuerte enfoque en la historia y personajes.",
+    "img": "https://upload.wikimedia.org/wikipedia/en/a/a2/The_Last_of_Us_part_II_cover_art.jpg",
+    "launchDate": "2020-06-19",
+    "name": "The Last of Us Part II",
+    "price": 59.99
+  },
+  {
+    "id": 9,
+    "category": "carreras",
+    "info": "Juego de carreras con una mezcla de arcade y simulación.",
+    "img": "https://upload.wikimedia.org/wikipedia/en/e/e0/Forza_Horizon_5_cover_art.jpg",
+    "launchDate": "2021-11-09",
+    "name": "Forza Horizon 5",
+    "price": 59.99
+  },
+  {
+    "id": 10,
+    "category": "accion",
+    "info": "Un juego de disparos con ambientación bélica y enfoque cinematográfico.",
+    "img": "https://upload.wikimedia.org/wikipedia/en/1/10/Call_of_Duty_Modern_Warfare_II_key_art.jpg",
+    "launchDate": "2022-10-28",
+    "name": "Call of Duty: Modern Warfare II",
+    "price": 69.99
+  },
+  {
+    "id": 11,
+    "category": "aventura",
+    "info": "Un gato explora una ciudad cyberpunk controlada por robots.",
+    "img": "https://upload.wikimedia.org/wikipedia/en/f/f0/Stray_cover_art.jpg",
+    "launchDate": "2022-07-19",
+    "name": "Stray",
+    "price": 29.99
+  },
+  {
+    "id": 12,
+    "category": "carreras",
+    "info": "Estilo retro y frenético con estética ochentosa y música synthwave.",
+    "img": "https://upload.wikimedia.org/wikipedia/en/d/d4/Hotline_Miami_cover.png",
+    "launchDate": "2012-10-23",
+    "name": "Hotline Miami",
+    "price": 9.99
+  },
+  {
+    "id": 13,
+    "category": "accion",
+    "info": "Juego de accion y plataformas con combates exigentes y ambientación mitológica.",
+    "img": "https://upload.wikimedia.org/wikipedia/en/a/a7/God_of_War_Ragnar%C3%B6k_cover.jpg",
+    "launchDate": "2022-11-09",
+    "name": "God of War Ragnarök",
+    "price": 69.99
+  },
+  {
+    "id": 14,
+    "category": "aventura",
+    "info": "Juego indie con estética pixel art y una historia profunda sobre la vida y la muerte.",
+    "img": "https://upload.wikimedia.org/wikipedia/en/f/f0/Undertale_Cover_Art.png",
+    "launchDate": "2015-09-15",
+    "name": "Undertale",
+    "price": 9.99
+  },
+  {
+    "id": 15,
+    "category": "carreras",
+    "info": "Juego de carreras estilo arcade con autos destructivos y poderes especiales.",
+    "img": "https://upload.wikimedia.org/wikipedia/en/e/e1/Crash_Team_Racing_cover.png",
+    "launchDate": "1999-10-19",
+    "name": "Crash Team Racing",
+    "price": 19.99
+  },
+  {
+    "id": 16,
+    "category": "accion",
+    "info": "Shooter en tercera persona ambientado en una Nueva York invadida por mutantes.",
+    "img": "https://upload.wikimedia.org/wikipedia/en/a/a1/The_Division_2_cover_art.jpg",
+    "launchDate": "2019-03-15",
+    "name": "Tom Clancy's The Division 2",
+    "price": 29.99
+  },
+  {
+    "id": 17,
+    "category": "aventura",
+    "info": "Viaja por un mundo destruido y resuelve acertijos para devolverle la luz.",
+    "img": "https://upload.wikimedia.org/wikipedia/en/a/a2/Journey_Screenshot.jpg",
+    "launchDate": "2012-03-13",
+    "name": "Journey",
+    "price": 14.99
+  },
+  {
+    "id": 18,
+    "category": "carreras",
+    "info": "Carreras futuristas de alta velocidad con pistas imposibles.",
+    "img": "https://upload.wikimedia.org/wikipedia/en/4/44/F-Zero_GX_Covernpm%20rundart.png",
+    "launchDate": "2003-07-25",
+    "name": "F-Zero GX",
+    "price": 24.99
+  }
+]

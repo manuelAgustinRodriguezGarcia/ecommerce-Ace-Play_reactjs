@@ -306,7 +306,7 @@
     "price": 29.99
   },
   {
-    "id": 26,
+    "id": 32,
     "category": "estrategia",
     "info": "Viaja por un mundo destruido y resuelve acertijos para devolverle la luz.",
     "img": "../images/games/cities.jpg",
@@ -315,7 +315,7 @@
     "price": 14.99
   },
   {
-    "id": 27,
+    "id": 33,
     "category": "simulacion",
     "info": "Carreras futuristas de alta velocidad con pistas imposibles.",
     "img": "../images/games/eurotruck.jpg",

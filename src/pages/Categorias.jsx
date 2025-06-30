@@ -15,6 +15,18 @@ function Categorias() {
         <h2>Aventura</h2>
         <img src="../images/categoriaAventura.png" alt="Aventura" />
       </NavLink>
+      <NavLink className="categoria-item" to={'/categorias/estrategia'}>
+        <h2>Estrategia</h2>
+        <img src="../images/categoriaEstrategia.jpg" alt="Aventura" />
+      </NavLink>
+      <NavLink className="categoria-item" to={'/categorias/terror'}>
+        <h2>Terror</h2>
+        <img src="../images/categoriaTerror.jpg" alt="Aventura" />
+      </NavLink>
+      <NavLink className="categoria-item" to={'/categorias/simulacion'}>
+        <h2>Simulador</h2>
+        <img src="../images/categoriaSimulator.jpg" alt="Aventura" />
+      </NavLink>
     </section>
   );
 }

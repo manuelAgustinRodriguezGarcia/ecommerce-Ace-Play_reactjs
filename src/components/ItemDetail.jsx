@@ -14,10 +14,12 @@ const ItemDetail = ({ game }) => {
 
   const datosJuego = {
     id: game.id,
-    nombre: game.name,
-    precio: game.price,
+    name: game.name,
+    price: game.price,
     img: game.img,
-    lanzamiento: game.launchDate,
+    launchDate: game.launchDate,
+    info: game.info,
+    category: game.category,
     cantidad: cantidad
   }
   const [apretado, setApretado] = useState(false)

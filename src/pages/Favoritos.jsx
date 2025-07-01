@@ -11,7 +11,7 @@ function Favoritos() {
   return (
     <section className="favoritos">
       <div className="favoritos-list">
-        {listaFavoritos.length === 0 ?
+        {listaFavoritos.length == 0 ?
           <EmptyFav/> : listaFavoritos.map((x) => <ItemFav key={x.id} game={x}/>)}
       </div>
     </section>

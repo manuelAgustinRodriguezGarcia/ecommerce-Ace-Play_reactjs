@@ -216,7 +216,7 @@
     "price": 24.99
   },
   {
-    "id": 25,
+    "id": 35,
     "category": "terror",
     "info": "Shooter en tercera persona ambientado en una Nueva York invadida por mutantes.",
     "img": "../images/games/alien.jpg",
@@ -225,7 +225,7 @@
     "price": 29.99
   },
   {
-    "id": 26,
+    "id": 36,
     "category": "estrategia",
     "info": "Viaja por un mundo destruido y resuelve acertijos para devolverle la luz.",
     "img": "../images/games/civilization.jpg",
@@ -234,7 +234,7 @@
     "price": 14.99
   },
   {
-    "id": 27,
+    "id": 34,
     "category": "simulacion",
     "info": "Carreras futuristas de alta velocidad con pistas imposibles.",
     "img": "../images/games/house.jpg",

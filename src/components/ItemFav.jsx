@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 
 
 const ItemFav = ( { game } ) => {
+  console.log('Game recibido en ItemFav:', game);
   const Favorito = useContext(FavoritesData)
   const listaFavoritos = Favorito.favoritos;
   function eliminarFavorito() {
@@ -33,8 +34,8 @@ const ItemFav = ( { game } ) => {
   return (
     <div to={`/game/${game.id}`} className="favoritos-list-item">
       <NavLink to={`/game/${game.id}`}>
-        <img src={game.img} alt={game.name}/>
-        <h3>{game.name} ({game.launchDate})</h3>
+        <img src={game.img}/>
+        <h3>{game.name}</h3>
       </NavLink>
       <button onClick={() => eliminarFavorito()}>Eliminar</button>
     </div>

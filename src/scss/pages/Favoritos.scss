@@ -1,5 +1,6 @@
 .favoritos {
   @include d-flex-col;
+  margin-top: 70px;
   align-items: center;
   width: 100%;
   &-list {

@@ -2,59 +2,87 @@
   @include d-flex-row;
   width: 100%;
   height: 70px;
+  z-index: 10;
   align-items: center;
   justify-content: center;
-  background: rgb(54, 54, 54);
+  background: rgba(10, 10, 10, 0.556);
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+  
   color: #fff;
-  &-general {
+  position: fixed;
+
+  &-gen {
     @include d-flex-row;
     justify-content: space-between;
-    width: 65%;
-    img {
-      height: 60px;
+    width: 1200px;
+
+    &-title {
+      font-size: 35px;
+      align-self: flex-start;
+      font-family: 'segoe ui', sans-serif;
+      text-align: center;
+      background: linear-gradient(45deg, rgb(0, 200, 255), rgb(255, 0, 183));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 900
     }
+
     &-center {
-      width: 25%;
       @include d-flex-row;
+      width: 300px;
       justify-content: space-between;
+
       a {
-        font-size: 18px;
+        font-size: 20px;
         color: #fff;
-        transition: .3s;
+        transition: .3s ease-in-out;
         opacity: 0.5;
+
         &:hover {
           opacity: 1;
         }
       }
     }
+    &-cartFav {
+      @include d-flex-row;
+      justify-content: end;
+      margin-right: 20px;
+      gap: 30px;
+    }
   }
 }
 
-.cart {
+.cart, .fav {
   position: relative;
-  width: 40px;
+  width: 25px;
   background: none;
-  transition: .3s;
+  transition: opacity .3s ease-in-out;
   border: none;
   filter: opacity(.65);
+
   &:hover {
     filter: opacity(1);
   }
+
   p {
     color: #000;
-    height: 20px;
-    width: 20px;
+    height: 15px;
+    width: 15px;
     text-align: center;
+    align-content: center;
     position: absolute;
-    font-size: 15px;
-    font-weight: bold;
     top: 0;
-    right: -20px;
+    left: 100%;
+    font-size: 12px;
+    font-weight: bold;
     background-color: #fff;
-    border-radius: 50%;
+    border-radius: 10px;
   }
+
   i {
-    color: #FFF;
-    font-size: 35px;
+    color: #fff;
+    font-size: 25px;
   }
 }

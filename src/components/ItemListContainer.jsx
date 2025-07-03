@@ -11,7 +11,7 @@ const ItemListContainer = () => {
   const juegos = listaJuegos.filter((x) => x.category.toLowerCase().includes(category.toLowerCase()))
   return(
     <section className="itemListContainer">
-      <NavLink to={`/categorias`} className={"linkCategorias"}>Volver a categorías...</NavLink>
+      <NavLink to={`/categorias`} className={"linkCategorias"}><i class="bi bi-arrow-left-circle"></i></NavLink>
       <h1>{category.toUpperCase()}</h1>
       <div className= "itemListContainer-items">
         {<ItemList games={juegos} />}

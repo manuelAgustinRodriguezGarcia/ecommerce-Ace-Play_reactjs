@@ -6,11 +6,12 @@ import Swal from "sweetalert2";
 
 const ItemFav = ( { game } ) => {
   console.log('Game recibido en ItemFav:', game);
-  const Favorito = useContext(FavoritesData)
-  const listaFavoritos = Favorito.favoritos;
+  const datosFavoritos = useContext(FavoritesData)
+  const listaFavoritos = datosFavoritos.favoritos;
   function eliminarFavorito() {
     const nuevoFavoritos = listaFavoritos.filter((x) => x.id !== game.id);
-    Favorito.setFavoritos(nuevoFavoritos)
+    datosFavoritos.setFavoritos(nuevoFavoritos)
+    datosFavoritos.contFav > 0 && datosFavoritos.setContFav(datosFavoritos.contFav - 1);
     const Toast = Swal.mixin({ 
       toast: true,
       position: 'bottom-end',

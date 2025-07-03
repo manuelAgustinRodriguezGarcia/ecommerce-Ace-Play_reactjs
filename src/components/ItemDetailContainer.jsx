@@ -15,7 +15,7 @@ const ItemDetailContainer = () => {
   const otrosJuegos = listaJuegos.filter((x) => x.id !== parseInt(id))
   return(//itemDetail game={juego} pasa por prop el juego que coincide con el ID para usarlo en itemDetail
     <section className="detail">
-      <NavLink className={"detail-link"} to={`/categorias/${juego.category}`}>Volver...</NavLink>
+      <NavLink className={"detail-link"} to={`/categorias/${juego.category}`}><i class="bi bi-arrow-left-circle"></i>{juego.category}</NavLink>
       <ItemDetail game={juego}/> 
       <div className="detail-suggest">
       <h2>Juegos recomendados</h2>

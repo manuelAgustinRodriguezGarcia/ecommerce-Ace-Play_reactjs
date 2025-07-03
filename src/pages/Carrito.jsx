@@ -7,7 +7,7 @@ import EmptyCart from "../components/EmptyCart";
 
 function Carrito() {
   const Carrito = useContext(CartData)
-  const preciosCarrito = Carrito.productosCarrito.map((x) => x.precio * x.cantidad);
+  const preciosCarrito = Carrito.productosCarrito.map((x) => x.price * x.cantidad);
   const calcularTotal = () => {
     return preciosCarrito.reduce((total, item) => total + item ,0).toFixed(2);
   }

@@ -14,7 +14,8 @@ import AllGames from './contexts/AllGames';
 import FavoritesData from './contexts/FavoritesData';
 
 function App() {
-  const [ contCart, setContCart ] = useState(0)
+  const [ contCart, setContCart ] = useState(0);
+  const [ contFav, setContFav ] = useState(0);
   const [ productosCarrito, setProductosCarrito ] = useState([]);
   const [ productos, setProductos ] = useState([]);
   const [ favoritos, setFavoritos ] = useState([]);
@@ -36,7 +37,7 @@ function App() {
   return (
     <div className="App">
       <AllGames.Provider value={{productos}}>
-        <FavoritesData.Provider value={{favoritos, setFavoritos}}>
+        <FavoritesData.Provider value={{contFav, setContFav, favoritos, setFavoritos}}>
           <CartData.Provider value={{ contCart, setContCart, productosCarrito, setProductosCarrito }}>
             <BrowserRouter>
               <Navbar />

@@ -33,11 +33,11 @@ const ItemCart = ( { game } ) => {
     <div className="carrito-list-item">
       <img src={game.img} alt={game.nombre}/>
       <div className="carrito-list-item-title">
-        <h2>{game.nombre}</h2>
+        <h2>{game.name}</h2>
       </div>
       <div className="carrito-list-item-data">
         <p>{game.cantidad} unid.</p>
-        <h3>${game.precio * game.cantidad} </h3>
+        <h3>${game.price * game.cantidad} </h3>
       </div>
       <button onClick={() => eliminarDeCarrito()}>Eliminar</button>
     </div>

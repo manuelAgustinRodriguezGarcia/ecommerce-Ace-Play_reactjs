@@ -1,6 +1,6 @@
 .categoria {
   @include d-flex-row;
-  margin-top: 30px;
+  margin-top: 100px;
   justify-content: center;
   flex-wrap: wrap;
   gap: 25px;
@@ -105,6 +105,7 @@
       border: none;
       background: rgba(0, 0, 0, 0.6);
       border-radius: 5px 5px 0px 0px ;
+      -webkit-backdrop-filter: blur(1px);
       backdrop-filter: blur(1px);
       font-weight: bold;
       cursor: pointer;

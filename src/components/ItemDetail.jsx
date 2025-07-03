@@ -9,8 +9,8 @@ const ItemDetail = ({ game }) => {
   const datosCarrito = useContext(CartData)
   const [cantidad, setCantidad] = useState(1)
 
-  const Favoritos = useContext(FavoritesData)
-  const listaFavoritos = Favoritos.favoritos
+  const datosFavoritos = useContext(FavoritesData)
+  const listaFavoritos = datosFavoritos.favoritos
 
   const datosJuego = {
     id: game.id,
@@ -70,7 +70,8 @@ const ItemDetail = ({ game }) => {
 
   function agregarFav() {
     if (!yaEnFavoritos(game)) {
-      Favoritos.setFavoritos([...listaFavoritos, datosJuego])
+      datosFavoritos.contFav < 9 && datosFavoritos.setContFav(datosFavoritos.contFav + 1)
+      datosFavoritos.setFavoritos([...listaFavoritos, datosJuego])
       const Toast = Swal.mixin({
         toast: true,
         position: 'bottom-end',

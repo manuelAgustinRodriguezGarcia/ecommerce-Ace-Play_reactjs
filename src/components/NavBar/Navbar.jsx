@@ -1,21 +1,20 @@
 import React from "react";
-import CartWidget from './CartWidget'
+import FavCartWidget from './FavCartWidget'
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
     return(
       <header className="nav">
-        <div className="nav-general">
-          <NavLink to="/"><img src="../../images/logo.png"/></NavLink>
-          <div className="nav-general-center">
-            <NavLink to="/">Inicio</NavLink>
+        <div className="nav-gen">
+          <NavLink to="/"><h1 className="nav-gen-title">acePlay</h1></NavLink>
+          <div className="nav-gen-center">
+            <NavLink to="/ofertas">Ofertas</NavLink>
+            <NavLink to="/juegos">Juegos</NavLink>
             <NavLink to="/categorias">Categorias</NavLink>
-            <NavLink to="/favoritos">Favoritos</NavLink>
           </div>
-          <CartWidget />
+          <FavCartWidget />
         </div>
       </header>
     )
 }
-
 export default Navbar;

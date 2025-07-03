@@ -2,15 +2,25 @@ import { NavLink } from 'react-router-dom';
 
 function Home() {
   return (
-    <section className="inicio">
-      <img src='../images/inicio.png' alt="" />
-      <h1>BIENVENIDO A ACE PLAY!</h1>
-      <p>¡Somos tu tienda en línea de confianza para adquirir los mejores videojuegos! Nos enorgullece ofrecer una amplia selección de juegos de alta calidad para todas las plataformas y gustos. Desde títulos clásicos hasta las últimas novedades, encontrarás todo lo que necesitas para alimentar tu pasión por los videojuegos. En Ace Play, tu próxima aventura virtual está a solo unos clics de distancia. ¡Comienza a explorar nuestro mundo de juegos hoy mismo!</p>
-      <div className="inicio-categorias">
-        <NavLink to={'/categorias'}><img src='../images/categoriasInicio.png' alt="Banner hacia categorias"/></NavLink>
-        <h2>Encontrá el juego que estás buscando y descubrí otros nuevos en nuestra sección de <NavLink to={'/categorias'}>Categorías.</NavLink></h2>
-      </div>
-    </section>
+    <>
+      <section className="landing">
+        <div className="landing_texto">
+          <h1>acePlay</h1>
+          <p>¡Los mejores juegos a los mejores precios!</p>
+          <div className='bubble'></div>
+          <div className='bubble b-1'></div>
+        </div>
+        <section className="landing_links">
+          <h2>Encontrá el juego que estás buscando en la sección de <NavLink to={'/categorias'}>Categorías.</NavLink></h2>
+        </section>
+        <section className="landing_links">
+          <h2>Conocé los mejores precios en la sección de <NavLink to={'/ofertas'}>Ofertas.</NavLink></h2>
+        </section>
+        <section className="landing_links">
+          <h2>Descubrí juegos nuevos en la sección de <NavLink to={'/jeugos'}>Juegos.</NavLink></h2>
+        </section>
+      </section>
+    </>
   );
 }
 

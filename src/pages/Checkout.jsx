@@ -3,7 +3,7 @@ import CartData from '../contexts/CartData';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 
-const Checkout = () => {
+export const Checkout = () => {
   const Carrito = useContext(CartData)
   const [submit, setSubmit] = useState(false)
   const [ compraFinalizada, setCompraFinalizada ] = useState(false);
@@ -142,5 +142,3 @@ const Checkout = () => {
     </section>
   )
 }
-
-export default Checkout;

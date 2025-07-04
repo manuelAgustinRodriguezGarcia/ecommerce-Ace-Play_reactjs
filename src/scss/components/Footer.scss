@@ -1,0 +1,105 @@
+.footer {
+  background-color: #0e0e10;
+  color: #d1d1d1;
+  height: 300px;
+  font-family: 'Segoe UI', sans-serif;
+  width: 100%;
+  @include d-flex-col;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-container {
+  width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.footer-section {
+  flex: 1 1 200px;
+}
+
+.footer-section h3 {
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+
+.footer-section h2 {
+  background: linear-gradient(45deg, rgb(0, 200, 255), rgb(255, 0, 183));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section a {
+  color: #d1d1d1;
+  text-decoration: none;
+}
+
+.footer-section a:hover {
+  color: rgb(0, 200, 255);
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.social-icons img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0.8);
+  transition: filter 0.3s ease;
+}
+
+.social-icons img:hover {
+  filter: brightness(1.2);
+}
+
+.footer-section form {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.footer-section input[type="email"] {
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  flex: 1;
+  outline: none;
+  color: #000;
+}
+
+.footer-section button {
+  background-color: rgba(0, 200, 255);
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.footer-bottom {
+  text-align: center;
+  width: 100%;
+  margin-top: 30px;
+  border-top: 1px solid #333;
+  padding-top: 15px;
+  font-size: 14px;
+}
+
+.footer-bottom a {
+  color: #999;
+  text-decoration: none;
+}

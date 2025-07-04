@@ -15,6 +15,7 @@ body {
   overflow-x: hidden;
   min-height: 100vh;
 }
+
 a {
   text-decoration: none;
 }
@@ -24,4 +25,32 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+
+.degrade {
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: 900;
+  position: relative;
+  display: inline-block; // necesario para que el ::before tenga la misma anchura
+  color: transparent;
+  text-align: center;
+  z-index: 1;
+
+  &::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    background: linear-gradient(45deg, rgb(0, 200, 255), rgb(255, 0, 183));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
+  }
 }

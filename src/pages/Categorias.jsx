@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-function Categorias() {
+export const Categorias = () => {
   return (
     <section className="categoria">
       <NavLink className="categoria-item" to={'/categorias/accion'}>
@@ -30,5 +30,3 @@ function Categorias() {
     </section>
   );
 }
-
-export default Categorias;

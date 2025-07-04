@@ -4,7 +4,7 @@ import ItemFav from "../components/ItemFav";
 import EmptyFav from "../components/EmptyFav";
 
 
-function Favoritos() {
+export const Favoritos = () => {
   const favoritosContext = useContext(FavoritesData)
   const listaFavoritos = favoritosContext.favoritos
 
@@ -17,5 +17,3 @@ function Favoritos() {
     </section>
   );
 }
-
-export default Favoritos;

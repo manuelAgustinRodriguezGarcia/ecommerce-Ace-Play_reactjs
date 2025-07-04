@@ -1,19 +1,16 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './css/App.css';
 import Navbar from './components/NavBar/Navbar'
-import Home from './pages/Home';
-import Favoritos from './pages/Favoritos';
-import Categorias from './pages/Categorias';
+import { Home, Categorias, Carrito, Favoritos, Checkout, Juegos, Ofertas, Lanzamientos} from './pages';
 import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import CartData from './contexts/CartData';
 import { useState, useEffect } from 'react';
-import Carrito from './pages/Carrito';
-import Checkout from './pages/Checkout';
 import AllGames from './contexts/AllGames';
 import FavoritesData from './contexts/FavoritesData';
+import { Footer } from './components/Footer';
 
-function App() {
+export const App = () => {
   const [ contCart, setContCart ] = useState(0);
   const [ contFav, setContFav ] = useState(0);
   const [ productosCarrito, setProductosCarrito ] = useState([]);
@@ -25,14 +22,15 @@ function App() {
       try {
         const response = await fetch('/data/games.json')
         const allGames = await response.json()
-        console.log(allGames)
         setProductos(allGames)
       }catch (error) {
         console.log(error)
       }
     }
-    getProducts()
+    getProducts();
   },[])
+
+
 
   return (
     <div className="App">
@@ -46,10 +44,14 @@ function App() {
                 <Route path='/categorias' element={<Categorias />}></Route>
                 <Route path='/favoritos' element={<Favoritos />}></Route>
                 <Route path='/carrito' element={<Carrito />}></Route>
+                <Route path='/juegos' element={<Juegos />}></Route>
+                <Route path='/ofertas' element={<Ofertas />}></Route>
+                <Route path='/lanzamientos' element={<Lanzamientos />}></Route>
                 <Route path='/categorias/:category' element={<ItemListContainer />}></Route>
                 <Route path='/game/:id' element={<ItemDetailContainer />}></Route>
                 <Route path='/checkout' element={<Checkout />}></Route>
               </Routes>
+              <Footer />
             </BrowserRouter>
           </CartData.Provider>
         </FavoritesData.Provider>
@@ -57,4 +59,3 @@ function App() {
     </div>
   )
 }
-export default App;

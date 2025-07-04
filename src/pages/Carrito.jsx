@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import EmptyCart from "../components/EmptyCart";
 
 
-function Carrito() {
+export const Carrito = () => {
   const Carrito = useContext(CartData)
   const preciosCarrito = Carrito.productosCarrito.map((x) => x.price * x.cantidad);
   const calcularTotal = () => {
@@ -26,5 +26,3 @@ function Carrito() {
     </section>
   );
 }
-
-export default Carrito;

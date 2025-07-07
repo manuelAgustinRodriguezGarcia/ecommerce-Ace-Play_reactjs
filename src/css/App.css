@@ -24,6 +24,7 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
 }
 
 .degrade {
@@ -61,11 +62,15 @@ a {
   z-index: 10;
   align-items: center;
   justify-content: center;
-  background: rgba(10, 10, 10, 0.556);
+  background-color: transparent;
   -webkit-backdrop-filter: blur(15px);
   backdrop-filter: blur(15px);
+  transition: background-color 0.3s ease-in-out;
   color: #fff;
   position: fixed;
+}
+.nav:hover {
+  background: rgba(0, 0, 0, 0.25);
 }
 .nav-gen {
   display: flex;
@@ -1160,9 +1165,10 @@ a {
   align-items: center;
   width: calc(20% - 15px);
   height: 200px;
-  border: solid 1px #fff;
+  border-radius: 10px;
   padding: 10px;
   background-color: rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.8);
   -webkit-backdrop-filter: blur(15px);
   backdrop-filter: blur(15px);
 }
@@ -1174,10 +1180,11 @@ a {
   align-items: center;
   justify-content: center;
   gap: 20px;
-  font-size: 20px;
 }
-.juegos_list_btns a, .juegos_list_btns h4 {
+.juegos_list_btns button, .juegos_list_btns h4 {
+  font-size: 20px;
   transition: all 0.5s ease-in-out;
+  border: none;
   border-radius: 50%;
   height: 50px;
   width: 50px;
@@ -1193,8 +1200,15 @@ a {
   background: none;
   box-shadow: none;
 }
-.juegos_list_btns a:hover {
+.juegos_list_btns button:hover {
   background-color: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+.juegos_list_btns .hidden {
+  opacity: 0;
+}
+.juegos_list_btns .hidden:hover {
+  cursor: default;
 }
 .juegos_loading {
   display: flex;

@@ -9,6 +9,7 @@ import { useState, useEffect } from 'react';
 import AllGames from './contexts/AllGames';
 import FavoritesData from './contexts/FavoritesData';
 import { Footer } from './components/Footer';
+import { JuegoData } from './components/juegos/JuegoData';
 
 export const App = () => {
   const [ contCart, setContCart ] = useState(0);
@@ -49,6 +50,7 @@ export const App = () => {
                 <Route path='/lanzamientos' element={<Lanzamientos />}></Route>
                 <Route path='/categorias/:category' element={<ItemListContainer />}></Route>
                 <Route path='/game/:id' element={<ItemDetailContainer />}></Route>
+                <Route path='/juegos/:id' element={<JuegoData />}></Route>
                 <Route path='/checkout' element={<Checkout />}></Route>
               </Routes>
               <Footer />

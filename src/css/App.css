@@ -65,12 +65,14 @@ a {
   background-color: transparent;
   -webkit-backdrop-filter: blur(15px);
   backdrop-filter: blur(15px);
-  transition: background-color 0.3s ease-in-out;
+  background-color: none;
+  transition: all 0.3s ease-in-out;
+  animation: dark_nav forwards ease-in-out;
+  animation-timeline: scroll();
+  animation-range-start: cover 50px;
+  animation-range-end: cover 140px;
   color: #fff;
   position: fixed;
-}
-.nav:hover {
-  background: rgba(0, 0, 0, 0.25);
 }
 .nav-gen {
   display: flex;
@@ -143,6 +145,14 @@ a {
   font-size: 25px;
 }
 
+@keyframes dark_nav {
+  0% {
+    background-color: transparent;
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 0.65);
+  }
+}
 .footer {
   background-color: #0e0e10;
   color: #d1d1d1;
@@ -1162,15 +1172,109 @@ a {
 .juegos_list_item {
   display: flex;
   flex-direction: column;
+  overflow: hidden;
   align-items: center;
+  position: relative;
   width: calc(20% - 15px);
-  height: 200px;
-  border-radius: 10px;
-  padding: 10px;
+  height: 225px;
+  border: solid 2px rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease-in-out;
+  border-radius: 0px 0px 10px 10px;
   background-color: rgba(0, 0, 0, 0.3);
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.8);
   -webkit-backdrop-filter: blur(15px);
   backdrop-filter: blur(15px);
+}
+.juegos_list_item img {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  object-position: top;
+}
+.juegos_list_item_title {
+  font-size: 18px;
+  padding: 5px;
+  height: 32px;
+  text-align: center;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: default;
+}
+.juegos_list_item_info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  margin-top: 10px;
+  padding: 0 10px;
+  justify-content: space-between;
+}
+.juegos_list_item_info_category {
+  width: fit-content;
+  height: 24px;
+  align-self: flex-start;
+  font-size: 10px;
+  font-weight: bolder;
+  transition: all 0.3s ease-in-out;
+  align-content: center;
+  cursor: default;
+  border-radius: 15px;
+  border: solid 1px #fff;
+  padding: 5px;
+}
+.juegos_list_item_info_rating {
+  display: flex;
+  font-size: 14px;
+  width: 50%;
+  justify-content: center;
+}
+.juegos_list_item_info_rating p {
+  font-weight: bolder;
+  cursor: default;
+  margin-left: 5px;
+}
+.juegos_list_item h5 {
+  font-size: 16px;
+  transition: all 0.3s ease-in-out;
+  position: absolute;
+  font-weight: normal;
+  bottom: 0;
+  align-self: flex-end;
+  width: 50%;
+  background-color: #0e0e10;
+  background: linear-gradient(90deg, rgba(0, 200, 255, 0.7) 0%, rgba(255, 0, 183, 0.7) 100%);
+  height: 30px;
+  border-radius: 8px 0 0 0;
+  align-content: center;
+  text-align: center;
+}
+.juegos_list_item a {
+  position: absolute;
+  transition: all 0.3s ease-in-out;
+  bottom: -32px;
+  height: 30px;
+  width: 100%;
+  border-radius: 0 0 8px 8px;
+  text-align: center;
+  align-content: center;
+  font-weight: bolder;
+  background-color: #0E0E10;
+  background: linear-gradient(90deg, rgb(0, 200, 255) 0%, rgb(255, 0, 183) 100%);
+}
+.juegos_list_item:hover {
+  border: solid 2px rgba(255, 255, 255, 0.4);
+}
+.juegos_list_item:hover .juegos_list_item_info_category {
+  color: #0E0E10;
+  background-color: #fff;
+}
+.juegos_list_item:hover h5 {
+  transform: translateY(32px);
+}
+.juegos_list_item:hover a {
+  transform: translateY(-32px);
 }
 .juegos_list_btns {
   width: 100%;
@@ -1183,7 +1287,7 @@ a {
 }
 .juegos_list_btns button, .juegos_list_btns h4 {
   font-size: 20px;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.3s ease-in-out;
   border: none;
   border-radius: 50%;
   height: 50px;
@@ -1191,7 +1295,7 @@ a {
   font-weight: 600;
   text-align: center;
   align-content: center;
-  background-color: rgba(255, 255, 255, 0);
+  background-color: rgba(255, 255, 255, 0.1);
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.8);
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
@@ -1201,7 +1305,7 @@ a {
   box-shadow: none;
 }
 .juegos_list_btns button:hover {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.5);
   cursor: pointer;
 }
 .juegos_list_btns .hidden {
@@ -1255,6 +1359,18 @@ a {
   100% {
     transform: translateY(0px);
   }
+}
+.data {
+  height: 100dvh;
+  width: 1200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.data_juego {
+  background: linear-gradient(145deg, rgba(0, 240, 65, 0.5) 0%, rgba(120, 0, 125, 0.5) 100%);
+  height: calc(100% - 70px);
+  width: 100%;
 }
 
 /*# sourceMappingURL=App.css.map */

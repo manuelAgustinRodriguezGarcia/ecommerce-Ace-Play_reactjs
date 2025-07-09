@@ -1,32 +1,36 @@
 .juegos {
   @include d-flex-row;
   justify-content: center;
-  margin-top: 120px;
-  margin-bottom: 30px;
-  width: 1200px;
+  width: 100%;
+  min-height: 100dvh;
   position: relative;
+  overflow: hidden;
+  margin: 0;
+  
   &_list {
-    min-height: 100dvh;
-    width: 100%;
+    margin-top: 120px;
+    margin-bottom: 30px;
+    width: 1200px;
     @include d-flex-row;
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 15px;
-
+    height: auto;
     &_item {
       @include d-flex-col;
-      overflow: hidden;
       align-items: center;
       position: relative;
       width: calc(20% - 15px);
       height: 225px;
-      border: solid 2px rgba(255, 255, 255, 0.2);
+      border: solid 2px rgba(124, 124, 124, 0.2);
       transition: all .3s ease-in-out;
       border-radius: 0px 0px 10px 10px;
-      background-color: rgba(0,0,0, 0.3);
-      box-shadow: 0px 0px 3px rgba(0,0,0, 0.8);
+      background-color: rgba(0, 0, 0, 0.3);
+      box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.8);
       -webkit-backdrop-filter: blur(15px);
       backdrop-filter: blur(15px);
+      overflow: hidden;
+
       img {
         width: 100%;
         height: 110px;
@@ -45,14 +49,14 @@
         text-overflow: ellipsis;
         cursor: default
       }
-      
+
       &_info {
         @include d-flex-row;
         width: 100%;
         margin-top: 10px;
         padding: 0 10px;
         justify-content: space-between;
-        
+
         &_category {
           width: fit-content;
           height: 24px;
@@ -66,12 +70,13 @@
           border: solid 1px #fff;
           padding: 5px;
         }
-        
+
         &_rating {
           display: flex;
           font-size: 14px;
           width: 50%;
           justify-content: center;
+
           p {
             font-weight: bolder;
             cursor: default;
@@ -79,6 +84,7 @@
           }
         }
       }
+
       h5 {
         font-size: 16px;
         transition: all .3s ease-in-out;
@@ -94,6 +100,7 @@
         align-content: center;
         text-align: center;
       }
+
       a {
         position: absolute;
         transition: all .3s ease-in-out;
@@ -106,18 +113,20 @@
         font-weight: bolder;
         background-color: #0E0E10;
         background: linear-gradient(90deg, rgb(0, 200, 255) 0%, rgb(255, 0, 183) 100%);
-        
+
       }
-      
+
       &:hover {
-        border: solid 2px rgba(255, 255, 255, 0.4);
+        border: solid 2px rgba(124, 124, 124, 0.5);
         .juegos_list_item_info_category {
           color: #0E0E10;
           background-color: #fff;
         }
+
         h5 {
           transform: translateY(32px);
         }
+
         a {
           transform: translateY(-32px);
         }
@@ -131,7 +140,8 @@
       justify-content: center;
       gap: 20px;
 
-      button, h4 {
+      button,
+      h4 {
         font-size: 20px;
         transition: all .3s ease-in-out;
         border: none;
@@ -141,8 +151,8 @@
         font-weight: 600;
         text-align: center;
         align-content: center;
-        background-color: rgba(255,255,255, 0.1);
-        box-shadow: 0px 0px 5px rgba(0,0,0, 0.8);
+        background-color: rgba(255, 255, 255, 0.1);
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.8);
         -webkit-backdrop-filter: blur(5px);
         backdrop-filter: blur(5px);
       }
@@ -153,13 +163,14 @@
       }
 
       button:hover {
-        background-color: rgba(0,0,0, 0.5);
+        background-color: rgba(0, 0, 0, 0.5);
         cursor: pointer
       }
 
       .hidden {
         opacity: 0;
-        &:hover{
+
+        &:hover {
           cursor: default
         }
       }
@@ -180,26 +191,26 @@
 }
 
 .bubble {
-    position: absolute;
-    animation: bubble-up 2s;
-    background: radial-gradient(circle, rgba(0, 200, 255, 0.7) 0%, rgba(255, 222, 89, 0) 70%);
-    width: 1200px;
-    height: 1200px;
-    top: 400px;
-    left: -750px;
-    transform: translateY(-400px);
-    border-radius: 50%;
-    filter: blur(60px);
-    z-index: -10;
-  }
-  
-  .b-1 {
-    background: radial-gradient(circle, rgba(255, 0, 183, 0.7) 0%, rgba(255, 222, 89, 0) 70%);
-    z-index: -10;
-    top: 900px;
-    left: 800px;
-    transform: translateY(-400px);
-  }
+  position: absolute;
+  animation: bubble-up 2s;
+  background: radial-gradient(circle, rgba(0, 200, 255, 0.7) 0%, rgba(255, 222, 89, 0) 70%);
+  width: 1200px;
+  height: 1200px;
+  top: 400px;
+  left: -750px;
+  transform: translateY(-400px);
+  border-radius: 50%;
+  filter: blur(60px);
+  z-index: -10;
+}
+
+.b-1 {
+  background: radial-gradient(circle, rgba(255, 0, 183, 0.7) 0%, rgba(255, 222, 89, 0) 70%);
+  z-index: -10;
+  top: 900px;
+  left: 70%;
+  transform: translateY(-400px);
+}
 
 @keyframes loading {
   0% {

@@ -12,7 +12,6 @@
 body {
   background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
   overflow-x: hidden;
-  min-height: 100vh;
 }
 
 a {
@@ -24,7 +23,6 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: hidden;
 }
 
 .degrade {
@@ -1154,36 +1152,39 @@ a {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  min-height: 100dvh;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+}
+.juegos_list {
   margin-top: 120px;
   margin-bottom: 30px;
   width: 1200px;
-  position: relative;
-}
-.juegos_list {
-  min-height: 100dvh;
-  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 15px;
+  height: auto;
 }
 .juegos_list_item {
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   align-items: center;
   position: relative;
   width: calc(20% - 15px);
   height: 225px;
-  border: solid 2px rgba(255, 255, 255, 0.2);
+  border: solid 2px rgba(124, 124, 124, 0.2);
   transition: all 0.3s ease-in-out;
   border-radius: 0px 0px 10px 10px;
   background-color: rgba(0, 0, 0, 0.3);
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.8);
   -webkit-backdrop-filter: blur(15px);
   backdrop-filter: blur(15px);
+  overflow: hidden;
 }
 .juegos_list_item img {
   width: 100%;
@@ -1264,7 +1265,7 @@ a {
   background: linear-gradient(90deg, rgb(0, 200, 255) 0%, rgb(255, 0, 183) 100%);
 }
 .juegos_list_item:hover {
-  border: solid 2px rgba(255, 255, 255, 0.4);
+  border: solid 2px rgba(124, 124, 124, 0.5);
 }
 .juegos_list_item:hover .juegos_list_item_info_category {
   color: #0E0E10;
@@ -1285,7 +1286,8 @@ a {
   justify-content: center;
   gap: 20px;
 }
-.juegos_list_btns button, .juegos_list_btns h4 {
+.juegos_list_btns button,
+.juegos_list_btns h4 {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
   border: none;
@@ -1345,7 +1347,7 @@ a {
   background: radial-gradient(circle, rgba(255, 0, 183, 0.7) 0%, rgba(255, 222, 89, 0) 70%);
   z-index: -10;
   top: 900px;
-  left: 800px;
+  left: 70%;
   transform: translateY(-400px);
 }
 
@@ -1361,16 +1363,127 @@ a {
   }
 }
 .data {
-  height: 100dvh;
+  min-height: 1020px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 70px;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+}
+.data_background {
+  z-index: -2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100dvh - 70px);
+}
+.data_background::before {
+  content: "";
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.data_background img {
+  object-fit: cover;
+  object-position: top;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+.data_juego {
+  height: auto;
   width: 1200px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
+  align-items: center;
 }
-.data_juego {
-  background: linear-gradient(145deg, rgba(0, 240, 65, 0.5) 0%, rgba(120, 0, 125, 0.5) 100%);
-  height: calc(100% - 70px);
+.data_juego_info {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: solid 2px rgba(124, 124, 124, 0.5);
+  top: 70px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-items: flex-start;
+  justify-content: space-between;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 50px;
+  z-index: 2;
+  height: auto;
   width: 100%;
+}
+.data_juego_info_cont {
+  width: calc(65% - 20px);
+}
+.data_juego_info_cont h1 {
+  font-size: 25px;
+  height: 50px;
+  font-weight: bolder;
+  color: #fff;
+}
+.data_juego_info_cont img {
+  height: 400px;
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+.data_juego_info_cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  border-radius: 10px;
+  position: -webkit-sticky;
+  position: sticky;
+  background-color: #0E0E10;
+  top: 90px;
+  z-index: 10;
+  width: 35%;
+  height: 450px;
+  margin-top: 50px;
+  padding: 20px;
+}
+.data_juego_info_cta_list {
+  width: 100%;
+}
+.data_juego_info_cta_list li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  list-style: none;
+  height: 30px;
+  background-color: #3e00fa;
+}
+.data_juego_info_cta_list h5 {
+  width: fit-content;
+}
+.data_juego_info_cta_btns {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+.data_juego_info_cta_btns button {
+  font-size: 14px;
+  height: 40px;
+  width: 100%;
+  background-color: #252525;
+  border: none;
+  font-weight: bolder;
+  border-radius: 10px;
 }
 
 /*# sourceMappingURL=App.css.map */

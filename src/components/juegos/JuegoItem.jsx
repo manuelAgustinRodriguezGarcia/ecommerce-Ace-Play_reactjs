@@ -31,11 +31,11 @@ export const JuegoItem = ({ data }) => {
       <img src={data.background_image} alt={"Imagen portada de " + data.name} />
       <h4 className='juegos_list_item_title' title={data.name}>{data.name}</h4>
       <div className='juegos_list_item_info'>
-        <p className='juegos_list_item_info_category'>{data.genres[0].name.toUpperCase()}</p>
+        <p className='juegos_list_item_info_category' title={data.genres[0].name}>{data.genres[0].name.toUpperCase()}</p>
         <div className='juegos_list_item_info_rating'>{ratingCheck()}</div>
       </div>
       <h5>${price}.99</h5>
-      <NavLink to={`/juegos/${data.id}`}>Comprar</NavLink>
+      <NavLink to={`/juegos/juego/${data.id}`}>Comprar</NavLink>
     </div>
   )
 }

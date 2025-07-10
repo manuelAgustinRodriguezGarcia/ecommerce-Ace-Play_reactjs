@@ -59,8 +59,11 @@
 
         &_category {
           width: fit-content;
+          max-width: 50%;
+          overflow: hidden;
           height: 24px;
           align-self: flex-start;
+          white-space: nowrap;
           font-size: 10px;
           font-weight: bolder;
           transition: all .3s ease-in-out;
@@ -74,8 +77,8 @@
         &_rating {
           display: flex;
           font-size: 14px;
-          width: 50%;
-          justify-content: center;
+          width: 45%;
+          justify-content: right;
 
           p {
             font-weight: bolder;
@@ -192,7 +195,6 @@
 
 .bubble {
   position: absolute;
-  animation: bubble-up 2s;
   background: radial-gradient(circle, rgba(0, 200, 255, 0.7) 0%, rgba(255, 222, 89, 0) 70%);
   width: 1200px;
   height: 1200px;

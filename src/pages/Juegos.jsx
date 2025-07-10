@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { JuegoItem } from '../components/juegos/JuegoItem';
+import { useNavigate, useParams } from 'react-router-dom';
 export const Juegos = () => {
 
   const [listaJuegos, SetListaJuegos] = useState([]);
   const [showLoading, setShowLoading] = useState(true);
 
-  const [pageNum, setPageNum] = useState(1);
+  const { page } = useParams();
+  const navigate = useNavigate();
 
-  const getJuegosApi = async (page = pageNum) => {
+  const currentPage = parseInt(page) || 1;
+
+  const getJuegosApi = async (page) => {
     try {
-      const response = await fetch(`https://api.rawg.io/api/games?key=957f6a2b15fa49f68a9bb400ac60e7f0&page=${page}&page_size=20`);
+      const response = await fetch(`https://api.rawg.io/api/games?key=957f6a2b15fa49f68a9bb400ac60e7f0&page=${page}&page_size=20&exclude_additions=true`);
       const data = await response.json();
       SetListaJuegos(data.results);
       console.log(data.results)
@@ -18,24 +22,26 @@ export const Juegos = () => {
     }
     finally {
       setShowLoading(false)
+      window.scrollTo(0, 0)
     }
   }
   useEffect(() => {
-    getJuegosApi();
-    setShowLoading(true)
     window.scrollTo(0, 0)
-  }, [pageNum])
+    setShowLoading(true)
+    getJuegosApi(currentPage);
+  }, [currentPage])
 
 
-  const nextPage = async () => {
-    setPageNum(pageNum + 1);
+  const nextPage = () => {
+    navigate(`/juegos/pag/${currentPage + 1}`);
   }
 
-  const backPage = async () => {
-    if (pageNum > 1) {
-      setPageNum(pageNum - 1)
+  const backPage = () => {
+    if (currentPage > 1) {
+      navigate(`/juegos/pag/${currentPage - 1}`);
     }
   }
+
 
   return (
     <section className='juegos'>
@@ -54,9 +60,9 @@ export const Juegos = () => {
               <div className='bubble'></div>
               <div className='bubble b-1'></div>
               <div className='juegos_list_btns'>
-                <button onClick={backPage} className={pageNum === 1 ? 'hidden' : ''}>{pageNum > 1 ? pageNum - 1 : ''}</button>
-                <h4>{pageNum}</h4>
-                <button onClick={nextPage}>{pageNum + 1}</button>
+                <button onClick={backPage} className={currentPage === 1 ? 'hidden' : ''}>{currentPage > 1 ? currentPage - 1 : ''}</button>
+                <h4>{currentPage}</h4>
+                <button onClick={nextPage}>{currentPage + 1}</button>
               </div>
             </div>
           )

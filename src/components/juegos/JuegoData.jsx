@@ -84,6 +84,9 @@ export const JuegoData = () => {
                     <img src={juegoImages.results[5].image} alt="No se encontro imagen" />
                   </div>
                 </div>
+                <div className='data_juego_info_cont_text'>
+                  <p>{juego.description_raw}</p>
+                </div>
               </div>
               <div className='data_juego_info_cta'>
                 <img src={juego.background_image} alt="" />
@@ -92,7 +95,7 @@ export const JuegoData = () => {
                   <li>Desarrollador <h5>{juego.developers[0].name}</h5></li>
                   <li>Editor <h5>{juego.publishers[0].name}</h5></li>
                   <li>Lanzamiento <h5>{juego.released}</h5></li>
-                  <li>Plataformas <h5>{juego.parent_platforms[1].platform.name}</h5></li>
+                  <li>Plataformas <h5>{juego.parent_platforms[0].platform.name}</h5></li>
                 </ul>
                 <div className='data_juego_info_cta_btns'>
                   <button>Comprar ahora</button>

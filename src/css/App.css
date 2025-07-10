@@ -1475,6 +1475,10 @@ a {
 .data_juego_info_cont_banner .hide {
   display: none;
 }
+.data_juego_info_cont_text {
+  margin-top: 10px;
+  font-size: 18px;
+}
 .data_juego_info_cont_carousel {
   display: flex;
   flex-direction: row;
@@ -1555,6 +1559,7 @@ a {
   justify-content: space-between;
   font-size: 14px;
   list-style: none;
+  padding-left: 10px;
   height: 35px;
   border-bottom: solid 1px rgba(255, 255, 255, 0.3);
 }

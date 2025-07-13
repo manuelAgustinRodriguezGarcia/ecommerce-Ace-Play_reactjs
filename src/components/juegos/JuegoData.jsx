@@ -9,24 +9,32 @@ export const JuegoData = () => {
   const [juegoImages, setJuegoImages] = useState('');
   const [juegoVideos, setJuegoVideos] = useState(null);
   const [showLoading, setShowLoading] = useState(true);
-  
+
   const [banner, setBanner] = useState(0);
+  const [expanded, setExpanded] = useState(false)
+  const [price, setPrice] = useState(0)
+
 
   const getJuego = async () => {
     try {
       const response = await fetch(`https://api.rawg.io/api/games/${id}?key=957f6a2b15fa49f68a9bb400ac60e7f0`);
       const data = await response.json();
       setJuego(data);
-
+      
       const responseImg = await fetch(`https://api.rawg.io/api/games/${id}/screenshots?key=957f6a2b15fa49f68a9bb400ac60e7f0`)
       const dataImages = await responseImg.json();
       setJuegoImages(dataImages);
-      console.log(juegoImages)
-
-      const responseVideos = await fetch(`https://api.rawg.io/api/games/${id}/movies?key=957f6a2b15fa49f68a9bb400ac60e7f0`)
-      const dataVideos = await responseVideos.json();
-      setJuegoVideos(dataVideos);
-
+      console.log(juegoImages);
+      
+      // const responseVideos = await fetch(`https://api.rawg.io/api/games/${id}/movies?key=957f6a2b15fa49f68a9bb400ac60e7f0`)
+      // const dataVideos = await responseVideos.json();
+      // setJuegoVideos(dataVideos);
+      
+      const released = parseInt((await data.released).substring(0, 4));
+      const currentYear = new Date().getFullYear();
+      const antiguedad = currentYear - released;
+      const price = Math.max(5, 69 - antiguedad * 3);
+      setPrice(price)
     }
     catch (error) {
       console.error("Error fetching games:", error);
@@ -37,20 +45,20 @@ export const JuegoData = () => {
   }
   console.log('DATOS COMPLETOS: ');
   console.log(juego);
-  console.log('VIDEOS DE JUEGO: ');
-  console.log(juegoVideos);
-  console.log('SCREENSHOTS DE JUEGO: ');
+  console.log('IMAGENES ARRAY: ');
   console.log(juegoImages);
-
+  
+  
   useEffect(() => {
     window.scrollTo(0, 0);
     setShowLoading(false);
     getJuego();
   }, []);
+  
 
   return (
     <section className='data'>
-      {juego && juegoImages && juegoVideos ?
+      {juego && juegoImages ?
         <>
           <div className='data_background'>
             <img src={juego.background_image} alt="" />
@@ -58,49 +66,76 @@ export const JuegoData = () => {
           <section className='data_juego'>
             <div className='data_juego_info'>
               <div className='data_juego_info_cont'>
-                <h1>{juego.name}</h1>
+                <div className='data_juego_info_cont_title'>
+                  <h1>{juego.name}</h1>
+                  <div className='data_juego_info_cont_title_tags'>
+                    {juego.tags.slice(0,4).map((item, index) => (
+                      <h5 key={index}>{item.name.toUpperCase()}</h5>
+                    ))}
+                  </div>
+                </div>
                 <div className='data_juego_info_cont_banner'>
-                  <button className={banner === 0 && 'hide'} onClick={() => setBanner(banner - 1)}><i class="bi bi-caret-left"></i></button>
-                  <button className={banner === 5 && 'hide'} onClick={() => setBanner(banner + 1)}><i class="bi bi-caret-right"></i></button>
-                  <img src={juegoImages.results[banner].image} alt="No se encontro imagen" />
+                  <button
+                    className={banner === 0 ? 'hide' : ''}
+                    onClick={() => setBanner(banner - 1)}
+                    disabled={banner === 0}>
+                    <i className="bi bi-caret-left"></i>
+                  </button>
+                  <button
+                    className={banner >= juegoImages.results.length - 1 ? 'hide' : ''}
+                    onClick={() => setBanner(banner + 1)}
+                    disabled={banner === juegoImages.results.length - 1}>
+                    <i className="bi bi-caret-right"></i>
+                  </button>
+                  <img src={juegoImages.results[banner]?.image} alt="No se encontro imagen" />
+
                 </div>
                 <div className='data_juego_info_cont_carousel'>
-                  <div onClick={() => setBanner(0)} className='data_juego_info_cont_carousel--item'>
-                    <img src={juegoImages.results[0].image} alt="No se encontro imagen" />
-                  </div>
-                  <div onClick={() => setBanner(1)} className='data_juego_info_cont_carousel--item'>
-                    <img src={juegoImages.results[1].image} alt="No se encontro imagen" />
-                  </div>
-                  <div onClick={() => setBanner(2)} className='data_juego_info_cont_carousel--item'>
-                    <img src={juegoImages.results[2].image} alt="No se encontro imagen" />
-                  </div>
-                  <div onClick={() => setBanner(3)} className='data_juego_info_cont_carousel--item'>
-                    <img src={juegoImages.results[3].image} alt="No se encontro imagen" />
-                  </div>
-                  <div onClick={() => setBanner(4)} className='data_juego_info_cont_carousel--item'>
-                    <img src={juegoImages.results[4].image} alt="No se encontro imagen" />
-                  </div>
-                  <div onClick={() => setBanner(5)} className='data_juego_info_cont_carousel--item'>
-                    <img src={juegoImages.results[5].image} alt="No se encontro imagen" />
-                  </div>
+                  {juegoImages.results.map((item, index) => (
+                    item.image && (
+                      <div key={index} onClick={() => setBanner(index)} className='data_juego_info_cont_carousel--item'>
+                        <img src={item.image} alt="No se encontro imagen" />
+                      </div>
+                    )))}
                 </div>
                 <div className='data_juego_info_cont_text'>
-                  <p>{juego.description_raw}</p>
+                  <h3>Descripción</h3>
+                    {juego.description_raw.length > 350? (
+                      <>
+                        <p className={expanded ? 'largo' : 'corto'}>{juego.description_raw}</p>
+                        <button className={expanded === true ? 'toggle_hidden' : 'toggle_shown' } onClick={() => setExpanded(true)}><i className="bi bi-caret-down"></i>Ver más</button>
+                      </>
+                    ): <p className={expanded ? 'largo' : 'corto'}>{juego.description_raw}</p>
+                    }
+                </div>
+                <div className='data_juego_info_cont_rating'>
+                  <h3>Valoraciones</h3>
                 </div>
               </div>
               <div className='data_juego_info_cta'>
                 <img src={juego.background_image} alt="" />
-                <h2>{juego.name}</h2>
+                <h2 className='data_juego_info_cta_title'>{juego.name}</h2>
                 <ul className='data_juego_info_cta_list'>
-                  <li>Desarrollador <h5>{juego.developers[0].name}</h5></li>
-                  <li>Editor <h5>{juego.publishers[0].name}</h5></li>
-                  <li>Lanzamiento <h5>{juego.released}</h5></li>
-                  <li>Plataformas <h5>{juego.parent_platforms[0].platform.name}</h5></li>
+                  <li>Género <h4>{juego.genres[0].name}</h4></li>
+                  <li>Desarrollador <h4>{juego.developers[0].name}</h4></li>
+                  <li>Editor <h4>{juego.publishers[0].name}</h4></li>
+                  <li>Lanzamiento <h4>{juego.released}</h4></li>
+                  <li>Plataformas
+                    <div className='data_juego_info_cta_list_platform' title={juego.parent_platforms.map((i) =>(" " + i.platform.name) )}>
+                      {juego.parent_platforms.slice(0,3).map((item, index) => (
+                        <h4 key={index}>{item.platform.name}{index < juego.parent_platforms.length - 1 && ' - '}</h4>
+                      ))}
+                      {juego.parent_platforms.length > 3 && '...'}
+                    </div>
+                  </li>
                 </ul>
+                <h2 className='data_juego_info_cta_price'>${price}.99</h2>
                 <div className='data_juego_info_cta_btns'>
-                  <button>Comprar ahora</button>
-                  <button>Agregar a Favoritos <i className="bi bi-heart"></i></button>
-                  <button>Agregar a Carrito <i className="bi bi-cart"></i></button>
+                  <div className='data_juego_info_cta_btns_favCart'>
+                    <button>Agregar a Favoritos <i className="bi bi-heart"></i></button>
+                    <button>Agregar a Carrito <i className="bi bi-cart"></i></button>
+                  </div>
+                  <button className='data_juego_info_cta_btns_buy'><span>Comprar ahora</span></button>
                 </div>
               </div>
             </div>

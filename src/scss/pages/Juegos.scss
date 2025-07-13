@@ -36,6 +36,7 @@
         height: 110px;
         object-fit: cover;
         object-position: top;
+        will-change: transform;
       }
 
       &_title {

@@ -57,8 +57,8 @@ export const Juegos = () => {
               {listaJuegos.map((juego) =>
               (<JuegoItem key={juego.id} data={juego} />
               ))}
-              <div className='bubble'></div>
-              <div className='bubble b-1'></div>
+              {/* <div className='bubble'></div>
+              <div className='bubble b-1'></div> */}
               <div className='juegos_list_btns'>
                 <button onClick={backPage} className={currentPage === 1 ? 'hidden' : ''}>{currentPage > 1 ? currentPage - 1 : ''}</button>
                 <h4>{currentPage}</h4>

@@ -45,7 +45,7 @@
     align-items: center;
 
     &_info {
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: rgba(0, 0, 0, 0.7);
       border: solid 2px rgba(124, 124, 124, 0.5);
       top: 70px;
       @include d-flex-row;
@@ -62,10 +62,13 @@
       &_cont {
         width: calc(65% - 20px);
         @include d-flex-col;
-        
+
         h3 {
           font-size: 20px;
+          border-top: solid 2px rgba(255, 255, 255, 0.2);
+          padding-top: 5px;
         }
+
         &_title {
           margin-bottom: 10px;
 
@@ -191,9 +194,6 @@
           font-size: 18px;
           position: relative;
           margin-bottom: 10px;
-          h3 {
-            font-size: 20px;
-          }
 
           .corto {
             overflow: hidden;
@@ -253,48 +253,58 @@
             opacity: 0;
           }
         }
+
         &_rating {
           width: 100%;
-          margin-top: 5px; 
+          margin-top: 5px;
           height: 200px;
           @include d-flex-row;
           align-items: center;
           justify-content: left;
           gap: 30px;
-         
+
           &_stars {
             width: 100%;
             text-align: center;
+
             i {
               font-size: 30px;
             }
           }
+
           &_number {
             @include d-flex-col;
             justify-content: center;
-            width: 200px;
+            width: fit-content;
             height: 200px;
+
             h2 {
               font-size: 100px;
               height: fit-content;
             }
           }
+
           &_perc {
             @include d-flex-col;
             justify-content: center;
             height: 80%;
             width: 100%;
+
             h4 {
+              font-size: 18px;
               font-weight: normal;
               width: fit-content;
             }
+
             &_bar {
               @include d-flex-row;
               justify-content: space-between;
+
               h5 {
                 font-size: 16px;
                 font-weight: normal;
               }
+
               &_fill {
                 height: 10px;
                 border-radius: 0 15px 15px 0;
@@ -353,12 +363,12 @@
             justify-content: right;
             gap: 5px;
             max-width: 80%;
-            
+
             h4 {
               width: fit-content;
             }
           }
-          
+
         }
 
         &_price {
@@ -389,20 +399,24 @@
 
           &_buy {
             position: relative;
-            background-color: #252525;
             overflow: hidden;
-            z-index: 3;
+            background-color: #252525;
+            border: none;
+            z-index: 2;
+
             span {
               position: relative;
               z-index: 3;
               font-size: 16px;
             }
+
             &:hover {
               &::before {
                 top: -100%;
                 left: -10%;
               }
             }
+
             &::before {
               content: '';
               z-index: 0;
@@ -411,7 +425,7 @@
               height: 350%;
               background: linear-gradient(90deg, rgb(0, 200, 255), rgb(255, 0, 183));
               position: absolute;
-              top: 100%;
+              top: 110%;
               left: -10%;
               border-radius: 80%;
             }
@@ -428,15 +442,19 @@
 
               &:hover {
                 background-color: rgba(124, 124, 124, 0.2);
+
                 .bi-heart {
                   color: rgb(255, 0, 183);
                 }
+
                 .bi-cart {
                   color: rgb(0, 255, 120);
                 }
               }
             }
-            .bi-heart, .bi-cart {
+
+            .bi-heart,
+            .bi-cart {
               transition: color .3s ease-in-out;
             }
           }

@@ -158,6 +158,7 @@ export const JuegoData = () => {
                     </div>
                   </div>
                 </div>
+                <h3>Requisitos de Sistema</h3>
               </div>
               <div className='data_juego_info_cta'>
                 <img src={juego.background_image} alt="" />

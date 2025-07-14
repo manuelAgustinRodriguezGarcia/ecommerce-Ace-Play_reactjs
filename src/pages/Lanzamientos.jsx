@@ -1,9 +1,10 @@
 import React from 'react'
+import { EmptyPage } from '../components/EmptyPage'
 
 export const Lanzamientos = () => {
   return (
-    <div>
-      <h1>Lanzamientos</h1>
-    </div>
+    <>
+      <EmptyPage/>
+    </>
   )
 }

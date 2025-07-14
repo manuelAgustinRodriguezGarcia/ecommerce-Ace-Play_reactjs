@@ -1,9 +1,10 @@
 import React from 'react'
+import { EmptyPage } from '../components/EmptyPage'
 
 export const Ofertas = () => {
   return (
-    <div>
-      <h1>Ofertas especiales para vos!</h1>
-    </div>
+    <>
+      <EmptyPage />
+    </>
   )
 }

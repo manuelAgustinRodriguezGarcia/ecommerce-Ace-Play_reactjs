@@ -13,7 +13,7 @@ export const Juegos = () => {
 
   const getJuegosApi = async (page) => {
     try {
-      const response = await fetch(`https://api.rawg.io/api/games?key=957f6a2b15fa49f68a9bb400ac60e7f0&page=${page}&page_size=20&exclude_additions=true`);
+      const response = await fetch(`https://api.rawg.io/api/games?key=957f6a2b15fa49f68a9bb400ac60e7f0&page=${page}&page_size=15&exclude_additions=true`);
       const data = await response.json();
       SetListaJuegos(data.results);
       console.log(data.results)

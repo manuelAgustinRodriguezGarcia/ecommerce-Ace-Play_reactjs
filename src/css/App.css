@@ -48,7 +48,73 @@ a {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  white-space: nowrap;
+}
+
+.onwork {
+  margin-top: 70px;
+  height: calc(100dvh - 70px);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.onwork_box {
+  width: 1200px;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-items: center;
+  justify-content: space-around;
+}
+.onwork_box_title {
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+  text-align: left;
+  font-size: 35px;
+  padding: 20px;
+}
+.onwork_box_title h1 {
+  text-align: left;
+}
+.onwork_box_title h1::before {
+  width: 100%;
+}
+.onwork_box i {
+  font-size: 250px;
+  align-content: center;
+  animation: hammer 3s infinite alternate;
+  color: rgba(255, 255, 255, 0.6);
+}
+@keyframes hammer {
+  0% {
+    rotate: -10deg;
+  }
+  100% {
+    rotate: 20deg;
+  }
+}
+.onwork h2 {
+  margin-top: 100px;
+}
+.onwork_links {
+  width: 1200px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.onwork_links a {
+  background: linear-gradient(90deg, rgba(0, 200, 255, 0.7), rgba(255, 0, 183, 0.7));
+  height: 40px;
+  width: 100px;
+  align-content: center;
+  text-align: center;
+  cursor: pointer;
 }
 
 .nav {
@@ -1176,11 +1242,11 @@ a {
   align-items: center;
   position: relative;
   width: calc(20% - 15px);
+  border: solid 2px #333333;
   height: 225px;
-  border: solid 2px rgba(124, 124, 124, 0.2);
   transition: all 0.3s ease-in-out;
   border-radius: 0px 0px 10px 10px;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: #252525;
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.8);
   -webkit-backdrop-filter: blur(15px);
   backdrop-filter: blur(15px);
@@ -1195,9 +1261,9 @@ a {
 }
 .juegos_list_item_title {
   font-size: 18px;
-  padding: 5px;
+  padding: 5px 10px;
   height: 32px;
-  text-align: center;
+  text-align: left;
   width: 100%;
   white-space: nowrap;
   overflow: hidden;
@@ -1247,11 +1313,10 @@ a {
   font-weight: normal;
   bottom: 0;
   align-self: flex-end;
-  width: 50%;
-  background-color: #0e0e10;
-  background: linear-gradient(90deg, rgba(0, 200, 255, 0.7) 0%, rgba(255, 0, 183, 0.7) 100%);
+  width: 100%;
+  background-color: #333333;
+  border: none;
   height: 30px;
-  border-radius: 8px 0 0 0;
   align-content: center;
   text-align: center;
 }
@@ -1267,9 +1332,6 @@ a {
   font-weight: bolder;
   background-color: #0E0E10;
   background: linear-gradient(90deg, rgb(0, 200, 255) 0%, rgb(255, 0, 183) 100%);
-}
-.juegos_list_item:hover {
-  border: solid 2px rgba(124, 124, 124, 0.5);
 }
 .juegos_list_item:hover .juegos_list_item_info_category {
   color: #0E0E10;

@@ -21,11 +21,11 @@
       align-items: center;
       position: relative;
       width: calc(20% - 15px);
+      border: solid 2px #333333;
       height: 225px;
-      border: solid 2px rgba(124, 124, 124, 0.2);
       transition: all .3s ease-in-out;
       border-radius: 0px 0px 10px 10px;
-      background-color: rgba(0, 0, 0, 0.3);
+      background-color: #252525;
       box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.8);
       -webkit-backdrop-filter: blur(15px);
       backdrop-filter: blur(15px);
@@ -41,9 +41,9 @@
 
       &_title {
         font-size: 18px;
-        padding: 5px;
+        padding: 5px 10px;
         height: 32px;
-        text-align: center;
+        text-align: left;
         width: 100%;
         white-space: nowrap;
         overflow: hidden;
@@ -96,11 +96,10 @@
         font-weight: normal;
         bottom: 0;
         align-self: flex-end;
-        width: 50%;
-        background-color: #0e0e10;
-        background: linear-gradient(90deg, rgba(0, 200, 255, 0.7) 0%, rgba(255, 0, 183, 0.7) 100%);
+        width: 100%;
+        background-color: #333333;
+        border: none;
         height: 30px;
-        border-radius: 8px 0 0 0;
         align-content: center;
         text-align: center;
       }
@@ -121,7 +120,6 @@
       }
 
       &:hover {
-        border: solid 2px rgba(124, 124, 124, 0.5);
         .juegos_list_item_info_category {
           color: #0E0E10;
           background-color: #fff;

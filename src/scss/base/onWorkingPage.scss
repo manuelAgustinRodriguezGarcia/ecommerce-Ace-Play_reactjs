@@ -1,0 +1,68 @@
+.onwork {
+  margin-top: 70px;
+  height: calc(100dvh - 70px);
+  width: 100%;
+  @include d-flex-col;
+  justify-content: center;
+  align-items: center;
+
+  &_box {
+    width: 1200px;
+    height: auto;
+    @include d-flex-row;
+    align-items: center;
+    justify-content: space-around;
+
+    &_title {
+      @include d-flex-col;
+      width: 65%;
+      text-align: left;
+      font-size: 35px;
+      padding: 20px;
+      h1 {
+        text-align: left;
+        &::before {
+          width: 100%;
+        }
+      }
+    }
+
+    i {
+      font-size: 250px;
+      align-content: center;
+      animation: hammer 3s infinite alternate;
+      color: rgba(255,255,255, 0.6);
+
+
+      @keyframes hammer {
+        0% {
+          rotate: -10deg;
+        }
+
+        100% {
+          rotate: 20deg;
+        }
+      }
+    }
+  }
+  
+  h2 {
+    margin-top: 100px;
+  }
+  
+  &_links {
+    width: 1200px;
+    margin-top: 20px;
+    @include d-flex-row;
+    justify-content: center;
+    gap: 20px;
+    a {
+      background: linear-gradient(90deg, rgba(0, 200, 255, 0.7), rgba(255, 0, 183, 0.7));
+      height: 40px;
+      width: 100px;
+      align-content: center;
+      text-align: center;
+      cursor: pointer;
+    }
+  }
+}

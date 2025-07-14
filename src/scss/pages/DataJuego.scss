@@ -55,15 +55,17 @@
       backdrop-filter: blur(10px);
       border-radius: 10px;
       padding: 20px;
-      margin-top: 50px;
+      margin: 50px 0;
       z-index: 2;
-      height: 2000px;
       width: 100%;
 
       &_cont {
         width: calc(65% - 20px);
         @include d-flex-col;
-
+        
+        h3 {
+          font-size: 20px;
+        }
         &_title {
           margin-bottom: 10px;
 
@@ -141,7 +143,7 @@
 
         &_carousel {
           @include d-flex-row;
-          margin-top: 10px;
+          margin: 10px 0;
           justify-content: left;
           width: 100%;
           gap: 10px;
@@ -185,10 +187,13 @@
         }
 
         &_text {
-          margin-top: 10px;
+          margin-top: 5px;
           font-size: 18px;
           position: relative;
           margin-bottom: 10px;
+          h3 {
+            font-size: 20px;
+          }
 
           .corto {
             overflow: hidden;
@@ -229,15 +234,18 @@
             color: #fff;
             width: 100px;
             align-content: center;
+            @include d-flex-row;
+            justify-content: space-between;
+            padding: 0 10px;
             right: 0;
             border: none;
             background-color: rgba(255, 255, 255, 0.1);
-            font-size: 12px;
+            font-size: 14px;
             transition: background-color .3s ease-in-out;
 
             &:hover {
               cursor: pointer;
-              background-color: rgba(255, 255, 255, 0.3);
+              background-color: rgba(255, 255, 255, 0.2);
             }
           }
 
@@ -247,7 +255,53 @@
         }
         &_rating {
           width: 100%;
-          background-color: rgb(255, 25, 0)
+          margin-top: 5px; 
+          height: 200px;
+          @include d-flex-row;
+          align-items: center;
+          justify-content: left;
+          gap: 30px;
+         
+          &_stars {
+            width: 100%;
+            text-align: center;
+            i {
+              font-size: 30px;
+            }
+          }
+          &_number {
+            @include d-flex-col;
+            justify-content: center;
+            width: 200px;
+            height: 200px;
+            h2 {
+              font-size: 100px;
+              height: fit-content;
+            }
+          }
+          &_perc {
+            @include d-flex-col;
+            justify-content: center;
+            height: 80%;
+            width: 100%;
+            h4 {
+              font-weight: normal;
+              width: fit-content;
+            }
+            &_bar {
+              @include d-flex-row;
+              justify-content: space-between;
+              h5 {
+                font-size: 16px;
+                font-weight: normal;
+              }
+              &_fill {
+                height: 10px;
+                border-radius: 0 15px 15px 0;
+                background-color: rgb(255, 255, 255)
+              }
+            }
+          }
         }
       }
 
@@ -373,8 +427,17 @@
               background: none;
 
               &:hover {
-                background-color: rgba(124, 124, 124, 0.4);
+                background-color: rgba(124, 124, 124, 0.2);
+                .bi-heart {
+                  color: rgb(255, 0, 183);
+                }
+                .bi-cart {
+                  color: rgb(0, 255, 120);
+                }
               }
+            }
+            .bi-heart, .bi-cart {
+              transition: color .3s ease-in-out;
             }
           }
         }

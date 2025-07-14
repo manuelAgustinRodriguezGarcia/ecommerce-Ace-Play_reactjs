@@ -1304,7 +1304,7 @@ a {
 .juegos_list_item_info_rating p {
   font-weight: bolder;
   cursor: default;
-  margin-left: 5px;
+  margin-right: 5px;
 }
 .juegos_list_item h5 {
   font-size: 16px;
@@ -1485,15 +1485,17 @@ a {
   backdrop-filter: blur(10px);
   border-radius: 10px;
   padding: 20px;
-  margin-top: 50px;
+  margin: 50px 0;
   z-index: 2;
-  height: 2000px;
   width: 100%;
 }
 .data_juego_info_cont {
   width: calc(65% - 20px);
   display: flex;
   flex-direction: column;
+}
+.data_juego_info_cont h3 {
+  font-size: 20px;
 }
 .data_juego_info_cont_title {
   margin-bottom: 10px;
@@ -1561,7 +1563,7 @@ a {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-top: 10px;
+  margin: 10px 0;
   justify-content: left;
   width: 100%;
   gap: 10px;
@@ -1599,10 +1601,13 @@ a {
   height: 100%;
 }
 .data_juego_info_cont_text {
-  margin-top: 10px;
+  margin-top: 5px;
   font-size: 18px;
   position: relative;
   margin-bottom: 10px;
+}
+.data_juego_info_cont_text h3 {
+  font-size: 20px;
 }
 .data_juego_info_cont_text .corto {
   overflow: hidden;
@@ -1637,22 +1642,78 @@ a {
   color: #fff;
   width: 100px;
   align-content: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
   right: 0;
   border: none;
   background-color: rgba(255, 255, 255, 0.1);
-  font-size: 12px;
+  font-size: 14px;
   transition: background-color 0.3s ease-in-out;
 }
 .data_juego_info_cont_text .toggle_shown:hover {
   cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.2);
 }
 .data_juego_info_cont_text .toggle_hidden {
   opacity: 0;
 }
 .data_juego_info_cont_rating {
   width: 100%;
-  background-color: rgb(255, 25, 0);
+  margin-top: 5px;
+  height: 200px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-items: center;
+  justify-content: left;
+  gap: 30px;
+}
+.data_juego_info_cont_rating_stars {
+  width: 100%;
+  text-align: center;
+}
+.data_juego_info_cont_rating_stars i {
+  font-size: 30px;
+}
+.data_juego_info_cont_rating_number {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+}
+.data_juego_info_cont_rating_number h2 {
+  font-size: 100px;
+  height: fit-content;
+}
+.data_juego_info_cont_rating_perc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 80%;
+  width: 100%;
+}
+.data_juego_info_cont_rating_perc h4 {
+  font-weight: normal;
+  width: fit-content;
+}
+.data_juego_info_cont_rating_perc_bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.data_juego_info_cont_rating_perc_bar h5 {
+  font-size: 16px;
+  font-weight: normal;
+}
+.data_juego_info_cont_rating_perc_bar_fill {
+  height: 10px;
+  border-radius: 0 15px 15px 0;
+  background-color: rgb(255, 255, 255);
 }
 .data_juego_info_cta {
   display: flex;
@@ -1771,7 +1832,16 @@ a {
   background: none;
 }
 .data_juego_info_cta_btns_favCart button:hover {
-  background-color: rgba(124, 124, 124, 0.4);
+  background-color: rgba(124, 124, 124, 0.2);
+}
+.data_juego_info_cta_btns_favCart button:hover .bi-heart {
+  color: rgb(255, 0, 183);
+}
+.data_juego_info_cta_btns_favCart button:hover .bi-cart {
+  color: rgb(0, 255, 120);
+}
+.data_juego_info_cta_btns_favCart .bi-heart, .data_juego_info_cta_btns_favCart .bi-cart {
+  transition: color 0.3s ease-in-out;
 }
 
 /*# sourceMappingURL=App.css.map */

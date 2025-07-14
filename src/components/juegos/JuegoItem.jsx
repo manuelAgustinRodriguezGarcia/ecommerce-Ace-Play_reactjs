@@ -8,16 +8,16 @@ export const JuegoItem = ({ data }) => {
     const entero = Math.floor(rating);
     const decimal = rating - entero;
     const estrellasLlenas = Array(entero).fill(<i className="bi bi-star-fill"></i>);
-    const mediaEstrella = decimal >= 0.4 ? <i className="bi bi-star-half"></i> : null;
+    const mediaEstrella = (decimal > .8) ? <i className="bi bi-star-fill"></i> : <i className="bi bi-star-half"></i>;
     return (
       <>
+        <p className='juegos_list_item_rating_value'>{rating.toFixed(2)}</p>
         {estrellasLlenas.map((star, index) => (
           <span key={index}>{star}</span>
         ))}
         {mediaEstrella}
-        <p className='juegos_list_item_rating_value'>{rating.toFixed(1)}</p>
       </>
-    );
+    )
   }
 
   const released = parseInt(data.released.substring(0, 4));

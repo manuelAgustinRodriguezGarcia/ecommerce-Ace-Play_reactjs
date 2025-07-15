@@ -12,11 +12,13 @@ export const Juegos = () => {
   const currentPage = parseInt(page) || 1;
 
   const nextPage = () => {
+    window.scrollTo(0, 0)
     navigate(`/juegos/page/${currentPage + 1}`);
   };
 
   const backPage = () => {
     if (currentPage > 1) {
+      window.scrollTo(0, 0)
       navigate(`/juegos/page/${currentPage - 1}`);
     }
   };

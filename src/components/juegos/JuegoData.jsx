@@ -21,6 +21,7 @@ export const JuegoData = () => {
       const response = await fetch(`https://api.rawg.io/api/games/${id}?key=957f6a2b15fa49f68a9bb400ac60e7f0`);
       const data = await response.json();
       setJuego(data);
+      console.log(data)
 
       const responseImg = await fetch(`https://api.rawg.io/api/games/${id}/screenshots?key=957f6a2b15fa49f68a9bb400ac60e7f0`)
       const dataImages = await responseImg.json();
@@ -55,7 +56,7 @@ export const JuegoData = () => {
     try {
       const genre = juego.genres[0].slug;
       const pageNum = Math.floor(Math.random() * 4) + 1;
-      const response = await fetch(`https://api.rawg.io/api/games?key=957f6a2b15fa49f68a9bb400ac60e7f0&genres=${genre}&page=${pageNum}&page_size=10`)
+      const response = await fetch(`https://api.rawg.io/api/games?key=957f6a2b15fa49f68a9bb400ac60e7f0&genres=${genre}&page=${pageNum}&page_size=10&exclude_additions=true`)
       const related = await response.json();
       setJuegosRelacionados(related.results)
       console.log(related.results)

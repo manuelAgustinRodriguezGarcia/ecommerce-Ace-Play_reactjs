@@ -27,7 +27,7 @@ export const JuegoItem = ({ data, page }) => {
 
 
   return (
-    <div className='juegos_list_item' to={`/juegos/${data.id}`}>
+    <div className='juegos_list_item'>
       <img src={data.background_image} alt={"Imagen portada de " + data.name} />
       <h4 className='juegos_list_item_title' title={data.name}>{data.name}</h4>
       <div className='juegos_list_item_info'>

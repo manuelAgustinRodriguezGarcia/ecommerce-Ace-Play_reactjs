@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { NavLink, useParams, useSearchParams } from 'react-router-dom'
 import { Juegos } from '../../pages/Juegos';
+import { JuegoItem } from './JuegoItem';
 
 export const JuegoData = () => {
   const { page, id } = useParams();
 
-
   const [juego, setJuego] = useState(null);
+  const [juegosRelacionados, setJuegosRelacionados] = useState([]);
   const [juegoImages, setJuegoImages] = useState('');
   const [showLoading, setShowLoading] = useState(true);
 
@@ -34,20 +35,45 @@ export const JuegoData = () => {
     catch (error) {
       console.error("Error fetching games:", error);
     }
-    finally {
-      setShowLoading(false);
+  }
+
+  
+  useEffect(() => {
+    window.scrollTo(0,0);
+    setShowLoading(true);
+    getJuego();
+    setBanner(0);
+    const timer = setTimeout(() => {
+    setShowLoading(false);
+  }, 2000);
+  return () => clearTimeout(timer);
+
+  }, [id])
+
+
+  const getJuegosRelacionados = async () => {
+    try {
+      const genre = juego.genres[0].slug;
+      const pageNum = Math.floor(Math.random() * 4) + 1;
+      const response = await fetch(`https://api.rawg.io/api/games?key=957f6a2b15fa49f68a9bb400ac60e7f0&genres=${genre}&page=${pageNum}&page_size=10`)
+      const related = await response.json();
+      setJuegosRelacionados(related.results)
+      console.log(related.results)
+
+    }
+    catch {
+      console.error('Error fetching related games!')
     }
   }
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-    setShowLoading(false);
-    getJuego();
-  }, []);
+    if (juego && juego.genres && juego.genres.length > 0) {
+      getJuegosRelacionados();
+    }
+  }, [juego]);
 
   const ratingCheck = () => {
     const rating = parseFloat(juego.rating);
-    console.log(rating)
     const entero = Math.floor(rating);
     const decimal = rating - entero;
     const estrellasLlenas = Array(entero).fill(<i className="bi bi-star-fill"></i>);
@@ -67,9 +93,9 @@ export const JuegoData = () => {
 
   return (
     <section className='data'>
-      {juego && juegoImages ?
+      {juego && juegoImages && showLoading === false ?
         <>
-        <NavLink to={`/juegos/page/${page}`} className='data_link'><i class="bi bi-arrow-left"></i></NavLink>
+          <NavLink to={`/juegos/page/${page}`} className='data_link'><i className="bi bi-arrow-left"></i></NavLink>
           <div className='data_background'>
             <img src={juego.background_image} alt="" />
           </div>
@@ -113,8 +139,8 @@ export const JuegoData = () => {
                   {juego.description_raw.length > 350 ? (
                     <>
                       <p className={expanded ? 'largo' : 'corto'}>{juego.description_raw}</p>
-                      <button className={expanded === true ? 'toggle_hidden' : 'toggle_shown'} 
-                      onClick={() => setExpanded(true)}>Ver más<i className="bi bi-caret-down"></i></button>
+                      <button className={expanded === true ? 'toggle_hidden' : 'toggle_shown'}
+                        onClick={() => setExpanded(true)}>Ver más<i className="bi bi-caret-down"></i></button>
                     </>
                   ) : <p className={expanded ? 'largo' : 'corto'}>{juego.description_raw}</p>
                   }
@@ -153,13 +179,56 @@ export const JuegoData = () => {
                     </div>
                   </div>
                 </div>
-                <h3>Requisitos de Sistema</h3>
+                <h3>Requisitos de Sistema </h3>
+                <div className='data_juego_info_cont_req'>
+                  <ul className='data_juego_info_cont_req_box'>
+                    <h4>MINIMOS</h4>
+                    <li className='data_juego_info_cont_req_box_it'>
+                      <h5>S.O:</h5><p>Windows</p>
+                    </li>
+                    <li className='data_juego_info_cont_req_box_it'>
+                      <h5>Procesador:</h5><p>Intel Core i3-8100 or AMD Ryzen 3 3100:</p>
+                    </li>
+                    <li className='data_juego_info_cont_req_box_it'>
+                      <h5>Memoria:</h5><p>16 GB de RAM</p>
+                    </li>
+                    <li className='data_juego_info_cont_req_box_it'>
+                      <h5>Gráficos:</h5><p>Intel Core i3-8100 o AMD Ryzen 3 3100</p>
+                    </li>
+                    <li className='data_juego_info_cont_req_box_it'>
+                      <h5>Almacenamiento:</h5><p>140 GB de espacio disponible</p>
+                    </li>
+                  </ul>
+                  <ul className='data_juego_info_cont_req_box'>
+                    <h4>RECOMENDADOS</h4>
+                    <li className='data_juego_info_cont_req_box_it'>
+                      <h5>S.O:</h5><p>Windows</p>
+                    </li>
+                    <li className='data_juego_info_cont_req_box_it'>
+                      <h5>Procesador:</h5><p>Intel Core i5-8400 or AMD Ryzen 5 3600</p>
+                    </li>
+                    <li className='data_juego_info_cont_req_box_it'>
+                      <h5>Memoria:</h5><p>16 GB de RAM</p>
+                    </li>
+                    <li className='data_juego_info_cont_req_box_it'>
+                      <h5>Gráficos:</h5><p>NVIDIA GeForce RTX 3060 or AMD Radeon RX 5700</p>
+                    </li>
+                    <li className='data_juego_info_cont_req_box_it'>
+                      <h5>Almacenamiento:</h5><p>140 GB de espacio disponible</p>
+                    </li>
+                  </ul>
+                </div>
+                <div className='data_juego_info_cont_copy'>
+                  <p>©{juego.released.substring(0, 4)} {juego.publishers[0].name}</p>
+                  <p>©{juego.released.substring(0, 4)} {juego.developers[0].name}. Todos los derechos reservados</p>
+                  <p></p>
+                </div>
               </div>
               <div className='data_juego_info_cta'>
                 <img src={juego.background_image} alt="" />
                 <h2 className='data_juego_info_cta_title'>{juego.name}</h2>
                 <ul className='data_juego_info_cta_list'>
-                  <li>Género <h4>{juego.genres[0].name}</h4></li>
+                  <li>Género <h4 title={juego.genres.map((i) => (" " + i.name))}>{juego.genres[0].name} </h4></li>
                   <li>Desarrollador <h4>{juego.developers[0].name}</h4></li>
                   <li>Editor <h4>{juego.publishers[0].name}</h4></li>
                   <li>Lanzamiento <h4>{juego.released}</h4></li>
@@ -180,6 +249,18 @@ export const JuegoData = () => {
                   </div>
                   <button className='data_juego_info_cta_btns_buy'><span>Comprar ahora</span></button>
                 </div>
+              </div>
+            </div>
+          </section>
+          <section className='data_related'>
+            <h2>Juegos recomendados por <span className='degrade' data-text='acePlay'>acePlay</span></h2>
+            <div className='data_related_box'>
+              <div className='data_related_box_games'>
+                {juegosRelacionados && juegosRelacionados.length > 0 && (
+                  juegosRelacionados.filter((relatedGame) => relatedGame.id !== parseInt(id)).map((relatedGame) => (
+                    <JuegoItem key={relatedGame.id} data={relatedGame} page={page || 1}/>
+                  ))
+                )}
               </div>
             </div>
           </section>

@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 
 export const Home = () => {
   return (
-    <>
+    <section className='home'>
       <section className="landing">
         <div className="landing_welcome">
           <h1 className='degrade' data-text="acePlay">acePlay</h1>
@@ -38,6 +38,6 @@ export const Home = () => {
           </div>
         </div>
       </section>
-    </>
+    </section>
   );
 }

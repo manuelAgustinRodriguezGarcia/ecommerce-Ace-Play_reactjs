@@ -15,7 +15,7 @@ export const Footer = () => {
           <h3>Navegación</h3>
           <ul>
             <li><NavLink to={"/"}>Inicio</NavLink></li>
-            <li><NavLink to={"/juegos"}>Juegos</NavLink></li>
+            <li><NavLink to={"/juegos/page/1"}>Juegos</NavLink></li>
             <li><NavLink to={"/ofertas"}>Ofertas</NavLink></li>
             <li><NavLink to={"/categorias"}>Categorías</NavLink></li>
           </ul>
@@ -31,12 +31,10 @@ export const Footer = () => {
           </ul>
         </div>
 
-        <div className="footer-section newsletter">
-          <h3>Suscribite</h3>
-          <form onSubmit={(e) => e.preventDefault()}>
-            <input type="email" placeholder="Tu correo electrónico" required />
-            <button type="submit">Enviar</button>
-          </form>
+        <div className="footer-section api">
+          <h3>R A W G</h3>
+          <p>Toda la información, imágenes y datos presentados en este sitio fueron obtenidos a través de la API gratis de <a href="https://rawg.io/" target="_blank" rel="noopener noreferrer nofollow">RAWG</a></p>
+          
         </div>
       </div>
 

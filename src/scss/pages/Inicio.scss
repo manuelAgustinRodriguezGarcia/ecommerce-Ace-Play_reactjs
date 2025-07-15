@@ -1,3 +1,11 @@
+.home {
+  @include d-flex-row;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
 .landing {
   margin: 70px 0px;
   width: 1200px;

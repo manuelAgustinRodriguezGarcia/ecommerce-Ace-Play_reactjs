@@ -11,6 +11,16 @@ export const Juegos = () => {
 
   const currentPage = parseInt(page) || 1;
 
+  const nextPage = () => {
+    navigate(`/juegos/page/${currentPage + 1}`);
+  };
+
+  const backPage = () => {
+    if (currentPage > 1) {
+      navigate(`/juegos/page/${currentPage - 1}`);
+    }
+  };
+
   const getJuegosApi = async (page) => {
     try {
       const response = await fetch(`https://api.rawg.io/api/games?key=957f6a2b15fa49f68a9bb400ac60e7f0&page=${page}&page_size=20&exclude_additions=true`);
@@ -25,23 +35,13 @@ export const Juegos = () => {
       window.scrollTo(0, 0)
     }
   }
+
+
   useEffect(() => {
-    window.scrollTo(0, 0)
-    setShowLoading(true)
+    const currentPage = parseInt(page) || 1;
+    setShowLoading(true);
     getJuegosApi(currentPage);
-  }, [currentPage])
-
-
-  const nextPage = () => {
-    navigate(`/juegos/pag/${currentPage + 1}`);
-  }
-
-  const backPage = () => {
-    if (currentPage > 1) {
-      navigate(`/juegos/pag/${currentPage - 1}`);
-    }
-  }
-
+  }, [page]);
 
   return (
     <section className='juegos'>
@@ -55,10 +55,8 @@ export const Juegos = () => {
           (
             <div className='juegos_list'>
               {listaJuegos.map((juego) =>
-              (<JuegoItem key={juego.id} data={juego} />
+              (<JuegoItem key={juego.id} data={juego} page={currentPage} />
               ))}
-              {/* <div className='bubble'></div>
-              <div className='bubble b-1'></div> */}
               <div className='juegos_list_btns'>
                 <button onClick={backPage} className={currentPage === 1 ? 'hidden' : ''}>{currentPage > 1 ? currentPage - 1 : ''}</button>
                 <h4>{currentPage}</h4>

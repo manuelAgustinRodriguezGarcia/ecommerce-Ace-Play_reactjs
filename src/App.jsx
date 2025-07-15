@@ -45,13 +45,12 @@ export const App = () => {
                 <Route path='/categorias' element={<Categorias />}></Route>
                 <Route path='/favoritos' element={<Favoritos />}></Route>
                 <Route path='/carrito' element={<Carrito />}></Route>
-                <Route path='/juegos' element={<Navigate to='/juegos/pag/1' />} />
-                <Route path='/juegos/pag/:page' element={<Juegos />} />
+                <Route path='/juegos/page/:page' element={<Juegos />} />
                 <Route path='/ofertas' element={<Ofertas />}></Route>
                 <Route path='/lanzamientos' element={<Lanzamientos />}></Route>
                 <Route path='/categorias/:category' element={<ItemListContainer />}></Route>
                 <Route path='/game/:id' element={<ItemDetailContainer />}></Route>
-                <Route path='/juegos/juego/:id' element={<JuegoData />}></Route>
+                <Route path='/juegos/page/:page/juego/:id' element={<JuegoData />}></Route>
                 <Route path='/checkout' element={<Checkout />}></Route>
               </Routes>
               <Footer />

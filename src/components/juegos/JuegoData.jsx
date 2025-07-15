@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { NavLink, useParams, useSearchParams } from 'react-router-dom'
 import { Juegos } from '../../pages/Juegos';
 
 export const JuegoData = () => {
-  const { id } = useParams();
+  const { page, id } = useParams();
+
 
   const [juego, setJuego] = useState(null);
   const [juegoImages, setJuegoImages] = useState('');
-  const [juegoVideos, setJuegoVideos] = useState(null);
   const [showLoading, setShowLoading] = useState(true);
 
   const [banner, setBanner] = useState(0);
@@ -38,12 +38,6 @@ export const JuegoData = () => {
       setShowLoading(false);
     }
   }
-  console.log('DATOS COMPLETOS: ');
-  console.log(juego);
-
-  console.log('IMAGENES ARRAY: ');
-  console.log(juegoImages);
-
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -75,6 +69,7 @@ export const JuegoData = () => {
     <section className='data'>
       {juego && juegoImages ?
         <>
+        <NavLink to={`/juegos/page/${page}`} className='data_link'><i class="bi bi-arrow-left"></i></NavLink>
           <div className='data_background'>
             <img src={juego.background_image} alt="" />
           </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
 
-export const JuegoItem = ({ data }) => {
+export const JuegoItem = ({ data, page }) => {
 
   const ratingCheck = () => {
     const rating = parseFloat(data.rating);
@@ -35,7 +35,7 @@ export const JuegoItem = ({ data }) => {
         <div className='juegos_list_item_info_rating'>{ratingCheck()}</div>
       </div>
       <h5>${price}.99</h5>
-      <NavLink to={`/juegos/juego/${data.id}`}>Comprar</NavLink>
+      <NavLink to={`/juegos/page/${page}/juego/${data.id}`}>Comprar</NavLink>
     </div>
   )
 }

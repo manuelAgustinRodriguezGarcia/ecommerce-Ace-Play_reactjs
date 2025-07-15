@@ -1442,6 +1442,25 @@ a {
   justify-content: flex-start;
   position: relative;
 }
+.data_link {
+  position: absolute;
+  left: 50px;
+  font-size: 20px;
+  margin-top: 50px;
+  width: 40px;
+  height: 40px;
+  align-content: center;
+  text-align: center;
+  border-radius: 20px;
+  border: solid 2px rgba(124, 124, 124, 0.5);
+  transition: all 0.3s ease-in-out;
+  background-color: rgba(0, 0, 0, 0.2);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+}
+.data_link:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
 .data_background {
   z-index: -2;
   position: absolute;

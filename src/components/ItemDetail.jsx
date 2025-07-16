@@ -37,6 +37,7 @@ const ItemDetail = ({ game }) => {
     const juegosCarrito = datosCarrito.productosCarrito
     return juegosCarrito.some(yaEsta => yaEsta.id === game.id)
   }
+
   function yaEnFavoritos(game) {
     return listaFavoritos.some(yaEsta => yaEsta.id === game.id)
   }

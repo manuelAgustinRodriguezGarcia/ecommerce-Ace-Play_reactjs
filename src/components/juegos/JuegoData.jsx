@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { NavLink, useParams, useSearchParams } from 'react-router-dom'
 import { Juegos } from '../../pages/Juegos';
 import { JuegoItem } from './JuegoItem';
+import { FavoritesContext } from '../../contexts/FavoritesContext';
 
 export const JuegoData = () => {
   const { page, id } = useParams();
@@ -15,13 +16,14 @@ export const JuegoData = () => {
   const [expanded, setExpanded] = useState(false)
   const [price, setPrice] = useState(0)
 
+  const favoritos = useContext(FavoritesContext);
+  const favList = favoritos.fav;
 
   const getJuego = async () => {
     try {
       const response = await fetch(`https://api.rawg.io/api/games/${id}?key=957f6a2b15fa49f68a9bb400ac60e7f0`);
       const data = await response.json();
       setJuego(data);
-      console.log(data)
 
       const responseImg = await fetch(`https://api.rawg.io/api/games/${id}/screenshots?key=957f6a2b15fa49f68a9bb400ac60e7f0`)
       const dataImages = await responseImg.json();
@@ -38,18 +40,6 @@ export const JuegoData = () => {
     }
   }
 
-  
-  useEffect(() => {
-    window.scrollTo(0,0);
-    setShowLoading(true);
-    getJuego();
-    setBanner(0);
-    const timer = setTimeout(() => {
-    setShowLoading(false);
-  }, 2000);
-  return () => clearTimeout(timer);
-
-  }, [id])
 
 
   const getJuegosRelacionados = async () => {
@@ -58,14 +48,24 @@ export const JuegoData = () => {
       const pageNum = Math.floor(Math.random() * 4) + 1;
       const response = await fetch(`https://api.rawg.io/api/games?key=957f6a2b15fa49f68a9bb400ac60e7f0&genres=${genre}&page=${pageNum}&page_size=10&exclude_additions=true`)
       const related = await response.json();
-      setJuegosRelacionados(related.results)
-      console.log(related.results)
-
+      setJuegosRelacionados(related.results);
     }
-    catch {
-      console.error('Error fetching related games!')
+    catch (error) {
+      console.error('Error fetching related games!', error);
     }
   }
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setShowLoading(true);
+    getJuego();
+    setBanner(0);
+    const timer = setTimeout(() => {
+      setShowLoading(false);
+    }, 2000);
+    return () => clearTimeout(timer);
+
+  }, [id])
 
   useEffect(() => {
     if (juego && juego.genres && juego.genres.length > 0) {
@@ -91,6 +91,42 @@ export const JuegoData = () => {
       </>
     );
   }
+
+
+  const alreadyFav = (id)=> {
+    return favList.some((a) => a.id === id);
+  }
+
+  const agregarFav = () => {
+    if(alreadyFav(id) ===false ) {
+      favoritos.counterFav < 9 && favoritos.setCounterFav(favoritos.counterFav + 1)
+      favoritos.setFav([...favList, datosJuegoLocales])
+    } else {
+      console.log('Ya en favoritos')
+    }
+
+  }
+
+  useEffect(() => {
+    console.log(favList);
+  }, [favList]);
+
+  let datosJuegoLocales = null;
+
+  if(juego) {
+    datosJuegoLocales = {
+      id: id,
+      name: juego.name,
+      img: juego.background_image,
+      price: price,
+      date: juego.released,
+      tags: juego.tags?.slice(0, 5),
+      genre: juego.genres?.[0]?.name,
+      platforms: juego.parent_platforms,
+      rating: juego.rating
+    }
+  }
+
 
   return (
     <section className='data'>
@@ -245,8 +281,8 @@ export const JuegoData = () => {
                 <h2 className='data_juego_info_cta_price'>${price}.99</h2>
                 <div className='data_juego_info_cta_btns'>
                   <div className='data_juego_info_cta_btns_favCart'>
-                    <button>Agregar a Favoritos <i className="bi bi-heart"></i></button>
-                    <button>Agregar a Carrito <i className="bi bi-cart"></i></button>
+                    <button onClick={agregarFav}>Agregar a Favoritos <i className="bi bi-heart"></i></button>
+                    <button >Agregar a Carrito <i className="bi bi-cart"></i></button>
                   </div>
                   <button className='data_juego_info_cta_btns_buy'><span>Comprar ahora</span></button>
                 </div>
@@ -259,7 +295,7 @@ export const JuegoData = () => {
               <div className='data_related_box_games'>
                 {juegosRelacionados && juegosRelacionados.length > 0 && (
                   juegosRelacionados.filter((relatedGame) => relatedGame.id !== parseInt(id)).map((relatedGame) => (
-                    <JuegoItem key={relatedGame.id} data={relatedGame} page={page || 1}/>
+                    <JuegoItem key={relatedGame.id} data={relatedGame} page={page || 1} />
                   ))
                 )}
               </div>

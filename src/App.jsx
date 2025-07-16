@@ -10,6 +10,7 @@ import AllGames from './contexts/AllGames';
 import FavoritesData from './contexts/FavoritesData';
 import { Footer } from './components/Footer';
 import { JuegoData } from './components/juegos/JuegoData';
+import { FavoritesProvider } from './contexts/FavoritesProvider';
 
 export const App = () => {
   const [contCart, setContCart] = useState(0);
@@ -36,7 +37,7 @@ export const App = () => {
   return (
     <div className="App">
       <AllGames.Provider value={{ productos }}>
-        <FavoritesData.Provider value={{ contFav, setContFav, favoritos, setFavoritos }}>
+        <FavoritesProvider>
           <CartData.Provider value={{ contCart, setContCart, productosCarrito, setProductosCarrito }}>
             <BrowserRouter>
               <Navbar />
@@ -45,18 +46,18 @@ export const App = () => {
                 <Route path='/categorias' element={<Categorias />}></Route>
                 <Route path='/favoritos' element={<Favoritos />}></Route>
                 <Route path='/carrito' element={<Carrito />}></Route>
-                <Route path='/juegos/page/:page' element={<Juegos />} />
+                <Route path='/juegos/page/:page' element={<Juegos />}/>
                 <Route path='/ofertas' element={<Ofertas />}></Route>
                 <Route path='/lanzamientos' element={<Lanzamientos />}></Route>
+                <Route path='/juegos/page/:page/juego/:id' element={<JuegoData />}></Route>
                 <Route path='/categorias/:category' element={<ItemListContainer />}></Route>
                 <Route path='/game/:id' element={<ItemDetailContainer />}></Route>
-                <Route path='/juegos/page/:page/juego/:id' element={<JuegoData />}></Route>
                 <Route path='/checkout' element={<Checkout />}></Route>
               </Routes>
               <Footer />
             </BrowserRouter>
           </CartData.Provider>
-        </FavoritesData.Provider>
+        </FavoritesProvider>
       </AllGames.Provider>
     </div>
   )

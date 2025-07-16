@@ -2,43 +2,38 @@ import { useContext } from "react";
 import FavoritesData from "../contexts/FavoritesData";
 import { NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
+import { FavoritesContext } from "../contexts/FavoritesContext";
 
+
+//       id: id,
+//       name: juego.name,✅
+//       img: juego.background_image,✅
+//       price: price,
+//       date: juego.released,
+//       tags: juego.tags?.slice(0, 5),
+//       genre: juego.genres?.[0]?.name,
+//       platforms: juego.parent_platforms,
+//       rating: juego.rating
 
 const ItemFav = ( { game } ) => {
   console.log('Game recibido en ItemFav:', game);
-  const datosFavoritos = useContext(FavoritesData)
-  const listaFavoritos = datosFavoritos.favoritos;
+  const datosFavoritos = useContext(FavoritesContext)
+  const listaFavoritos = datosFavoritos.fav;
   function eliminarFavorito() {
     const nuevoFavoritos = listaFavoritos.filter((x) => x.id !== game.id);
-    datosFavoritos.setFavoritos(nuevoFavoritos)
-    datosFavoritos.contFav > 0 && datosFavoritos.setContFav(datosFavoritos.contFav - 1);
-    const Toast = Swal.mixin({ 
-      toast: true,
-      position: 'bottom-end',
-      showConfirmButton: false,
-      timer: 2500,
-      timerProgressBar: true,
-      background: 'rgb(54, 54, 54)',
-      color:'#fff',
-      width: '20em',
-      didOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer)
-        toast.addEventListener('mouseleave', Swal.resumeTimer)
-      }
-    })
-    Toast.fire({
-      icon: 'error',
-      iconColor:'rgb(255, 0, 0, 0.8)',
-      title: 'Eliminado de tus Favoritos!'
-    })
+    datosFavoritos.setFav(nuevoFavoritos)
+    datosFavoritos.counterFav > 0 && datosFavoritos.setCounterFav(datosFavoritos.counterFav - 1);
   }
   return (
-    <div to={`/game/${game.id}`} className="favoritos-list-item">
+    <div className="favoritos-list-item">
       <NavLink to={`/game/${game.id}`}>
-        <img src={game.img}/>
         <h3>{game.name}</h3>
+        <img src={game.img}/>
       </NavLink>
-      <button onClick={() => eliminarFavorito()}>Eliminar</button>
+        <div>
+          
+          <button onClick={() => eliminarFavorito()}>Eliminar</button>
+        </div>
     </div>
   )
 }

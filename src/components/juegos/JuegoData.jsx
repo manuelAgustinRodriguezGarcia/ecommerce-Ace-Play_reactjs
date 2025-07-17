@@ -118,9 +118,9 @@ export const JuegoData = () => {
       id: id,
       name: juego.name,
       img: juego.background_image,
-      price: price,
+      price: price + 0.99,
       date: juego.released,
-      tags: juego.tags?.slice(0, 5),
+      tags: juego.tags,
       genre: juego.genres?.[0]?.name,
       platforms: juego.parent_platforms,
       rating: juego.rating
@@ -272,7 +272,7 @@ export const JuegoData = () => {
                   <li>Plataformas
                     <div className='data_juego_info_cta_list_platform' title={juego.parent_platforms.map((i) => (" " + i.platform.name))}>
                       {juego.parent_platforms.slice(0, 3).map((item, index) => (
-                        <h4 key={index}>{item.platform.name}{index < juego.parent_platforms.length - 1 && ' - '}</h4>
+                        <h4 key={index}>{item.platform.name}{index < juego.parent_platforms.slice(0, 3).length - 1 && ' - '}</h4>
                       ))}
                       {juego.parent_platforms.length > 3 && '...'}
                     </div>

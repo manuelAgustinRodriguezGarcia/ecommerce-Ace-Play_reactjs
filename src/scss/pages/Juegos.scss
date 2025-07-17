@@ -21,7 +21,7 @@
       @include d-flex-col;
       align-items: center;
       position: relative;
-      width: calc(25% - 10px);
+      width: calc(20% - 10px);
       border:  solid 2px rgba(124, 124, 124, 0.5);
       height: 250px;
       transition: all .3s ease-in-out;
@@ -101,13 +101,15 @@
         height: 30px;
         align-content: center;
         text-align: center;
+        cursor: pointer;
       }
-
+      
       a {
         position: absolute;
         transition: all .3s ease-in-out;
         bottom: -32px;
         height: 30px;
+        cursor: pointer;
         width: 100%;
         text-align: center;
         border-top: solid 2px rgba(124, 124, 124, 0.5);

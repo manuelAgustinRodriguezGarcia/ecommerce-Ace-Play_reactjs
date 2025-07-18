@@ -15,7 +15,8 @@ export const EmptyPage = () => {
       </h2>
       <div className='onwork_links'>
         <NavLink to={'/'}>INICIO</NavLink>
-        <NavLink to={'/juegos'}>JUEGOS</NavLink>
+        <NavLink to={'/juegos/page/1'}>JUEGOS</NavLink>
+        <NavLink to={'/favoritos'}>FAVORITOS</NavLink>
       </div>
     </section>
   )

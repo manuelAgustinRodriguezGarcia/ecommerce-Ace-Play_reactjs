@@ -1,23 +1,18 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './css/App.css';
-import Navbar from './components/NavBar/Navbar'
+import { Navbar } from './components/NavBar/Navbar'
 import { Home, Categorias, Carrito, Favoritos, Checkout, Juegos, Ofertas, Lanzamientos } from './pages';
-import ItemListContainer from './components/ItemListContainer';
-import ItemDetailContainer from './components/ItemDetailContainer';
-import CartData from './contexts/CartData';
+import ItemListContainer from './components/ItemListContainer'; /*esto se va */
+import ItemDetailContainer from './components/ItemDetailContainer'; /*esto se va */
 import { useState, useEffect } from 'react';
-import AllGames from './contexts/AllGames';
-import FavoritesData from './contexts/FavoritesData';
+import AllGames from './contexts/AllGames'; /*esto se va */
 import { Footer } from './components/Footer';
 import { JuegoData } from './components/juegos/JuegoData';
 import { FavoritesProvider } from './contexts/FavoritesProvider';
+import { CartProvider } from './contexts/CartProvider';
 
 export const App = () => {
-  const [contCart, setContCart] = useState(0);
-  const [contFav, setContFav] = useState(0);
-  const [productosCarrito, setProductosCarrito] = useState([]);
   const [productos, setProductos] = useState([]);
-  const [favoritos, setFavoritos] = useState([]);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -36,9 +31,9 @@ export const App = () => {
 
   return (
     <div className="App">
-      <AllGames.Provider value={{ productos }}>
-        <FavoritesProvider>
-          <CartData.Provider value={{ contCart, setContCart, productosCarrito, setProductosCarrito }}>
+      <AllGames.Provider value={{ productos }}>{/*esto se va */}
+        <CartProvider>
+          <FavoritesProvider>
             <BrowserRouter>
               <Navbar />
               <Routes>
@@ -46,7 +41,7 @@ export const App = () => {
                 <Route path='/categorias' element={<Categorias />}></Route>
                 <Route path='/favoritos' element={<Favoritos />}></Route>
                 <Route path='/carrito' element={<Carrito />}></Route>
-                <Route path='/juegos/page/:page' element={<Juegos />}/>
+                <Route path='/juegos/page/:page' element={<Juegos />} />
                 <Route path='/ofertas' element={<Ofertas />}></Route>
                 <Route path='/lanzamientos' element={<Lanzamientos />}></Route>
                 <Route path='/juegos/page/:page/juego/:id' element={<JuegoData />}></Route>
@@ -56,8 +51,8 @@ export const App = () => {
               </Routes>
               <Footer />
             </BrowserRouter>
-          </CartData.Provider>
-        </FavoritesProvider>
+          </FavoritesProvider>
+        </CartProvider>
       </AllGames.Provider>
     </div>
   )

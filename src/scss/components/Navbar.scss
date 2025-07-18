@@ -14,7 +14,6 @@
   animation-timeline: scroll();
   animation-range-start: cover 50px;
   animation-range-end: cover 140px;
-  
   color: #fff;
   position: fixed;
   
@@ -70,8 +69,8 @@
   
   p {
     color: #000;
-    height: 15px;
-    width: 15px;
+    padding: 1px 5px;
+    width: fit-content;
     text-align: center;
     align-content: center;
     position: absolute;

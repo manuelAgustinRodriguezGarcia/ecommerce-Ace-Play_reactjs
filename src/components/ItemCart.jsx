@@ -1,46 +1,23 @@
 import { useContext } from "react";
-import CartData from "../contexts/CartData";
-import Swal from "sweetalert2";
-
-const ItemCart = ( { game } ) => {
-  const Carrito = useContext(CartData)
-  const productosEnCarrito = Carrito.productosCarrito;
+import { CartContext } from "../contexts/CartContext";
+export const ItemCart = ( { game } ) => {
+  const carrito = useContext(CartContext)
+  const listaCarrito = carrito.cart;
   function eliminarDeCarrito() {
-    const carritoNuevo = productosEnCarrito.filter((x) => x.id !== game.id);
-    Carrito.setContCart(Carrito.contCart - 1)
-    Carrito.setProductosCarrito(carritoNuevo)
-    const Toast = Swal.mixin({ 
-      toast: true,
-      position: 'bottom-end',
-      showConfirmButton: false,
-      timer: 2500,
-      timerProgressBar: true,
-      background: 'rgb(54, 54, 54)',
-      color:'#fff',
-      width: '20em',
-      didOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer)
-        toast.addEventListener('mouseleave', Swal.resumeTimer)
-      }
-    })
-    Toast.fire({
-      icon: 'error',
-      iconColor:'rgb(255, 0, 0, 0.8)',
-      title: 'Eliminado de tu carrito!'
-    })
+    const carritoNuevo = listaCarrito.filter((x) => x.id !== game.id);
+    carrito.setCounterCart(carrito.counterCart - 1)
+    carrito.setCart(carritoNuevo)
   }
   return (
-    <div className="carrito-list-item">
-      <img src={game.img} alt={game.nombre}/>
-      <div className="carrito-list-item-title">
+    <div className="carrito_info_list_item">
+      <img src={game.img}/>
+      <div className="carrito_info_list_item_title">
         <h2>{game.name}</h2>
       </div>
-      <div className="carrito-list-item-data">
-        <p>{game.cantidad} unid.</p>
-        <h3>${game.price * game.cantidad} </h3>
+      <div className="carrito_info_list_item_data">
+        <h3>${game.price} </h3>
       </div>
       <button onClick={() => eliminarDeCarrito()}>Eliminar</button>
     </div>
   )
 }
-export default ItemCart;

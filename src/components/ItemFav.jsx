@@ -1,28 +1,41 @@
 import { useContext } from "react";
-import FavoritesData from "../contexts/FavoritesData";
 import { NavLink } from "react-router-dom";
-import Swal from "sweetalert2";
 import { FavoritesContext } from "../contexts/FavoritesContext";
-
-
-//       id: id,
-//       name: juego.name,✅
-//       img: juego.background_image,✅
-//       price: price,
-//       date: juego.released,
-//       tags: juego.tags?.slice(0, 5),
-//       genre: juego.genres?.[0]?.name,
-//       platforms: juego.parent_platforms,
-//       rating: juego.rating
+import { CartContext } from "../contexts/CartContext";
 
 export const ItemFav = ({ game }) => {
   console.log('Game recibido en ItemFav:', game);
   const datosFavoritos = useContext(FavoritesContext)
   const listaFavoritos = datosFavoritos.fav;
+
+  const carrito = useContext(CartContext);
+  const cartList = carrito.cart;
+
   function eliminarFavorito() {
     const nuevoFavoritos = listaFavoritos.filter((x) => x.id !== game.id);
     datosFavoritos.setFav(nuevoFavoritos)
     datosFavoritos.counterFav > 0 && datosFavoritos.setCounterFav(datosFavoritos.counterFav - 1);
+  }
+
+  const alreadyCart = (id) => {
+    return cartList.some((a) => a.id === id);
+  }
+
+  const agregarCart = () => {
+    if (alreadyCart(game.id) === false) {
+      carrito.setCounterCart(carrito.counterCart + 1);
+      carrito.setCart([...cartList, datosCarrito]);
+    } else {
+      console.log('Ya en carrito');
+    }
+  }
+
+  let datosCarrito = {
+    id: game.id,
+    name: game.name,
+    img: game.img,
+    price: game.price,
+    platforms: game.platforms
   }
   return (
     <div className="favoritos_list_item">
@@ -48,7 +61,7 @@ export const ItemFav = ({ game }) => {
         </div>
         <div className="favoritos_list_item_info_cta">
           <h3>${game.price}</h3>
-          <button><span>Agregar a carrito</span></button>
+          {alreadyCart(game.id) ? <NavLink to={'/carrito'}>Ver carrito</NavLink> : <button onClick={agregarCart}><span>Agregar a carrito</span></button>}
         </div>
       </div>
       <button className="favoritos_list_item_delete" onClick={() => eliminarFavorito()}><i className="bi bi-trash3"></i></button>

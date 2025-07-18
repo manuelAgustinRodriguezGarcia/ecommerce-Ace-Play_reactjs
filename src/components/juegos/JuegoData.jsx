@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { NavLink, useParams, useSearchParams } from 'react-router-dom'
-import { Juegos } from '../../pages/Juegos';
+import { NavLink, useNavigate, useParams } from 'react-router-dom'
 import { JuegoItem } from './JuegoItem';
 import { FavoritesContext } from '../../contexts/FavoritesContext';
+import { CartContext } from '../../contexts/CartContext';
 
 export const JuegoData = () => {
   const { page, id } = useParams();
+  const navigate = useNavigate();
 
   const [juego, setJuego] = useState(null);
   const [juegosRelacionados, setJuegosRelacionados] = useState([]);
@@ -18,6 +19,9 @@ export const JuegoData = () => {
 
   const favoritos = useContext(FavoritesContext);
   const favList = favoritos.fav;
+
+  const carrito = useContext(CartContext);
+  const cartList = carrito.cart;
 
   const getJuego = async () => {
     try {
@@ -60,6 +64,7 @@ export const JuegoData = () => {
     setShowLoading(true);
     getJuego();
     setBanner(0);
+    setExpanded(false);
     const timer = setTimeout(() => {
       setShowLoading(false);
     }, 2000);
@@ -92,26 +97,39 @@ export const JuegoData = () => {
     );
   }
 
-
   const alreadyFav = (id)=> {
     return favList.some((a) => a.id === id);
   }
-
+  
   const agregarFav = () => {
     if(alreadyFav(id) ===false ) {
-      favoritos.counterFav < 9 && favoritos.setCounterFav(favoritos.counterFav + 1)
+      favoritos.setCounterFav(favoritos.counterFav + 1)
       favoritos.setFav([...favList, datosJuegoLocales])
     } else {
       console.log('Ya en favoritos')
     }
-
+  }
+  
+  const alreadyCart = (id)=> {
+    return cartList.some((a) => a.id === id);
   }
 
-  useEffect(() => {
-    console.log(favList);
-  }, [favList]);
+  const agregarCart = () => {
+    if(alreadyCart(id) ===false ) {
+      carrito.setCounterCart(carrito.counterCart + 1);
+      carrito.setCart([...cartList, datosCarrito]);
+    } else {
+      console.log('Ya en carrito');
+    }
+  }
+
+  const agregarCartLink = () => {
+    agregarCart();
+    navigate('/carrito');
+  }
 
   let datosJuegoLocales = null;
+  let datosCarrito = null;
 
   if(juego) {
     datosJuegoLocales = {
@@ -125,8 +143,15 @@ export const JuegoData = () => {
       platforms: juego.parent_platforms,
       rating: juego.rating
     }
+    datosCarrito = {
+      id: id,
+      name: juego.name,
+      img: juego.background_image,
+      price: price + 0.99,
+      platforms: juego.parent_platforms
+    }
   }
-
+  
 
   return (
     <section className='data'>
@@ -281,10 +306,19 @@ export const JuegoData = () => {
                 <h2 className='data_juego_info_cta_price'>${price}.99</h2>
                 <div className='data_juego_info_cta_btns'>
                   <div className='data_juego_info_cta_btns_favCart'>
-                    <button onClick={agregarFav}>Agregar a Favoritos <i className="bi bi-heart"></i></button>
-                    <button >Agregar a Carrito <i className="bi bi-cart"></i></button>
+                    {alreadyFav(id) ? <NavLink className={'data_juego_info_cta_btns_favCart alreadyFav'} to={'/favoritos'}>Ver favoritos<i className="bi bi-heart"></i></NavLink> 
+                    :
+                    <button onClick={agregarFav}>Agregar a Favoritos <i className="bi bi-heart"></i></button>}
+
+                    {alreadyCart(id) ? <NavLink className={'data_juego_info_cta_btns_favCart alreadyCart'} to={'/carrito'}>Ver carrito<i className="bi bi-cart"></i></NavLink> 
+                    :
+                    <button onClick={agregarCart}>Agregar a Carrito <i className="bi bi-cart"></i></button>}
                   </div>
-                  <button className='data_juego_info_cta_btns_buy'><span>Comprar ahora</span></button>
+                  {alreadyCart(id)? <NavLink className={'data_juego_info_cta_btns_buy linkCart'} to={'/carrito'}><span>Comprar ahora</span></NavLink>
+                  :
+                  <button className='data_juego_info_cta_btns_buy' onClick={agregarCartLink}><span>Comprar ahora</span></button>
+                  }
+                  {/* <button className='data_juego_info_cta_btns_buy'><span>Comprar ahora</span></button> */}
                 </div>
               </div>
             </div>

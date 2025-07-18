@@ -1,13 +1,13 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-const EmptyCart = () => {
+export const EmptyCart = () => {
   return (
-    <div className='carrito-vacio'>
-        <i className="bi bi-controller"></i>
-        <h2>Todavía no agregaste nada a tu carrito!
-        Encontrá el juego que estás buscando <NavLink to={'/categorias'}>aquí.</NavLink></h2>
+    <div className='carrito_vacio'>
+        <i className="bi bi-controller" ></i>
+        <h2 className='degrade' data-text='Todavía no agregaste nada a tu carrito!
+        Encontrá el juego que estás buscando en nuestra sección de Juegos'>Todavía no agregaste nada a tu carrito!
+        Encontrá el juego que estás buscando en nuestra sección de <NavLink to={'/juegos/page/1'}>Juegos!</NavLink></h2>
     </div>
   )
 }
-export default EmptyCart;

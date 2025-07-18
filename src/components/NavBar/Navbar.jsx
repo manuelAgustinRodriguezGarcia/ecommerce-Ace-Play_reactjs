@@ -1,8 +1,8 @@
 import React from "react";
-import FavCartWidget from './FavCartWidget'
+import { FavCartWidget } from './FavCartWidget'
 import { NavLink } from "react-router-dom";
 
-const Navbar = () => {
+export const Navbar = () => {
     return(
       <header className="nav">
         <div className="nav-gen">
@@ -18,4 +18,3 @@ const Navbar = () => {
       </header>
     )
 }
-export default Navbar;

@@ -3,6 +3,7 @@
   align-items: center;
   width: 65%;
   margin-top: 150px;
+  min-height: 100dvh;
   form {
     @include d-flex-col;
     align-items: center;

@@ -10,17 +10,14 @@ export const Favoritos = () => {
 
   return (
     <section className="favoritos">
-      <h2 className="favoritos_title">Tus juegos <span className="degrade" data-text='Favoritos'>Favoritos</span></h2>
       <div className="favoritos_list">
         {
           favList.length == 0 ? <EmptyFav></EmptyFav>
-            :
-            (
-              favList.map((x) => (
-                <ItemFav key={x.id} game={x}></ItemFav>
-              )
-            )
-          )
+          :
+          <>
+            <h2 className="favoritos_title">Tus juegos <span className="degrade" data-text='Favoritos'>Favoritos</span></h2>
+            {favList.map((x) => (<ItemFav key={x.id} game={x}></ItemFav>))}
+          </>
         }
       </div>
     </section>

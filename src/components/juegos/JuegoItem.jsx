@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 export const JuegoItem = ({ data, page }) => {
 
@@ -19,7 +19,11 @@ export const JuegoItem = ({ data, page }) => {
       </>
     )
   }
-
+  
+  const navigate = useNavigate();
+  const linkToGame = () => {
+    navigate(`/juegos/page/${page}/juego/${data.id}`)
+  }
   const released = parseInt(data.released.substring(0, 4));
   const currentYear = new Date().getFullYear();
   const antiguedad = currentYear - released;
@@ -27,7 +31,7 @@ export const JuegoItem = ({ data, page }) => {
 
 
   return (
-    <div className='juegos_list_item'>
+    <div className='juegos_list_item' onClick={() => linkToGame()}>
       <img src={data.background_image} alt={"Imagen portada de " + data.name} />
       <h4 className='juegos_list_item_title' title={data.name}>{data.name}</h4>
       <div className='juegos_list_item_info'>

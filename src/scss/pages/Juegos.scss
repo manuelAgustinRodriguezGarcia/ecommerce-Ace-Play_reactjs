@@ -20,9 +20,10 @@
     &_item {
       @include d-flex-col;
       align-items: center;
+      cursor: pointer;
       position: relative;
       width: calc(20% - 10px);
-      border:  solid 2px rgba(124, 124, 124, 0.5);
+      border: solid 2px rgba(124, 124, 124, 0.5);
       height: 250px;
       transition: all .3s ease-in-out;
       background-color: transparent;
@@ -49,7 +50,6 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        cursor: default
       }
 
       &_info {
@@ -103,7 +103,7 @@
         text-align: center;
         cursor: pointer;
       }
-      
+
       a {
         position: absolute;
         transition: all .3s ease-in-out;
@@ -120,7 +120,9 @@
 
       }
 
+      background-color: rgba(124, 124, 124, 0.1);
       &:hover {
+        background-color: rgba(124, 124, 124, 0.2);
         .juegos_list_item_info_category {
           color: #0E0E10;
           background-color: #fff;

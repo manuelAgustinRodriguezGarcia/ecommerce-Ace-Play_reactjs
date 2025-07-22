@@ -17,6 +17,7 @@ export const EmptyPage = () => {
         <NavLink to={'/'}>INICIO</NavLink>
         <NavLink to={'/juegos/page/1'}>JUEGOS</NavLink>
         <NavLink to={'/favoritos'}>FAVORITOS</NavLink>
+        <NavLink to={'/carrito'}>CARRITO</NavLink>
       </div>
     </section>
   )

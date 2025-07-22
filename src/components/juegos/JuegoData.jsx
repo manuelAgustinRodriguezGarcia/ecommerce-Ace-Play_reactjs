@@ -141,6 +141,7 @@ export const JuegoData = () => {
       tags: juego.tags,
       genre: juego.genres?.[0]?.name,
       platforms: juego.parent_platforms,
+      genreCart: juego.genres?.[0]?.slug,
       rating: juego.rating
     }
     datosCarrito = {
@@ -148,7 +149,8 @@ export const JuegoData = () => {
       name: juego.name,
       img: juego.background_image,
       price: price + 0.99,
-      platforms: juego.parent_platforms
+      platforms: juego.parent_platforms,
+      genreCart: juego.genres?.[0]?.slug
     }
   }
   
@@ -306,25 +308,27 @@ export const JuegoData = () => {
                 <h2 className='data_juego_info_cta_price'>${price}.99</h2>
                 <div className='data_juego_info_cta_btns'>
                   <div className='data_juego_info_cta_btns_favCart'>
-                    {alreadyFav(id) ? <NavLink className={'data_juego_info_cta_btns_favCart alreadyFav'} to={'/favoritos'}>Ver favoritos<i className="bi bi-heart"></i></NavLink> 
+                    {alreadyFav(id) ? 
+                    <NavLink className={'data_juego_info_cta_btns_favCart alreadyFav'} to={'/favoritos'}>Ver favoritos<i className="bi bi-heart"></i></NavLink> 
                     :
                     <button onClick={agregarFav}>Agregar a Favoritos <i className="bi bi-heart"></i></button>}
 
-                    {alreadyCart(id) ? <NavLink className={'data_juego_info_cta_btns_favCart alreadyCart'} to={'/carrito'}>Ver carrito<i className="bi bi-cart"></i></NavLink> 
+                    {alreadyCart(id) ? 
+                    <NavLink className={'data_juego_info_cta_btns_favCart alreadyCart'} to={'/carrito'}>Ver carrito<i className="bi bi-cart"></i></NavLink> 
                     :
                     <button onClick={agregarCart}>Agregar a Carrito <i className="bi bi-cart"></i></button>}
                   </div>
-                  {alreadyCart(id)? <NavLink className={'data_juego_info_cta_btns_buy linkCart'} to={'/carrito'}><span>Comprar ahora</span></NavLink>
+                  {alreadyCart(id)? 
+                  <NavLink className={'data_juego_info_cta_btns_buy linkCart'} to={'/carrito'}><span>Comprar ahora</span></NavLink>
                   :
                   <button className='data_juego_info_cta_btns_buy' onClick={agregarCartLink}><span>Comprar ahora</span></button>
                   }
-                  {/* <button className='data_juego_info_cta_btns_buy'><span>Comprar ahora</span></button> */}
                 </div>
               </div>
             </div>
           </section>
           <section className='data_related'>
-            <h2>Juegos recomendados por <span className='degrade' data-text='acePlay'>acePlay</span></h2>
+            <h2>Recomendaciones <span className='degrade' data-text='acePlay'>acePlay</span> para ti</h2>
             <div className='data_related_box'>
               <div className='data_related_box_games'>
                 {juegosRelacionados && juegosRelacionados.length > 0 && (

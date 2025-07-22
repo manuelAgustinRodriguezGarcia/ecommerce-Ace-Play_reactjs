@@ -35,7 +35,8 @@ export const ItemFav = ({ game }) => {
     name: game.name,
     img: game.img,
     price: game.price,
-    platforms: game.platforms
+    platforms: game.platforms,
+    genre: game.genre
   }
   return (
     <div className="favoritos_list_item">

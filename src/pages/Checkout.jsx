@@ -1,5 +1,4 @@
 import { useContext, useState } from 'react'
-import CartData from '../contexts/CartData';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import { EmptyPage } from '../components/EmptyPage';

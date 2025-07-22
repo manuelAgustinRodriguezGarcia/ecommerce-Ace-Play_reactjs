@@ -11,19 +11,19 @@ export const Home = () => {
           <div className='bubble b-1'></div>
         </div>
           <div className='landing_datos'>
-            <span className={'landing_datos--item'}>
+            <span className='landing_datos--item'>
               <i className="bi bi-envelope"></i>
-              <p>Envío inmediato por e-mail</p>
+              <p>Envío inmediato</p>
             </span>
             <hr />
-            <span className={'landing_datos--item'}>
+            <span className='landing_datos--item'>
               <i className="bi bi-clock"></i>
-              <p>Soporte personalizado disponible las 24hs</p>
+              <p>Soporte las 24hs</p>
             </span>
             <hr />
-            <span className={'landing_datos--item'}>
+            <span className='landing_datos--item'>
               <i className="bi bi-shield-check"></i>
-              <p>Devoluciones gratuitas e inmediatas</p>
+              <p>Devoluciones gratuitas</p>
             </span>
           </div>
         <div className='landing_links'>
@@ -34,7 +34,7 @@ export const Home = () => {
             <h2>Conocé los mejores precios en la sección de <NavLink to={'/ofertas'}>Ofertas.</NavLink></h2>
           </div>
           <div className="landing_links--item">
-            <h2>Descubrí tu nuevo juego favorito en la sección de <NavLink to="/juegos/page/1" >Juegos.</NavLink></h2>
+            <h2>Descubrí tu nuevo juego favorito en la sección de <NavLink to={'/juegos/page/1'} >Juegos.</NavLink></h2>
           </div>
         </div>
       </section>

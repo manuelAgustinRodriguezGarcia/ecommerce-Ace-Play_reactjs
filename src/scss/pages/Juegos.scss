@@ -121,8 +121,10 @@
       }
 
       background-color: rgba(124, 124, 124, 0.1);
+
       &:hover {
         background-color: rgba(124, 124, 124, 0.2);
+
         .juegos_list_item_info_category {
           color: #0E0E10;
           background-color: #fff;
@@ -143,7 +145,7 @@
       height: 100px;
       @include d-flex-row;
       justify-content: center;
-      gap: 20px;
+      gap: 10px;
 
       button,
       h4 {
@@ -156,7 +158,7 @@
         font-weight: 600;
         text-align: center;
         align-content: center;
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: rgba(124, 124, 124, 0.2);
         box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.8);
         -webkit-backdrop-filter: blur(5px);
         backdrop-filter: blur(5px);
@@ -168,7 +170,7 @@
       }
 
       button:hover {
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(124, 124, 124, 0.4);
         cursor: pointer
       }
 

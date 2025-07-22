@@ -1,32 +1,39 @@
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 export const Categorias = () => {
+  const [genres, setGenres] = useState(null)
+
+  const getGenres = async () => {
+    try {
+      const response = await fetch('https://api.rawg.io/api/genres?key=957f6a2b15fa49f68a9bb400ac60e7f0');
+      const genreList = await response.json();
+      setGenres(genreList.results);
+    }
+    catch {
+      console.error('Error fetching the genres!')
+    }
+  }
+
+  useEffect(() => {
+    getGenres();
+  }, [])
+
   return (
-    <section className="categoria">
-      <NavLink className="categoria-item" to={'/categorias/accion'}>
-        <h2>Acción</h2>
-        <img src="../images/categoriaAccion.png" alt="Acción" />
-      </NavLink>
-      <NavLink className="categoria-item" to={'/categorias/carreras'}>
-        <h2>Carreras</h2>
-        <img src="../images/categoriaCarreras.png" alt="Carreras" />
-      </NavLink>
-      <NavLink className="categoria-item" to={'/categorias/aventura'}>
-        <h2>Aventura</h2>
-        <img src="../images/categoriaAventura.png" alt="Aventura" />
-      </NavLink>
-      <NavLink className="categoria-item" to={'/categorias/estrategia'}>
-        <h2>Estrategia</h2>
-        <img src="../images/categoriaEstrategia.jpg" alt="Aventura" />
-      </NavLink>
-      <NavLink className="categoria-item" to={'/categorias/terror'}>
-        <h2>Terror</h2>
-        <img src="../images/categoriaTerror.jpg" alt="Aventura" />
-      </NavLink>
-      <NavLink className="categoria-item" to={'/categorias/simulacion'}>
-        <h2>Simulador</h2>
-        <img src="../images/categoriaSimulator.jpg" alt="Aventura" />
-      </NavLink>
+    <section className="categorias">
+      <ul className="categorias_list">
+        {genres ? (
+          genres.map((x) => (
+            <li className="categorias_list_item" key={x.id}><NavLink to={`/categorias/page/1/${x.slug}`}>{x.name}</NavLink></li>
+          ))
+        ) :
+          <div className='juegos_loading'>
+            <h2 className='degrade' data-text='Cargando...'>Cargando...</h2>
+          </div>
+        }
+      </ul>
+      <div className='bubble'></div>
+      <div className='bubble b-1'></div>
     </section>
   );
 }

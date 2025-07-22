@@ -71,7 +71,6 @@ export const Carrito = () => {
               <ul className="carrito_info_check_list">
                 {cartList.map((x) => (<li key={x.id}>{x.name} <span>{x.price}</span></li>))}
               </ul>
-              {/*lista con precios de juego con un max height y sino un scroll en esa lista con overflow hidden*/}
               <div className="carrito_info_check_cta">
                 <h3>Total<span>${calcularTotal()}</span></h3>
                 <NavLink className={'carrito_info_check_cta_buy'} to={'/checkout'}><span>Continuar al pago</span></NavLink>

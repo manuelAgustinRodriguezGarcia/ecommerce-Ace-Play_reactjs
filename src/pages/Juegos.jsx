@@ -55,16 +55,19 @@ export const Juegos = () => {
         (
           listaJuegos && listaJuegos.length > 0 &&
           (
-            <div className='juegos_list'>
-              {listaJuegos.map((juego) =>
-              (<JuegoItem key={juego.id} data={juego} page={currentPage} />
-              ))}
-              <div className='juegos_list_btns'>
-                <button onClick={backPage} className={currentPage === 1 ? 'hidden' : ''}>{currentPage > 1 ? currentPage - 1 : ''}</button>
-                <h4>{currentPage}</h4>
-                <button onClick={nextPage}>{currentPage + 1}</button>
+            <>
+              <h1>Explorá y encontrá tu nuevo juego favorito</h1>
+              <div className='juegos_list'>
+                {listaJuegos.map((juego) =>
+                (<JuegoItem key={juego.id} data={juego} page={currentPage} />
+                ))}
+                <div className='juegos_list_btns'>
+                  <button onClick={backPage} className={currentPage === 1 ? 'hidden' : ''}>{currentPage > 1 ? currentPage - 1 : ''}</button>
+                  <h4>{currentPage}</h4>
+                  <button onClick={nextPage}>{currentPage + 1}</button>
+                </div>
               </div>
-            </div>
+            </>
           )
         )
       }

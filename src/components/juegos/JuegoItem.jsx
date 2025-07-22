@@ -24,7 +24,7 @@ export const JuegoItem = ({ data, page }) => {
   const linkToGame = () => {
     navigate(`/juegos/page/${page}/juego/${data.id}`)
   }
-  const released = parseInt(data.released.substring(0, 4));
+  const released = parseInt(data.released?.substring(0, 4));
   const currentYear = new Date().getFullYear();
   const antiguedad = currentYear - released;
   const price = Math.max(5, 69 - antiguedad * 3);
@@ -35,7 +35,7 @@ export const JuegoItem = ({ data, page }) => {
       <img src={data.background_image} alt={"Imagen portada de " + data.name} />
       <h4 className='juegos_list_item_title' title={data.name}>{data.name}</h4>
       <div className='juegos_list_item_info'>
-        <p className='juegos_list_item_info_category' title={data.genres[0].name}>{data.genres[0].name.toUpperCase()}</p>
+        <p className='juegos_list_item_info_category' title={data.genres?.[0].name}>{data.genres?.[0].name.toUpperCase()}</p>
         <div className='juegos_list_item_info_rating'>{ratingCheck()}</div>
       </div>
       <h5>${price}.99</h5>

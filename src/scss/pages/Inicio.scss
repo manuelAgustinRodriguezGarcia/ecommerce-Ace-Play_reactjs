@@ -4,6 +4,7 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
+  cursor: default;
 }
 
 .landing {
@@ -16,32 +17,28 @@
 
   &_datos {
     font-size: 25px;
-    color: #fff;
     animation: appear 1s ease-in;
     height: calc(20vh - 70px);
+    width: 1200px;
     @include d-flex-row;
     justify-content: space-between;
     align-items: center;
-
-    hr {
-      height: 100px;
-      border: solid 2px #fff;
-      align-content: center;
-      border-radius: 2px
-    }
-
+    
     &--item {
-      @include d-flex-col;
+      @include d-flex-row;
+      border-bottom: solid 1px rgba(124, 124, 124, 0.5);
       align-items: center;
-      height: 150px;
+      justify-content: center;
+      gap: 10px;
+      padding-bottom: 20px;
       width: 30%;
-
+      
       i {
-        font-size: 50px;
+        font-size: 30px;
       }
-
+      
       p {
-        width: 100%;
+        width: fit-content;
         text-align: center;
       }
     }
@@ -87,13 +84,13 @@
       backdrop-filter: blur(10px);
       border-radius: 10px;
       box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+      cursor: pointer;
       gap: 25px;
       &::selection {
         background-color: transparent;
       }
       &:hover {
         background-color: rgba(0, 0, 0, 0.4);
-        cursor: default;
 
         a {
           color: rgb(255, 0, 183);

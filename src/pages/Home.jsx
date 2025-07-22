@@ -1,6 +1,7 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 export const Home = () => {
+  const navigate = useNavigate();
   return (
     <section className='home'>
       <section className="landing">
@@ -15,12 +16,10 @@ export const Home = () => {
               <i className="bi bi-envelope"></i>
               <p>Envío inmediato</p>
             </span>
-            <hr />
             <span className='landing_datos--item'>
               <i className="bi bi-clock"></i>
               <p>Soporte las 24hs</p>
             </span>
-            <hr />
             <span className='landing_datos--item'>
               <i className="bi bi-shield-check"></i>
               <p>Devoluciones gratuitas</p>
@@ -33,7 +32,7 @@ export const Home = () => {
           <div className="landing_links--item">
             <h2>Conocé los mejores precios en la sección de <NavLink to={'/ofertas'}>Ofertas.</NavLink></h2>
           </div>
-          <div className="landing_links--item">
+          <div onClick={() => navigate('/juegos/page/1')} className="landing_links--item">
             <h2>Descubrí tu nuevo juego favorito en la sección de <NavLink to={'/juegos/page/1'} >Juegos.</NavLink></h2>
           </div>
         </div>

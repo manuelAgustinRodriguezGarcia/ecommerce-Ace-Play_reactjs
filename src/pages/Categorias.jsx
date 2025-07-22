@@ -21,17 +21,21 @@ export const Categorias = () => {
 
   return (
     <section className="categorias">
-      <ul className="categorias_list">
-        {genres ? (
-          genres.map((x) => (
-            <li className="categorias_list_item" key={x.id}><NavLink to={`/categorias/page/1/${x.slug}`}>{x.name}</NavLink></li>
-          ))
-        ) :
-          <div className='juegos_loading'>
-            <h2 className='degrade' data-text='Cargando...'>Cargando...</h2>
-          </div>
-        }
-      </ul>
+      {genres ? (
+        <>
+          <h1>Explorá por categoría</h1>
+          <ul className="categorias_list">
+            {genres.map((x) => (
+              <li className="categorias_list_item" key={x.id}><NavLink to={`/categorias/page/1/${x.slug}`}>{x.name}</NavLink></li>
+            ))}
+          </ul>
+        </>
+      )
+        :
+        <div className='juegos_loading'>
+          <h2 className='degrade' data-text='Cargando...'>Cargando...</h2>
+        </div>
+      }
       <div className='bubble'></div>
       <div className='bubble b-1'></div>
     </section>

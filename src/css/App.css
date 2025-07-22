@@ -315,6 +315,15 @@ a {
   width: 100%;
   position: relative;
 }
+.categorias h1 {
+  width: 1200px;
+  font-family: "audiowide";
+  padding: 10px 0 0 10px;
+  margin-bottom: 20px;
+  font-weight: normal;
+  color: #fff;
+  border-bottom: solid 1px rgba(124, 124, 124, 0.5);
+}
 .categorias_list {
   display: flex;
   flex-direction: row;
@@ -327,7 +336,7 @@ a {
   gap: 10px;
 }
 .categorias_list_item {
-  width: calc(33.33% - 10px);
+  width: calc(50% - 10px);
   height: 45px;
   border: solid 2px rgba(124, 124, 124, 0.4);
   border-radius: 5px;
@@ -361,6 +370,7 @@ a {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  cursor: default;
 }
 
 .landing {
@@ -374,33 +384,31 @@ a {
 }
 .landing_datos {
   font-size: 25px;
-  color: #fff;
   animation: appear 1s ease-in;
   height: calc(20vh - 70px);
+  width: 1200px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   align-items: center;
 }
-.landing_datos hr {
-  height: 100px;
-  border: solid 2px #fff;
-  align-content: center;
-  border-radius: 2px;
-}
 .landing_datos--item {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  height: 150px;
+  border-bottom: solid 1px rgba(124, 124, 124, 0.5);
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding-bottom: 20px;
   width: 30%;
 }
 .landing_datos--item i {
-  font-size: 50px;
+  font-size: 30px;
 }
 .landing_datos--item p {
-  width: 100%;
+  width: fit-content;
   text-align: center;
 }
 .landing_welcome {
@@ -443,6 +451,7 @@ a {
   backdrop-filter: blur(10px);
   border-radius: 10px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
   gap: 25px;
 }
 .landing_links--item::selection {
@@ -450,7 +459,6 @@ a {
 }
 .landing_links--item:hover {
   background-color: rgba(0, 0, 0, 0.4);
-  cursor: default;
 }
 .landing_links--item:hover a {
   color: rgb(255, 0, 183);
@@ -526,6 +534,7 @@ a {
   margin-bottom: 10px;
   text-align: left;
   width: 1200px;
+  font-weight: normal;
   font-family: "audiowide";
 }
 .carrito_info {
@@ -745,6 +754,7 @@ a {
 }
 .carrito_related h3 {
   font-size: 20px;
+  font-weight: normal;
   font-family: "audiowide";
 }
 .carrito_related_list {
@@ -1163,18 +1173,27 @@ a {
 
 .juegos {
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   width: 100%;
-  min-height: 100dvh;
+  min-height: calc(100dvh - 70px);
   position: relative;
   overflow: hidden;
   margin: 0;
+  margin-top: 70px;
+}
+.juegos h1 {
+  width: 1200px;
+  font-family: "audiowide";
+  padding: 10px 0 0 10px;
+  font-weight: normal;
+  margin-bottom: 20px;
+  color: #fff;
+  border-bottom: solid 1px rgba(124, 124, 124, 0.5);
 }
 .juegos_list {
-  margin-top: 120px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   width: 1200px;
   display: flex;
   flex-direction: row;
@@ -1969,8 +1988,11 @@ a {
   width: 1200px;
 }
 .results_cont h2 {
-  margin: 20px 0;
+  margin-bottom: 20px;
+  padding: 10px 0 0 10px;
   font-family: "audiowide";
+  font-weight: normal;
+  border-bottom: solid 1px rgba(124, 124, 124, 0.5);
 }
 .results_cont h2 .degrade {
   text-wrap: nowrap;
@@ -2024,6 +2046,118 @@ a {
 }
 .results_pages .hidden {
   opacity: 0;
+}
+
+.lanzamientos {
+  height: calc(100% - 70px);
+  margin-top: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  cursor: default;
+}
+.lanzamientos h1 {
+  width: 1200px;
+  font-family: "audiowide";
+  font-weight: normal;
+  padding: 10px 0 0 10px;
+  color: #fff;
+  border-bottom: solid 1px rgba(124, 124, 124, 0.5);
+}
+.lanzamientos_list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 1200px;
+  gap: 20px;
+  padding: 20px 0;
+  flex-wrap: wrap;
+}
+.lanzamientos_list_item {
+  display: flex;
+  flex-direction: column;
+  width: calc(33% - 10px);
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+}
+.lanzamientos_list_item img {
+  z-index: 1;
+  will-change: transform;
+  height: 75%;
+  object-fit: cover;
+}
+.lanzamientos_list_item_date {
+  font-size: 14px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: linear-gradient(90deg, rgb(0, 200, 255) 0%, rgb(255, 0, 183) 100%);
+  padding: 5px;
+  z-index: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+.lanzamientos_list_item:hover .lanzamientos_list_item_info {
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.65);
+}
+.lanzamientos_list_item:hover .lanzamientos_list_item_date {
+  opacity: 0;
+}
+.lanzamientos_list_item_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(37, 37, 37);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  text-align: center;
+  position: absolute;
+  z-index: 2;
+  top: 75%;
+  transition: all 0.3s ease-in-out;
+}
+.lanzamientos_list_item_info h4 {
+  padding: 0 10px;
+  font-size: 18px;
+  font-weight: normal;
+  font-family: "audiowide";
+  height: 25%;
+  width: 100%;
+  align-content: center;
+  border-bottom: solid 1px rgba(124, 124, 124, 0.5);
+}
+.lanzamientos_list_item_info ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
+  margin: auto 0;
+  gap: 10px;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 10px;
+  list-style: none;
+}
+.lanzamientos_list_item_info ul h5 {
+  width: 100%;
+  font-size: 18px;
+}
+.lanzamientos_list_item_info ul .lanzamientos_list_item_info_date {
+  background: linear-gradient(90deg, rgb(0, 200, 255) 0%, rgb(255, 0, 183) 100%);
+  width: fit-content;
+  padding: 5px 10px;
+}
+.lanzamientos_list_item_info ul li {
+  border: solid 1px rgba(124, 124, 124, 0.5);
+  border-radius: 20px;
+  padding: 5px 10px;
+  background-color: rgba(124, 124, 124, 0.5);
 }
 
 /*# sourceMappingURL=App.css.map */

@@ -9,11 +9,17 @@
     width: 1200px;
 
     h2 {
-      margin: 20px 0;
+      margin-bottom: 20px;
+      padding: 10px 0 0 10px;
       font-family: 'audiowide';
+      font-weight: normal;
+
       .degrade {
         text-wrap: nowrap;
       }
+
+      border-bottom: solid 1px rgba(124, 124, 124, 0.5);
+
     }
 
     &_list {

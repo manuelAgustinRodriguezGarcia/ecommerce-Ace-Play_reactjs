@@ -11,6 +11,7 @@
     margin-bottom: 10px;
     text-align: left;
     width: 1200px;
+    font-weight: normal;
     font-family: 'audiowide'
   }
 
@@ -20,7 +21,6 @@
     justify-content: space-between;
     position: relative;
     width: 1200px;
-    // border: 2px solid aqua;
 
     &_list {
       @include d-flex-col;
@@ -247,26 +247,32 @@
 
     h3 {
       font-size: 20px;
+      font-weight: normal;
       font-family: 'audiowide';
     }
+
     &_list {
       margin-top: 10px;
       @include d-flex-row;
       gap: 10px;
       flex-wrap: wrap;
-      
+
       .juegos_list_item {
         width: calc(33% - 5px);
       }
     }
+
     &_loading {
       width: 100%;
       text-align: center;
+
       h2 {
         font-family: 'audiowide';
       }
+
       align-content: center;
       height: 500px;
+
       .degrade {
         &::before {
           align-content: center;

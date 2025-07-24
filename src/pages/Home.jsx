@@ -30,7 +30,7 @@ export const Home = () => {
             <h2>Enterate de los próximos juegos en la sección de <NavLink to={'/lanzamientos'}>Lanzamientos.</NavLink></h2>
           </div>
           <div className="landing_links--item">
-            <h2>Conocé los mejores precios en la sección de <NavLink to={'/ofertas'}>Ofertas.</NavLink></h2>
+            <h2>Encontrá el juego que buscás en la sección de <NavLink to={'/categorias'}>Categorías.</NavLink></h2>
           </div>
           <div onClick={() => navigate('/juegos/page/1')} className="landing_links--item">
             <h2>Descubrí tu nuevo juego favorito en la sección de <NavLink to={'/juegos/page/1'} >Juegos.</NavLink></h2>

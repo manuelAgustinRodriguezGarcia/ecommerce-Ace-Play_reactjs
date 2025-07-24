@@ -49,7 +49,7 @@ export const Carrito = () => {
           <h2 className="carrito_title">Tu lista de juegos en <span className="degrade" data-text='Carrito'>Carrito</span></h2>
           <div className="carrito_info">
             <div className="carrito_info_list">
-              {cartList.map((x) => <ItemCart key={x.id} game={x} />)}
+              {cartList.map((x) => <ItemCart key={x.id + 1} game={x} />)}
               <div className="carrito_related">
                 <h3>Recomendaciones <span className='degrade' data-text='acePlay'>acePlay</span> para ti</h3>
                 <div className="carrito_related_list">

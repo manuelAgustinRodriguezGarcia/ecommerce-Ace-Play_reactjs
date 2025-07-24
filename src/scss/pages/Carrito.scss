@@ -7,12 +7,12 @@
   width: 100%;
 
   &_title {
-    margin-top: 50px;
-    margin-bottom: 10px;
+    padding: 10px 0 0 10px;
+    border-bottom: solid 1px rgba(124, 124, 124, 0.5);
     text-align: left;
     width: 1200px;
     font-weight: normal;
-    font-family: 'audiowide'
+    font-family: 'audiowide';
   }
 
   &_info {
@@ -20,6 +20,7 @@
     align-items: flex-start;
     justify-content: space-between;
     position: relative;
+    padding-top: 20px;
     width: 1200px;
 
     &_list {

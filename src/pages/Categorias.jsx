@@ -17,6 +17,7 @@ export const Categorias = () => {
 
   useEffect(() => {
     getGenres();
+    window.scrollTo(0,0)
   }, [])
 
   return (

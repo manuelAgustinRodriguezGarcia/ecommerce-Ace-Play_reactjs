@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { EmptyPage } from '../components/EmptyPage';
+import { EmptyCart } from '../components/EmptyCart';
 import { CartContext } from '../contexts/CartContext';
 import { ItemCart } from '../components/ItemCart';
 
@@ -96,22 +97,22 @@ export const Checkout = () => {
                 </label>
               </form>
               {payment == 'credit' ?
-                <div className='checkout_cont_info_credit'>
+                <div className='checkout_cont_info_credit' title='Por favor, no ingresar ningún dato real en los campos.'>
                   <h3>1.Ingresá los datos de tu tarjeta</h3>
                   <form className='checkout_cont_info_credit_data'>
                     <label htmlFor="num" className='checkout_cont_info_credit_data_item_num'><span>Número de tarjeta</span>
                       <input type="number" id='num' placeholder='XXXX-XXXX-XXXX-XXXX' />
                     </label>
-                    <label htmlFor="exp"className='checkout_cont_info_credit_data_item'><span>Fecha de Exp.</span>
+                    <label htmlFor="exp" className='checkout_cont_info_credit_data_item'><span>Fecha de Exp.</span>
                       <input type="number" id='exp' placeholder='XX/XX' />
                     </label>
-                    <label htmlFor="cvv"className='checkout_cont_info_credit_data_item'><span>Código de Seguridad</span>
+                    <label htmlFor="cvv" className='checkout_cont_info_credit_data_item'><span>Código de Seguridad</span>
                       <input type="number" id='cvv' placeholder='XXX' />
                     </label>
                   </form>
                 </div>
                 :
-                <div className='checkout_cont_info_transfer'>
+                <div className='checkout_cont_info_transfer' title='Estos son datos ficticios, porfavor no realizar ninguna transferencia a los mismos.'>
                   <h3>1. Realizá la transferencia a la siguiente cuenta</h3>
                   <div className='checkout_cont_info_transfer_data'>
                     <ul>
@@ -120,11 +121,11 @@ export const Checkout = () => {
                       <li>CBU<span>1122333445566778899101</span></li>
                       <li>Cuenta corriente<span>1111-2 345-6</span></li>
                       <li>CUIT<span>11-23456789-0</span></li>
-                      <li>Razon Social<span>ACEPLAY SRL</span></li>
+                      <li>Razón Social<span>ACEPLAY SRL</span></li>
                     </ul>
-                    <img src="../../images/qr.png" alt="" />
+                    <img src="../../images/qr.png" alt="" loading='lazy' />
                   </div>
-                  <h3>2. Adjunta el comprobante aquí</h3>
+                  <h3>2. Adjunta el comprobante aquí(.PNG, .JPG, .PDF)</h3>
                   <label htmlFor="archivo" className="checkout_cont_info_transfer_data_file">
                     <input
                       type="file"
@@ -138,15 +139,20 @@ export const Checkout = () => {
                   </label>
                 </div>
               }
+              <label htmlFor="terminos"className='checkout_cont_info_terminos'>
+                <input type="checkbox" id='terminos'/>
+                Acepto los Términos y Condiciones y la Política de Privacidad.
+              </label>
             </div>
             <div className='checkout_cont_cta'>
-              <h2>logo de acePlay</h2>
-              <button>Finalizar compra</button>
+              <h2 className='degrade' data-text="acePlay">acePlay</h2>
+              <p>¡Compartimos tu pasión por los videojuegos!</p>
+              <button>Finalizar Compra</button>
             </div>
           </div>
         </>
         :
-        <h2>Esto esta vacio</h2>
+        <EmptyCart></EmptyCart>
       }
     </section>
   )

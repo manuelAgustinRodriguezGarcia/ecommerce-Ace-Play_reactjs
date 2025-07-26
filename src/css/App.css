@@ -542,16 +542,16 @@ a {
   flex-direction: row;
   align-items: center;
   align-items: flex-start;
-  justify-content: space-between;
   position: relative;
   padding-top: 20px;
   width: 1200px;
+  gap: 20px;
 }
 .carrito_info_list {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  width: 60%;
+  width: calc(65% - 10px);
   gap: 10px;
   align-items: left;
 }
@@ -658,7 +658,7 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 35%;
+  width: calc(35% - 10px);
   padding: 20px;
   border: solid 1px rgba(124, 124, 124, 0.5);
   background-color: rgb(37, 37, 37);
@@ -763,11 +763,12 @@ a {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 10px;
+  justify-content: space-between;
   flex-wrap: wrap;
+  gap: 10px;
 }
 .carrito_related_list .juegos_list_item {
-  width: calc(33% - 5px);
+  width: calc(33.1% - 5px);
 }
 .carrito_related_loading {
   width: 100%;
@@ -820,6 +821,9 @@ a {
   min-height: calc(100dvh - 70px);
   margin-top: 70px;
 }
+.checkout h3 {
+  font-size: 18px;
+}
 .checkout ul {
   list-style: none;
 }
@@ -839,14 +843,19 @@ a {
   align-items: flex-start;
   padding-top: 20px;
   width: 1200px;
-  gap: 10px;
+  gap: 20px;
 }
 .checkout_cont_info {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: calc(70% - 5px);
+  width: calc(70% - 10px);
   position: relative;
+}
+.checkout_cont_info input[type=number]::-webkit-outer-spin-button,
+.checkout_cont_info input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 .checkout_cont_info_list {
   display: flex;
@@ -904,11 +913,6 @@ a {
   padding: 10px;
   font-size: 18px;
   border-bottom: solid 1px rgba(124, 124, 124, 0.5);
-}
-.checkout_cont_info_data input[type=number]::-webkit-outer-spin-button,
-.checkout_cont_info_data input[type=number]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
 }
 .checkout_cont_info_data span {
   padding-left: 5px;
@@ -1079,7 +1083,6 @@ a {
 }
 .checkout_cont_info_transfer_data_file {
   width: 100%;
-  height: 50px;
   display: inline-block;
   cursor: pointer;
 }
@@ -1089,22 +1092,66 @@ a {
 .checkout_cont_info_transfer_data_file span {
   display: inline-block;
   padding: 10px 16px;
-  background-color: #4f46e5;
   color: white;
   border-radius: 6px;
   font-size: 14px;
   width: 100%;
-  transition: background 0.3s ease;
+  background-color: rgba(124, 124, 124, 0.2);
+  transition: background-color 0.3s ease;
+}
+.checkout_cont_info_transfer_data_file span:hover {
+  background-color: rgba(124, 124, 124, 0.4);
 }
 .checkout_cont_info_transfer_data_file .file_uploaded {
   background-color: rgba(0, 201, 94, 0.7);
 }
+.checkout_cont_info_terminos {
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+.checkout_cont_info_terminos input[type=checkbox] {
+  accent-color: rgba(0, 201, 94, 0.7);
+  height: 15px;
+  width: 15px;
+}
 .checkout_cont_cta {
-  width: calc(30% - 5px);
-  background-color: purple;
+  width: calc(30% - 10px);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border: solid 1px rgba(124, 124, 124, 0.5);
+  padding: 10px;
   top: 90px;
   position: -webkit-sticky;
   position: sticky;
+  border-radius: 5px;
+  cursor: default;
+}
+.checkout_cont_cta h2 {
+  width: 100%;
+  font-size: 65px;
+}
+.checkout_cont_cta p {
+  width: 100%;
+  font-size: 14px;
+  text-align: center;
+}
+.checkout_cont_cta button {
+  cursor: pointer;
+  margin-top: 10px;
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  border: 1px solid rgba(124, 124, 124, 0.5);
+  transition: background-color 0.3s ease-in-out;
+  background-color: rgba(124, 124, 124, 0.2);
+}
+.checkout_cont_cta button:hover {
+  background-color: rgba(0, 201, 94, 0.7);
 }
 
 .favoritos {

@@ -18,15 +18,15 @@
   &_info {
     @include d-flex-row;
     align-items: flex-start;
-    justify-content: space-between;
     position: relative;
     padding-top: 20px;
     width: 1200px;
+    gap: 20px;
 
     &_list {
       @include d-flex-col;
       justify-content: flex-start;
-      width: 60%;
+      width: calc(65% - 10px);
       gap: 10px;
       align-items: left;
 
@@ -139,7 +139,7 @@
     &_check {
       @include d-flex-col;
       justify-content: space-between;
-      width: 35%;
+      width: calc(35% - 10px);
       padding: 20px;
       border: solid 1px rgba(124, 124, 124, 0.5);
       background-color: rgb(37, 37, 37);
@@ -255,11 +255,12 @@
     &_list {
       margin-top: 10px;
       @include d-flex-row;
-      gap: 10px;
+      justify-content: space-between;
       flex-wrap: wrap;
+      gap: 10px;
 
       .juegos_list_item {
-        width: calc(33% - 5px);
+        width: calc(33.1% - 5px);
       }
     }
 

@@ -18,6 +18,7 @@ export const Footer = () => {
             <li><NavLink to={"/juegos/page/1"}>Juegos</NavLink></li>
             <li><NavLink to={"/lanzamientos"}>Lanzamientos</NavLink></li>
             <li><NavLink to={"/categorias"}>Categorías</NavLink></li>
+            <li><NavLink to={"/pedidos"}>Pedidos</NavLink></li>
           </ul>
         </div>
 

@@ -4,7 +4,6 @@ import { FavoritesContext } from "../contexts/FavoritesContext";
 import { CartContext } from "../contexts/CartContext";
 
 export const ItemFav = ({ game }) => {
-  console.log('Game recibido en ItemFav:', game);
   const datosFavoritos = useContext(FavoritesContext)
   const listaFavoritos = datosFavoritos.fav;
 
@@ -36,7 +35,7 @@ export const ItemFav = ({ game }) => {
     img: game.img,
     price: game.price,
     platforms: game.platforms,
-    genre: game.genre
+    genre: game.genreCart
   }
   return (
     <div className="favoritos_list_item">

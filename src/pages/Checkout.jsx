@@ -1,11 +1,13 @@
 import { useContext, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
-import { EmptyPage } from '../components/EmptyPage';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { EmptyCart } from '../components/EmptyCart';
 import { CartContext } from '../contexts/CartContext';
+import { TicketsContext } from '../contexts/TicketsContext';
 import { ItemCart } from '../components/ItemCart';
 
 export const Checkout = () => {
+  const pedidos = useContext(TicketsContext);
+
   const carrito = useContext(CartContext);
   const cartList = carrito.cart
 
@@ -16,19 +18,93 @@ export const Checkout = () => {
 
   const [payment, setPayment] = useState('credit');
   const [fileName, setFileName] = useState('');
+  const [termsAgree, setTemsAgree] = useState(false);
+  const [checkoutReady, setCheckoutReady] = useState(false);
+  const [temporaryTicket, setTemporaryTicket] = useState(0)
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    if (file) setFileName(file.name);
-  };
+    if (file) {
+      setFileName(file.name)
+    };
+  }
+
+  const [datos, setDatos] = useState({
+    name: '',
+    lastName: '',
+    mail: '',
+    cell: 0,
+    address: { st: '', stNum: 0 },
+    region: { city: '', country: '' },
+    payMethod: payment,
+    termsAgree: false
+  })
 
   const handlePayChange = (e) => {
     setPayment(e.target.value);
-  };
+    setDatos({ ...datos, payMethod: e.target.value })
+  }
+
+  const handleterms = (e) => {
+    setDatos({ ...datos, termsAgree: e.target.checked });
+  }
+
+  const handleCheckout = () => {
+    const validCustomer =
+      datos.name.trim() !== '' &&
+      datos.lastName.trim() !== '' &&
+      datos.mail.trim() !== '' &&
+      datos.cell > 0 &&
+      datos.address.st.trim() !== '' &&
+      datos.address.stNum > 0 &&
+      datos.region.city.trim() !== '' &&
+      datos.region.country.trim() !== '' &&
+      datos.payMethod.trim() !== '' &&
+      datos.termsAgree === true;
+
+    if (!validCustomer) {
+      alert('Por favor completá todos los campos obligatorios.');
+      return;
+    }
+    window.scrollTo(0, 0);
+    const ticketNum = 10000 + Math.floor(Math.random() * 10000);
+    const fecha = new Date();
+    const fechaFormateada = fecha.toLocaleDateString('es-AR');
+
+    const newCustomer = { ...datos };
+    const newOrder = {
+      ticket: ticketNum,
+      games: [...cartList],
+      total: calcularTotal(),
+      date: fechaFormateada
+    };
+
+    pedidos.addOrder(newCustomer, newOrder);
+
+
+    setTemporaryTicket(ticketNum)
+
+    setCheckoutReady(true);
+    carrito.setCounterCart(0);
+    carrito.setCart([]);
+
+  }
 
   return (
     <section className='checkout'>
-      {cartList.length > 0 ?
+      {checkoutReady ?
+        <div className='checkout_finished'>
+          <div className='checkout_finished_cont'>
+            <i className="bi bi-check-circle-fill"></i>
+            <h2>Muchas gracias! Tu pedido fue realizado con éxito!</h2>
+            <h3>PEDIDO #{temporaryTicket} </h3>
+            <ul>
+              {cartList.map((x) => <li>{x.name} <span>{x.price}</span></li>)}
+            </ul>
+          </div>
+          <NavLink className='checkout_finished_link' to={'/'}><span>Seguir Comprando</span></NavLink>
+        </div>
+        :
         <>
           <h2 className='checkout_title'>Finalizá tu compra</h2>
           <div className='checkout_cont'>
@@ -38,36 +114,36 @@ export const Checkout = () => {
                   <ItemCart key={x.id} game={x} />
                 ))}
               </div>
-              <h3 className='checkout_cont_info_total'>Total<span>${calcularTotal()}</span></h3>
+              <h3 className='checkout_cont_info_total'>Subtotal<span>${calcularTotal()}</span></h3>
               <form action="" className='checkout_cont_info_data'>
                 <h3>Datos Personales</h3>
                 <label htmlFor='input-name' className='checkout_cont_info_data--personal'><span>Nombre</span>
-                  <input type="text" id='input-name' placeholder='John' />
+                  <input type="text" id='input-name' placeholder='John' required onChange={(e) => setDatos({ ...datos, name: e.target.value })} />
                 </label>
                 <label htmlFor='input-lastname' className='checkout_cont_info_data--personal'><span>Apellido</span>
-                  <input type="text" id='input-lastname' placeholder='Doe' />
+                  <input type="text" id='input-lastname' placeholder='Doe' required onChange={(e) => setDatos({ ...datos, lastName: e.target.value })} />
                 </label>
-                <label htmlFor='input-dni' className='checkout_cont_info_data--personal'><span>D.N.I</span>
-                  <input type="number" id='input-dni' placeholder='11234567' />
+                <label htmlFor='input-mail' className='checkout_cont_info_data--personal'><span>Correo electrónico</span>
+                  <input type="email" id='input-mail' placeholder='johndoe@mail.com' required onChange={(e) => setDatos({ ...datos, mail: e.target.value })} />
                 </label>
                 <label htmlFor='input-cell' className='checkout_cont_info_data--personal'><span>Teléfono</span>
-                  <input type="number" id='input-cell' placeholder='11 2233 4455' />
+                  <input type="number" id='input-cell' placeholder='11 2233 4455' required onChange={(e) => setDatos({ ...datos, cell: e.target.value })} />
                 </label>
                 <label htmlFor='input-st' className='checkout_cont_info_data--address st'><span>Calle</span>
-                  <input type="text" id='input-st' placeholder='Av. 9 de Julio' />
+                  <input type="text" id='input-st' placeholder='Av. 9 de Julio' required onChange={(e) => setDatos({ ...datos, address: { ...datos.address, st: e.target.value } })} />
                 </label>
                 <label htmlFor='input-st-number' className='checkout_cont_info_data--address number'><span>Número</span>
-                  <input type="number" id='input-st-number' placeholder='1910' />
+                  <input type="number" id='input-st-number' placeholder='1810' required onChange={(e) => setDatos({ ...datos, address: { ...datos.address, stNum: e.target.value } })} />
                 </label>
                 <label htmlFor='input-country' className='checkout_cont_info_data--address country'><span>País</span>
-                  <input type="text" id='input-country' placeholder='Argentina' />
+                  <input type="text" id='input-country' placeholder='Argentina' required onChange={(e) => setDatos({ ...datos, region: { ...datos.region, country: e.target.value } })} />
                 </label>
                 <label htmlFor='input-city' className='checkout_cont_info_data--address city'><span>Ciudad</span>
-                  <input type="text" id='input-city' placeholder='C.A.B.A' />
+                  <input type="text" id='input-city' placeholder='C.A.B.A' required onChange={(e) => setDatos({ ...datos, region: { ...datos.region, city: e.target.value } })} />
                 </label>
               </form>
               <form htmlFor="payment" className='checkout_cont_info_payment'>
-                <h3>Métodos de Pago</h3>
+                <h3>Métodos de Pago (podés realizar el pedido y abonar más tarde)</h3>
                 <label htmlFor='credit' className={payment === 'credit' ? 'checkout_cont_info_payment_item--checked' : 'checkout_cont_info_payment_item'}>
                   <input
                     type="radio"
@@ -98,7 +174,7 @@ export const Checkout = () => {
               </form>
               {payment == 'credit' ?
                 <div className='checkout_cont_info_credit' title='Por favor, no ingresar ningún dato real en los campos.'>
-                  <h3>1.Ingresá los datos de tu tarjeta</h3>
+                  <h3>1. Ingresá los datos de tu tarjeta</h3>
                   <form className='checkout_cont_info_credit_data'>
                     <label htmlFor="num" className='checkout_cont_info_credit_data_item_num'><span>Número de tarjeta</span>
                       <input type="number" id='num' placeholder='XXXX-XXXX-XXXX-XXXX' />
@@ -139,158 +215,20 @@ export const Checkout = () => {
                   </label>
                 </div>
               }
-              <label htmlFor="terminos"className='checkout_cont_info_terminos'>
-                <input type="checkbox" id='terminos'/>
+              <label htmlFor="terminos" className='checkout_cont_info_terminos'>
+                <input type="checkbox" id='terminos' required onChange={handleterms} />
                 Acepto los Términos y Condiciones y la Política de Privacidad.
               </label>
             </div>
             <div className='checkout_cont_cta'>
               <h2 className='degrade' data-text="acePlay">acePlay</h2>
               <p>¡Compartimos tu pasión por los videojuegos!</p>
-              <button>Finalizar Compra</button>
+              <h3 className='checkout_cont_cta_total'>Total<span>${calcularTotal()}</span></h3>
+              <button onClick={handleCheckout}>Realizar pedido</button>
             </div>
           </div>
         </>
-        :
-        <EmptyCart></EmptyCart>
       }
     </section>
   )
-  // const Carrito = useContext(CartData)
-  // const [submit, setSubmit] = useState(false)
-  // const [ compraFinalizada, setCompraFinalizada ] = useState(false);
-  // const claseCheckout = compraFinalizada ? 'checkout-hide' : 'checkout'
-  // const [datos, setDatos] = useState({
-  //   nombre: "",
-  //   apellido: "",
-  //   mail: "",
-  //   mailConfirmado: "",
-  //   telefono: 0
-  // })
-
-  // const handleSubmit = (event) => {
-  //   event.preventDefault()
-  //   if (datos.mail === datos.mailConfirmado) {
-  //     setSubmit(true)
-  //   }
-  //   else {
-  //     const Toast = Swal.mixin({ 
-  //       toast: true,
-  //       position: 'bottom-end',
-  //       showConfirmButton: false,
-  //       timer: 2000,
-  //       timerProgressBar: true,
-  //       background: 'rgb(54, 54, 54)',
-  //       color:'#fff',
-  //       width: '20em',
-  //       didOpen: (toast) => {
-  //         toast.addEventListener('mouseenter', Swal.stopTimer)
-  //         toast.addEventListener('mouseleave', Swal.resumeTimer)
-  //       }
-  //     })
-  //     Toast.fire({
-  //       icon: 'warning',
-  //       iconColor:'rgb(255, 0, 255, 0.8)',
-  //       title: 'Los emails no son iguales!'
-  //     })
-  //   }
-  // }
-  // const redireccionar = useNavigate();
-
-  // const productosTotal = Carrito.productosCarrito.map((x) => x.precio * x.cantidad)
-  // const precioFinal = productosTotal.reduce((a,b) => a + b , 0)
-
-  // async function agregarDocumento() {
-  //   setTimeout(() => {
-  //         Swal.fire({
-  //           title: 'Compra realizada con exito!',
-  //           text: `Tu número de orden es: ${Math.floor(Math.random() * 10000)}`,
-  //           icon: 'success',
-  //           iconColor:'rgba(255, 0, 255, 0.70)',
-  //           confirmButtonText: 'Cerrar'
-  //         }).then((confirmButon) => {
-  //           if (confirmButon.isConfirmed) {
-  //             redireccionar('/')
-  //           }
-  //         })
-  //       }, 500);
-  // }
-  // const productosUsuario = Carrito.productosCarrito.map((x) => ({
-  //   nombre: x.nombre, 
-  //   id: x.id,
-  //   precio: x.precio,
-  //   cantidad: x.cantidad
-  // }))
-
-  // const datosFinales = {
-  //   nombreUsuario: datos.nombre + " " + datos.apellido,
-  //   mail: datos.mail,
-  //   telefono: parseInt(datos.telefono),
-  //   productosUsuario: productosUsuario,
-  //   total: precioFinal
-  // }
-
-  // function terminarCompra() {
-  //   Swal.fire({
-  //     position: 'center',
-  //     showConfirmButton: false,
-  //     title: 'Estamos procesando tu compra...',
-  //     allowOutsideClick: false,
-  //     allowEnterKey: false,
-  //     timerProgressBar: true,
-  //   })
-  //   agregarDocumento()
-  //   Carrito.setProductosCarrito([])
-  //   Carrito.setContCart(0)
-  //   setCompraFinalizada(true)
-  // }
-  // return (
-  //   <section className={claseCheckout}>
-  //     {
-  //       submit ? (
-  //         <div className='checkout-resumen'>
-  //           <h2>Resumen de compra</h2>
-  //           <ul className='checkout-resumen-lista'>
-  //             <li>
-  //               <h3>Juego</h3>
-  //               <h3>Cantidad</h3>
-  //               <h3>Subtotal</h3>
-  //             </li>
-  //             {Carrito.productosCarrito.map((x) =>
-  //               <li key={x.id}>
-  //                 <p>{x.nombre}</p>
-  //                 <p>{x.cantidad} unid.</p>
-  //                 <p>${x.cantidad * x.precio}</p>
-  //               </li>)}
-  //           </ul>
-  //           <div className='checkout-resumen-total'>
-  //             <p>Total:</p>
-  //             <h2>${precioFinal}</h2>
-  //             <button onClick={()=>terminarCompra()}>Finalizar compra</button>
-  //           </div>
-  //         </div>
-  //       ) : (
-  //         <form onSubmit={handleSubmit}>
-  //           <h2>Ingresá tus datos</h2>
-  //           <label>Nombre:<input type="text" placeholder='Ingresá tu nombre...' 
-  //           onChange={(e) => setDatos({ ...datos, nombre: e.target.value })} required /></label>
-
-  //           <label>Apellido:<input type="text" placeholder='Ingresá tu apellido...' 
-  //           onChange={(e) => setDatos({ ...datos, apellido: e.target.value })} required /></label>
-
-  //           <label>Email:<input type="email" placeholder='Ingresá tu email...' 
-  //           onChange={(e) => setDatos({ ...datos, mail: e.target.value })} required /></label>
-
-  //           <label name='emailConfirm'>Confirmar Email:<input name='emailConfirm' type="email" placeholder='Confirmá tu email...' 
-  //           onChange={(e) => setDatos({ ...datos, mailConfirmado: e.target.value })} required /></label>
-
-  //           <label>Telefono:<input name='number' type="number" placeholder='Ingresá tu numero de telefono...' 
-  //           onChange={(e) => setDatos({ ...datos, telefono: e.target.value })} required /></label>
-
-  //           <button type='submit'>Continuar</button>
-  //         </form>
-  //       )
-  //     }
-  //   </section>
-  // )
 }

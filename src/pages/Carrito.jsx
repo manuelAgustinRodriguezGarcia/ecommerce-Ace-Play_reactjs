@@ -17,10 +17,11 @@ export const Carrito = () => {
   const [juegosRelacionados, setJuegosRelacionados] = useState([])
   const [isLoadingRelacionados, setIsLoadingRelacionados] = useState(false);
 
+  console.log(cartList)
   const getJuegosRelacionados = async () => {
     try {
-      const genre = cartList[0]?.genreCart;
-      const pageNum = Math.floor(Math.random() * 6) + 1;
+      const genre = cartList[0]?.genre !== undefined ? cartList[0]?.genre : cartList[0].genreCart;
+      const pageNum = Math.floor(Math.random() * 2) + 1;
       const response = await fetch(`https://api.rawg.io/api/games?key=957f6a2b15fa49f68a9bb400ac60e7f0&genres=${genre}&page=${pageNum}&page_size=10&exclude_additions=true`)
       const related = await response.json();
       setJuegosRelacionados(related.results);
@@ -53,7 +54,7 @@ export const Carrito = () => {
               <div className="carrito_related">
                 <h3>Recomendaciones <span className='degrade' data-text='acePlay'>acePlay</span> para ti</h3>
                 <div className="carrito_related_list">
-                  {juegosRelacionados.length > 0 ? juegosRelacionados.filter((relatedGame) => !cartList.some((cartGame) => parseInt(cartGame.id) === parseInt(relatedGame.id)))
+                  {juegosRelacionados?.length > 0 ? juegosRelacionados.filter((relatedGame) => !cartList.some((cartGame) => parseInt(cartGame.id) === parseInt(relatedGame.id)))
                   .slice(0,6)
                     .map((relatedGame) => (
                       <JuegoItem key={relatedGame.id} data={relatedGame} page={'1'}/>

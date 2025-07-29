@@ -1741,6 +1741,7 @@ a {
   backdrop-filter: blur(3px);
 }
 .data_background img {
+  will-change: transform;
   object-fit: cover;
   object-position: top;
   height: 100%;
@@ -2123,45 +2124,47 @@ a {
   gap: 10px;
   width: 100%;
 }
-.data_juego_info_cta_btns button, .data_juego_info_cta_btns a {
+.data_juego_info_cta_btns button,
+.data_juego_info_cta_btns a {
   font-size: 14px;
-  transition: all 0.3s ease-in-out;
   height: 40px;
   width: 100%;
   border: none;
   font-weight: bolder;
   border-radius: 10px;
 }
-.data_juego_info_cta_btns button:hover, .data_juego_info_cta_btns a:hover {
+.data_juego_info_cta_btns button:hover,
+.data_juego_info_cta_btns a:hover {
   cursor: pointer;
 }
 .data_juego_info_cta_btns_buy {
   position: relative;
-  overflow: hidden;
   background-color: #252525;
   border: none;
   z-index: 2;
+  overflow: hidden;
 }
 .data_juego_info_cta_btns_buy span {
   position: relative;
   z-index: 3;
   font-size: 16px;
 }
-.data_juego_info_cta_btns_buy:hover::before {
-  top: -100%;
-  left: -10%;
-}
 .data_juego_info_cta_btns_buy::before {
   content: "";
-  z-index: 0;
-  transition: all 0.4s ease-in-out;
-  width: 120%;
-  height: 350%;
-  background: linear-gradient(90deg, rgb(0, 200, 255), rgb(255, 0, 183));
   position: absolute;
-  top: 110%;
+  top: 0;
   left: -10%;
+  width: 120%;
+  height: 200%;
+  background: linear-gradient(90deg, rgb(0, 200, 255), rgb(255, 0, 183));
   border-radius: 80%;
+  z-index: 0;
+  transform: translateY(60%);
+  transition: transform 0.3s ease-in-out;
+  will-change: transform;
+}
+.data_juego_info_cta_btns_buy:hover::before {
+  transform: translateY(-20%);
 }
 .data_juego_info_cta_btns .linkCart span {
   display: block;
@@ -2171,10 +2174,21 @@ a {
   align-content: center;
 }
 .data_juego_info_cta_btns .linkCart::before {
-  top: 100%;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -10%;
+  width: 120%;
+  height: 200%;
+  background: linear-gradient(90deg, rgb(0, 200, 255), rgb(255, 0, 183));
+  border-radius: 80%;
+  z-index: 0;
+  transform: translateY(60%);
+  transition: transform 0.3s ease-in-out;
+  will-change: transform;
 }
 .data_juego_info_cta_btns .linkCart:hover::before {
-  top: -100%;
+  transform: translateY(-20%);
 }
 .data_juego_info_cta_btns_favCart {
   display: flex;
@@ -2183,17 +2197,22 @@ a {
   justify-content: center;
   gap: 5px;
 }
-.data_juego_info_cta_btns_favCart button, .data_juego_info_cta_btns_favCart a {
+.data_juego_info_cta_btns_favCart button,
+.data_juego_info_cta_btns_favCart a {
   border: solid 2px rgba(124, 124, 124, 0.4);
   background: none;
+  transition: background-color 0.3s ease-in-out;
 }
-.data_juego_info_cta_btns_favCart button:hover, .data_juego_info_cta_btns_favCart a:hover {
+.data_juego_info_cta_btns_favCart button:hover,
+.data_juego_info_cta_btns_favCart a:hover {
   background-color: rgba(124, 124, 124, 0.2);
 }
-.data_juego_info_cta_btns_favCart button:hover .bi-heart, .data_juego_info_cta_btns_favCart a:hover .bi-heart {
+.data_juego_info_cta_btns_favCart button:hover .bi-heart,
+.data_juego_info_cta_btns_favCart a:hover .bi-heart {
   color: rgb(255, 0, 183);
 }
-.data_juego_info_cta_btns_favCart button:hover .bi-cart, .data_juego_info_cta_btns_favCart a:hover .bi-cart {
+.data_juego_info_cta_btns_favCart button:hover .bi-cart,
+.data_juego_info_cta_btns_favCart a:hover .bi-cart {
   color: rgb(0, 255, 120);
 }
 .data_juego_info_cta_btns_favCart .alreadyFav {

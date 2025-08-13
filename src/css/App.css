@@ -148,7 +148,9 @@ a {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 1200px;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px;
 }
 .nav-gen-title {
   font-size: 35px;
@@ -180,6 +182,14 @@ a {
   justify-content: end;
   margin-right: 15px;
   gap: 30px;
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 30px;
 }
 
 .cart,
@@ -222,6 +232,34 @@ a {
   }
   100% {
     background-color: rgba(0, 0, 0, 0.65);
+  }
+}
+@media (max-width: 768px) {
+  .nav {
+    height: 60px;
+  }
+  .nav-gen {
+    padding: 0 10px;
+  }
+  .nav-gen-title {
+    font-size: 24px;
+  }
+  .nav-gen-center {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    flex-direction: column;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    gap: 10px;
+    padding: 10px 0;
+    display: none;
+  }
+  .nav-gen-center.open {
+    display: flex;
+  }
+  .nav-toggle {
+    display: block;
   }
 }
 .footer {
@@ -305,6 +343,21 @@ a {
   font-size: 14px;
 }
 
+@media (max-width: 768px) {
+  .footer {
+    height: auto;
+    padding: 20px 0;
+  }
+  .footer-container {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .footer-section {
+    flex: 1 1 auto;
+  }
+}
 .categorias {
   height: calc(100dvh - 70px);
   margin-top: 70px;
@@ -362,6 +415,22 @@ a {
   top: 20%;
 }
 
+@media (max-width: 768px) {
+  .categorias h1 {
+    width: 100%;
+    text-align: center;
+  }
+  .categorias_list {
+    width: 100%;
+    flex-direction: column;
+  }
+  .categorias_list_item {
+    width: 100%;
+  }
+  .categorias .bubble {
+    display: none;
+  }
+}
 .home {
   display: flex;
   flex-direction: row;
@@ -518,6 +587,45 @@ a {
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+@media (max-width: 768px) {
+  .landing {
+    width: 100%;
+  }
+  .landing_datos {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    gap: 20px;
+  }
+  .landing_datos--item {
+    width: 100%;
+    padding-bottom: 10px;
+  }
+  .landing_welcome h1 {
+    font-size: 64px;
+  }
+  .landing_welcome h2 {
+    font-size: 20px;
+  }
+  .landing_links {
+    flex-direction: column;
+    height: auto;
+    gap: 20px;
+    margin-top: 40px;
+  }
+  .landing_links--item {
+    width: 100%;
+    height: auto;
+  }
+  .landing_links h2 {
+    font-size: 24px;
+    text-align: center;
+  }
+  .landing .bubble,
+  .landing .b-1 {
+    display: none;
   }
 }
 .carrito {
@@ -813,6 +921,55 @@ a {
   width: 100%;
 }
 
+@media (max-width: 768px) {
+  .carrito_title {
+    width: 100%;
+    text-align: center;
+  }
+  .carrito_info {
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+  }
+  .carrito_info_list {
+    width: 100%;
+  }
+  .carrito_info_list_item {
+    flex-direction: column;
+    height: auto;
+    padding-right: 10px;
+  }
+  .carrito_info_list_item_image {
+    width: 100%;
+  }
+  .carrito_info_list_item_image img {
+    height: 150px;
+  }
+  .carrito_info_list_item_data {
+    margin-left: 0;
+  }
+  .carrito_info_check {
+    width: 100%;
+    position: static;
+    margin-bottom: 20px;
+  }
+  .carrito_related_list .juegos_list_item {
+    width: 100%;
+  }
+  .carrito_vacio {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    text-align: center;
+  }
+  .carrito_vacio i {
+    font-size: 150px;
+  }
+  .carrito_vacio h2 {
+    width: 100%;
+    font-size: 32px;
+  }
+}
 .checkout {
   display: flex;
   flex-direction: column;
@@ -1245,6 +1402,42 @@ a {
   border-radius: 80%;
 }
 
+@media (max-width: 768px) {
+  .checkout_title {
+    width: 100%;
+    text-align: center;
+  }
+  .checkout_cont {
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+  }
+  .checkout_cont_info {
+    width: 100%;
+  }
+  .checkout_cont_info_list .carrito_info_list_item {
+    flex-direction: column;
+    height: auto;
+    padding-right: 10px;
+  }
+  .checkout_cont_info_list .carrito_info_list_item_image {
+    width: 100%;
+  }
+  .checkout_cont_info_list .carrito_info_list_item_image img {
+    height: 150px;
+  }
+  .checkout_cont_info_list .carrito_info_list_item_data {
+    margin-left: 0;
+  }
+  .checkout_cont_cta {
+    width: 100%;
+    position: static;
+    margin-top: 20px;
+  }
+  .checkout_finished_cont ul {
+    width: 100%;
+  }
+}
 @keyframes ready {
   0% {
     scale: 1;
@@ -1464,6 +1657,39 @@ a {
   opacity: 100%;
 }
 
+@media (max-width: 768px) {
+  .favoritos_title {
+    width: 100%;
+    text-align: center;
+  }
+  .favoritos_list {
+    width: 100%;
+  }
+  .favoritos_list_item {
+    flex-direction: column;
+    height: auto;
+  }
+  .favoritos_list_item_image {
+    width: 100%;
+  }
+  .favoritos_list_item_image img {
+    width: 100%;
+    height: 150px;
+  }
+  .favoritos_list_item_info {
+    gap: 10px;
+  }
+  .favoritos_list_item_cta {
+    position: static;
+    width: 100%;
+    margin-top: 10px;
+    flex-direction: column;
+  }
+  .favoritos_list_item_cta button,
+  .favoritos_list_item_cta a {
+    width: 100%;
+  }
+}
 .juegos {
   display: flex;
   flex-direction: column;
@@ -1659,6 +1885,26 @@ a {
   animation: loading 1s infinite ease-in-out;
 }
 
+@media (max-width: 768px) {
+  .juegos h1 {
+    width: 100%;
+    text-align: center;
+  }
+  .juegos_list {
+    width: 100%;
+    justify-content: center;
+  }
+  .juegos_list_item {
+    width: calc(50% - 5px);
+  }
+  .juegos_list_btns {
+    width: 100%;
+  }
+  .juegos .bubble,
+  .juegos .b-1 {
+    display: none;
+  }
+}
 .bubble {
   position: absolute;
   background: radial-gradient(circle, rgba(0, 200, 255, 0.7) 0%, rgba(255, 222, 89, 0) 70%);
@@ -2288,6 +2534,36 @@ a {
   align-items: center;
 }
 
+@media (max-width: 768px) {
+  .data_link {
+    left: 20px;
+    margin-top: 20px;
+  }
+  .data_juego {
+    width: 100%;
+  }
+  .data_juego_info {
+    flex-direction: column;
+    padding: 10px;
+  }
+  .data_juego_info_cont {
+    width: 100%;
+  }
+  .data_juego_info_cont_banner {
+    height: 200px;
+  }
+  .data_juego_info_cont_carousel--item {
+    width: calc(33.3333333333% - 10px);
+  }
+  .data_juego_cta {
+    width: 100%;
+    position: static;
+    margin-top: 20px;
+  }
+  .data_juego_related_list .juegos_list_item {
+    width: 100%;
+  }
+}
 .results {
   min-height: calc(100dvh - 70px);
   margin-top: 70px;
@@ -2360,6 +2636,20 @@ a {
   opacity: 0;
 }
 
+@media (max-width: 768px) {
+  .results_cont {
+    width: 100%;
+  }
+  .results_cont_list {
+    justify-content: center;
+  }
+  .results_cont_list .juegos_list_item {
+    width: 100%;
+  }
+  .results_pages {
+    width: 100%;
+  }
+}
 .lanzamientos {
   height: calc(100% - 70px);
   margin-top: 70px;
@@ -2472,6 +2762,27 @@ a {
   background-color: rgba(124, 124, 124, 0.5);
 }
 
+@media (max-width: 768px) {
+  .lanzamientos h1 {
+    width: 100%;
+    text-align: center;
+  }
+  .lanzamientos_list {
+    width: 100%;
+    gap: 10px;
+  }
+  .lanzamientos_list_item {
+    width: 100%;
+    height: auto;
+  }
+  .lanzamientos_list_item img {
+    height: 200px;
+  }
+  .lanzamientos_list_item_info {
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+}
 .orders {
   min-height: calc(100dvh - 70px);
   margin-top: 70px;
@@ -2581,6 +2892,33 @@ a {
 }
 .orders_cont_item_detail h5 span {
   color: rgba(0, 201, 94, 0.7);
+}
+
+@media (max-width: 768px) {
+  .orders_cont {
+    width: 100%;
+  }
+  .orders_cont_title {
+    width: 100%;
+    text-align: center;
+  }
+  .orders_cont_item_info {
+    flex-direction: column;
+    align-items: center;
+  }
+  .orders_cont_item_info h4 {
+    width: 100%;
+    border-radius: 0;
+  }
+  .orders_cont_item_info_text {
+    width: 100%;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .orders_cont_item button {
+    width: 100%;
+    border-radius: 0 0 4px 4px;
+  }
 }
 
 /*# sourceMappingURL=App.css.map */

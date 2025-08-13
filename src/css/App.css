@@ -148,7 +148,9 @@ a {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 1200px;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px;
 }
 .nav-gen-title {
   font-size: 35px;
@@ -180,6 +182,14 @@ a {
   justify-content: end;
   margin-right: 15px;
   gap: 30px;
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 30px;
 }
 
 .cart,
@@ -222,6 +232,34 @@ a {
   }
   100% {
     background-color: rgba(0, 0, 0, 0.65);
+  }
+}
+@media (max-width: 768px) {
+  .nav {
+    height: 60px;
+  }
+  .nav-gen {
+    padding: 0 10px;
+  }
+  .nav-gen-title {
+    font-size: 24px;
+  }
+  .nav-gen-center {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    flex-direction: column;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    gap: 10px;
+    padding: 10px 0;
+    display: none;
+  }
+  .nav-gen-center.open {
+    display: flex;
+  }
+  .nav-toggle {
+    display: block;
   }
 }
 .footer {
@@ -305,6 +343,21 @@ a {
   font-size: 14px;
 }
 
+@media (max-width: 768px) {
+  .footer {
+    height: auto;
+    padding: 20px 0;
+  }
+  .footer-container {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .footer-section {
+    flex: 1 1 auto;
+  }
+}
 .categorias {
   height: calc(100dvh - 70px);
   margin-top: 70px;
@@ -518,6 +571,45 @@ a {
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+@media (max-width: 768px) {
+  .landing {
+    width: 100%;
+  }
+  .landing_datos {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    gap: 20px;
+  }
+  .landing_datos--item {
+    width: 100%;
+    padding-bottom: 10px;
+  }
+  .landing_welcome h1 {
+    font-size: 64px;
+  }
+  .landing_welcome h2 {
+    font-size: 20px;
+  }
+  .landing_links {
+    flex-direction: column;
+    height: auto;
+    gap: 20px;
+    margin-top: 40px;
+  }
+  .landing_links--item {
+    width: 100%;
+    height: auto;
+  }
+  .landing_links h2 {
+    font-size: 24px;
+    text-align: center;
+  }
+  .landing .bubble,
+  .landing .b-1 {
+    display: none;
   }
 }
 .carrito {

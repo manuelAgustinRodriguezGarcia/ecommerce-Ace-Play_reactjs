@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import './css/App.css';
+import './scss/styles.scss';
 import { Navbar } from './components/NavBar/Navbar'
 import { Home, Categorias, Carrito, Favoritos, Checkout, Juegos, Lanzamientos, GenreResults } from './pages';
 import { Footer } from './components/Footer';

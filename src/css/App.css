@@ -148,9 +148,7 @@ a {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-  max-width: 1200px;
-  padding: 0 20px;
+  width: 1200px;
 }
 .nav-gen-title {
   font-size: 35px;
@@ -182,14 +180,6 @@ a {
   justify-content: end;
   margin-right: 15px;
   gap: 30px;
-}
-
-.nav-toggle {
-  display: none;
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 30px;
 }
 
 .cart,
@@ -232,34 +222,6 @@ a {
   }
   100% {
     background-color: rgba(0, 0, 0, 0.65);
-  }
-}
-@media (max-width: 768px) {
-  .nav {
-    height: 60px;
-  }
-  .nav-gen {
-    padding: 0 10px;
-  }
-  .nav-gen-title {
-    font-size: 24px;
-  }
-  .nav-gen-center {
-    position: absolute;
-    top: 60px;
-    left: 0;
-    flex-direction: column;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    gap: 10px;
-    padding: 10px 0;
-    display: none;
-  }
-  .nav-gen-center.open {
-    display: flex;
-  }
-  .nav-toggle {
-    display: block;
   }
 }
 .footer {
@@ -343,21 +305,6 @@ a {
   font-size: 14px;
 }
 
-@media (max-width: 768px) {
-  .footer {
-    height: auto;
-    padding: 20px 0;
-  }
-  .footer-container {
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  .footer-section {
-    flex: 1 1 auto;
-  }
-}
 .categorias {
   height: calc(100dvh - 70px);
   margin-top: 70px;
@@ -571,45 +518,6 @@ a {
   100% {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-@media (max-width: 768px) {
-  .landing {
-    width: 100%;
-  }
-  .landing_datos {
-    flex-direction: column;
-    width: 100%;
-    height: auto;
-    gap: 20px;
-  }
-  .landing_datos--item {
-    width: 100%;
-    padding-bottom: 10px;
-  }
-  .landing_welcome h1 {
-    font-size: 64px;
-  }
-  .landing_welcome h2 {
-    font-size: 20px;
-  }
-  .landing_links {
-    flex-direction: column;
-    height: auto;
-    gap: 20px;
-    margin-top: 40px;
-  }
-  .landing_links--item {
-    width: 100%;
-    height: auto;
-  }
-  .landing_links h2 {
-    font-size: 24px;
-    text-align: center;
-  }
-  .landing .bubble,
-  .landing .b-1 {
-    display: none;
   }
 }
 .carrito {
@@ -1833,7 +1741,6 @@ a {
   backdrop-filter: blur(3px);
 }
 .data_background img {
-  will-change: transform;
   object-fit: cover;
   object-position: top;
   height: 100%;
@@ -2216,47 +2123,45 @@ a {
   gap: 10px;
   width: 100%;
 }
-.data_juego_info_cta_btns button,
-.data_juego_info_cta_btns a {
+.data_juego_info_cta_btns button, .data_juego_info_cta_btns a {
   font-size: 14px;
+  transition: all 0.3s ease-in-out;
   height: 40px;
   width: 100%;
   border: none;
   font-weight: bolder;
   border-radius: 10px;
 }
-.data_juego_info_cta_btns button:hover,
-.data_juego_info_cta_btns a:hover {
+.data_juego_info_cta_btns button:hover, .data_juego_info_cta_btns a:hover {
   cursor: pointer;
 }
 .data_juego_info_cta_btns_buy {
   position: relative;
+  overflow: hidden;
   background-color: #252525;
   border: none;
   z-index: 2;
-  overflow: hidden;
 }
 .data_juego_info_cta_btns_buy span {
   position: relative;
   z-index: 3;
   font-size: 16px;
 }
+.data_juego_info_cta_btns_buy:hover::before {
+  top: -100%;
+  left: -10%;
+}
 .data_juego_info_cta_btns_buy::before {
   content: "";
-  position: absolute;
-  top: 0;
-  left: -10%;
-  width: 120%;
-  height: 200%;
-  background: linear-gradient(90deg, rgb(0, 200, 255), rgb(255, 0, 183));
-  border-radius: 80%;
   z-index: 0;
-  transform: translateY(60%);
-  transition: transform 0.3s ease-in-out;
-  will-change: transform;
-}
-.data_juego_info_cta_btns_buy:hover::before {
-  transform: translateY(-20%);
+  transition: all 0.4s ease-in-out;
+  width: 120%;
+  height: 350%;
+  background: linear-gradient(90deg, rgb(0, 200, 255), rgb(255, 0, 183));
+  position: absolute;
+  top: 110%;
+  left: -10%;
+  border-radius: 80%;
 }
 .data_juego_info_cta_btns .linkCart span {
   display: block;
@@ -2266,21 +2171,10 @@ a {
   align-content: center;
 }
 .data_juego_info_cta_btns .linkCart::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -10%;
-  width: 120%;
-  height: 200%;
-  background: linear-gradient(90deg, rgb(0, 200, 255), rgb(255, 0, 183));
-  border-radius: 80%;
-  z-index: 0;
-  transform: translateY(60%);
-  transition: transform 0.3s ease-in-out;
-  will-change: transform;
+  top: 100%;
 }
 .data_juego_info_cta_btns .linkCart:hover::before {
-  transform: translateY(-20%);
+  top: -100%;
 }
 .data_juego_info_cta_btns_favCart {
   display: flex;
@@ -2289,22 +2183,17 @@ a {
   justify-content: center;
   gap: 5px;
 }
-.data_juego_info_cta_btns_favCart button,
-.data_juego_info_cta_btns_favCart a {
+.data_juego_info_cta_btns_favCart button, .data_juego_info_cta_btns_favCart a {
   border: solid 2px rgba(124, 124, 124, 0.4);
   background: none;
-  transition: background-color 0.3s ease-in-out;
 }
-.data_juego_info_cta_btns_favCart button:hover,
-.data_juego_info_cta_btns_favCart a:hover {
+.data_juego_info_cta_btns_favCart button:hover, .data_juego_info_cta_btns_favCart a:hover {
   background-color: rgba(124, 124, 124, 0.2);
 }
-.data_juego_info_cta_btns_favCart button:hover .bi-heart,
-.data_juego_info_cta_btns_favCart a:hover .bi-heart {
+.data_juego_info_cta_btns_favCart button:hover .bi-heart, .data_juego_info_cta_btns_favCart a:hover .bi-heart {
   color: rgb(255, 0, 183);
 }
-.data_juego_info_cta_btns_favCart button:hover .bi-cart,
-.data_juego_info_cta_btns_favCart a:hover .bi-cart {
+.data_juego_info_cta_btns_favCart button:hover .bi-cart, .data_juego_info_cta_btns_favCart a:hover .bi-cart {
   color: rgb(0, 255, 120);
 }
 .data_juego_info_cta_btns_favCart .alreadyFav {

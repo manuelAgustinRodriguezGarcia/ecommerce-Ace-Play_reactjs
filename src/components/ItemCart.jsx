@@ -14,7 +14,7 @@ export const ItemCart = ({ game }) => {
   return (
     <div className="carrito_info_list_item">
       <NavLink className="carrito_info_list_item_image" to={`/juegos/page/1/juego/${game.id}`}>
-        <img src={game.img} alt={game.name}/>
+        <img src={game.img} />
       </NavLink>
       <div className="carrito_info_list_item_data">
         <div className="carrito_info_list_item_data_title">

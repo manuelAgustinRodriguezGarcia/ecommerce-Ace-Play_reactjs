@@ -289,7 +289,7 @@ export const JuegoData = () => {
                 </div>
               </div>
               <div className='data_juego_info_cta'>
-                <img src={juego.background_image} alt="No se encontro imagen" />
+                <img src={juego.background_image} alt="" />
                 <h2 className='data_juego_info_cta_title'>{juego.name}</h2>
                 <ul className='data_juego_info_cta_list'>
                   <li>Género <h4 title={juego.genres.map((i) => (" " + i.name))}>{juego.genres[0].name} </h4></li>

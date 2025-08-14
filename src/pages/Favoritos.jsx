@@ -12,7 +12,7 @@ export const Favoritos = () => {
     <section className="favoritos">
       <div className="favoritos_list">
         {
-          favList.length === 0 ? <EmptyFav></EmptyFav>
+          favList.length == 0 ? <EmptyFav></EmptyFav>
           :
           <>
             <h2 className="favoritos_title">Tus juegos <span className="degrade" data-text='Favoritos'>Favoritos</span></h2>

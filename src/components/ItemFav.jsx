@@ -40,7 +40,7 @@ export const ItemFav = ({ game }) => {
   return (
     <div className="favoritos_list_item">
       <NavLink className="favoritos_list_item_image" to={`/juegos/page/1/juego/${game.id}`}>
-        <img src={game.img} alt={game.name}/>
+        <img src={game.img} />
       </NavLink>
       <div className="favoritos_list_item_info">
         <div className="favoritos_list_item_info_title">

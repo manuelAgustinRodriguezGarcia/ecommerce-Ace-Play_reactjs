@@ -119,3 +119,31 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .lanzamientos {
+    h1 {
+      width: 100%;
+      text-align: center;
+    }
+
+    &_list {
+      width: 100%;
+      gap: 10px;
+
+      &_item {
+        width: 100%;
+        height: auto;
+
+        img {
+          height: 200px;
+        }
+
+        &_info {
+          top: 0;
+          background-color: rgba(0, 0, 0, 0.7);
+        }
+      }
+    }
+  }
+}

@@ -654,3 +654,49 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .data {
+    &_link {
+      left: 20px;
+      margin-top: 20px;
+    }
+
+    &_juego {
+      width: 100%;
+
+      &_info {
+        flex-direction: column;
+        padding: 10px;
+
+        &_cont {
+          width: 100%;
+
+          &_banner {
+            height: 200px;
+          }
+
+          &_carousel {
+            &--item {
+              width: calc((100% / 3) - 10px);
+            }
+          }
+        }
+      }
+
+      &_cta {
+        width: 100%;
+        position: static;
+        margin-top: 20px;
+      }
+
+      &_related {
+        &_list {
+          .juegos_list_item {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

@@ -318,3 +318,70 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .carrito {
+    &_title {
+      width: 100%;
+      text-align: center;
+    }
+
+    &_info {
+      flex-direction: column;
+      width: 100%;
+      gap: 20px;
+
+      &_list {
+        width: 100%;
+
+        &_item {
+          flex-direction: column;
+          height: auto;
+          padding-right: 10px;
+
+          &_image {
+            width: 100%;
+
+            img {
+              height: 150px;
+            }
+          }
+
+          &_data {
+            margin-left: 0;
+          }
+        }
+      }
+
+      &_check {
+        width: 100%;
+        position: static;
+        margin-bottom: 20px;
+      }
+    }
+
+    &_related {
+      &_list {
+        .juegos_list_item {
+          width: 100%;
+        }
+      }
+    }
+
+    &_vacio {
+      flex-direction: column;
+      width: 100%;
+      height: auto;
+      text-align: center;
+
+      i {
+        font-size: 150px;
+      }
+
+      h2 {
+        width: 100%;
+        font-size: 32px;
+      }
+    }
+  }
+}

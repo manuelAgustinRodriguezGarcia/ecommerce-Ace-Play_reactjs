@@ -206,33 +206,6 @@
   }
 }
 
-@media (max-width: 768px) {
-  .juegos {
-    h1 {
-      width: 100%;
-      text-align: center;
-    }
-
-    &_list {
-      width: 100%;
-      justify-content: center;
-
-      &_item {
-        width: calc(50% - 5px);
-      }
-    }
-
-    &_list_btns {
-      width: 100%;
-    }
-
-    .bubble,
-    .b-1 {
-      display: none;
-    }
-  }
-}
-
 .bubble {
   position: absolute;
   background: radial-gradient(circle, rgba(0, 200, 255, 0.7) 0%, rgba(255, 222, 89, 0) 70%);

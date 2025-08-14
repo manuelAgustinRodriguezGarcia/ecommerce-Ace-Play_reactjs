@@ -475,59 +475,6 @@
   }
 }
 
-@media (max-width: 768px) {
-  .checkout {
-    &_title {
-      width: 100%;
-      text-align: center;
-    }
-
-    &_cont {
-      flex-direction: column;
-      width: 100%;
-      gap: 20px;
-
-      &_info {
-        width: 100%;
-
-        &_list {
-          .carrito_info_list_item {
-            flex-direction: column;
-            height: auto;
-            padding-right: 10px;
-
-            &_image {
-              width: 100%;
-
-              img {
-                height: 150px;
-              }
-            }
-
-            &_data {
-              margin-left: 0;
-            }
-          }
-        }
-      }
-
-      &_cta {
-        width: 100%;
-        position: static;
-        margin-top: 20px;
-      }
-    }
-
-    &_finished {
-      &_cont {
-        ul {
-          width: 100%;
-        }
-      }
-    }
-  }
-}
-
 @keyframes ready {
   0% {
     scale: 1;

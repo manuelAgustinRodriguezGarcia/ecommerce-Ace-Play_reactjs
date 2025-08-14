@@ -77,23 +77,3 @@
     }
   }
 }
-
-@media (max-width: 768px) {
-  .results {
-    &_cont {
-      width: 100%;
-
-      &_list {
-        justify-content: center;
-
-        .juegos_list_item {
-          width: 100%;
-        }
-      }
-    }
-
-    &_pages {
-      width: 100%;
-    }
-  }
-}

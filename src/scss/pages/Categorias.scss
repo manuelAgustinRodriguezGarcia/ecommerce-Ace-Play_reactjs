@@ -56,25 +56,3 @@
     top: 20%;
   }
 }
-
-@media (max-width: 768px) {
-  .categorias {
-    h1 {
-      width: 100%;
-      text-align: center;
-    }
-
-    &_list {
-      width: 100%;
-      flex-direction: column;
-
-      &_item {
-        width: 100%;
-      }
-    }
-
-    .bubble {
-      display: none;
-    }
-  }
-}

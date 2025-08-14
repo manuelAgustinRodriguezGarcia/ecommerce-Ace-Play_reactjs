@@ -25,17 +25,16 @@ export const Footer = () => {
         <div className="footer-section social">
           <h3>Seguinos</h3>
           <ul className="social-icons">
-            <li><a href="#"><i className="bi bi-facebook"></i></a></li>
-            <li><a href="#"><i className="bi bi-instagram"></i></a></li>
-            <li><a href="#"><i className="bi bi-twitter-x"></i></a></li>
-            <li><a href="#"><i className="bi bi-youtube"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/manuel-agust%C3%ADn-rodr%C3%ADguez-garc%C3%ADa/" target='_blank' rel='noopener noreferrer'><i className="bi bi-linkedin"></i></a></li>
+            <li><a href="https://github.com/manuelAgustinRodriguezGarcia?tab=repositories" target='_blank' rel='noopener noreferrer'><i className="bi bi-github"></i></a></li>
+            <li><a href="mailto:manuelrodriguezgarcia.wd@gmail.com" title='manuelrodriguezgarcia.wd@gmail.com'><i className="bi bi-envelope"></i></a></li>
           </ul>
         </div>
 
         <div className="footer-section api">
           <h3>R A W G</h3>
           <p>Toda la información, imágenes y datos presentados en este sitio fueron obtenidos a través de la API gratis de <a href="https://rawg.io/" target="_blank" rel="noopener noreferrer nofollow">RAWG</a></p>
-          
+
         </div>
       </div>
 

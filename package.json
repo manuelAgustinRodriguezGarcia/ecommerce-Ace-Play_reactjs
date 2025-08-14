@@ -7,12 +7,18 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "bootstrap-icons": "^1.11.0",
+    "caniuse-lite": "^1.0.30001731",
     "firebase": "^10.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.16.0",
+<<<<<<< HEAD
     "react-scripts": "5.0.1",
     "sass": "^1.90.0",
+=======
+    "react-scripts": "^5.0.1",
+    "sass": "^1.89.2",
+>>>>>>> e23097ece1bb841e5f87492c936ae5979b9e960f
     "sweetalert2": "^11.7.32",
     "web-vitals": "^2.1.4"
   },
@@ -39,5 +45,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "engines": {
+    "node": ">=20.17.0"
   }
 }

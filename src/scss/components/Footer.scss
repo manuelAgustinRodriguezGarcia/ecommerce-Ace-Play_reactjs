@@ -12,6 +12,8 @@
 
 .footer-container {
   width: 1200px;
+  max-width: 100%;
+  padding: 0 16px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -79,4 +81,31 @@
   border-top: 1px solid #333;
   padding-top: 15px;
   font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer {
+    height: auto;
+    padding: 24px 0;
+  }
+  .footer-container {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-container {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .footer-section {
+    flex: 1 1 auto;
+  }
+  .footer-section h3 {
+    margin-bottom: 10px;
+  }
+  .footer-bottom {
+    font-size: 12px;
+  }
 }

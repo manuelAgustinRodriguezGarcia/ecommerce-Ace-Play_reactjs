@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { EmptyPage } from '../components/EmptyPage'
-import { JuegoItem } from '../components/juegos/JuegoItem';
 
 export const Lanzamientos = () => {
   const [listaJuegos, SetListaJuegos] = useState([]);

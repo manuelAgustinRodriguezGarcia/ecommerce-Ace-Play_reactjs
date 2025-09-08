@@ -11,6 +11,8 @@
     border-bottom: solid 1px rgba(124, 124, 124, 0.5);
     text-align: left;
     width: 1200px;
+    max-width: 100%;
+    padding: 0 16px;
     font-family: 'audiowide'
   }
 
@@ -18,6 +20,8 @@
     @include d-flex-col;
     gap: 10px;
     width: 1200px;
+    max-width: 100%;
+    padding: 0 16px;
     justify-content: flex-start;
     margin-bottom: 50px;
 
@@ -223,4 +227,22 @@
       }
     }
   }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .favoritos_list_item_image img { width: 320px; }
+}
+
+@media (max-width: 768px) {
+  .favoritos_list_item { height: auto; flex-direction: column; }
+  .favoritos_list_item_image { width: 100%; height: 180px; }
+  .favoritos_list_item_image img { width: 100%; height: 100%; }
+  .favoritos_list_item_info_cta { position: static; align-self: stretch; }
+}
+
+@media (max-width: 480px) {
+  .favoritos_title, .favoritos_list { padding: 0 12px; }
+  .favoritos_list_item_info_title a h3 { font-size: 18px; }
+  .favoritos_list_item_info_cta h3 { font-size: 16px; }
 }

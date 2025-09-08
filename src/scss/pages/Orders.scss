@@ -14,6 +14,8 @@
     @include d-flex-col;
     justify-content: center;
     width: 1200px;
+    max-width: 100%;
+    padding: 0 16px;
     gap: 20px;
 
     &_title {
@@ -22,6 +24,8 @@
       border-bottom: solid 1px rgba(124, 124, 124, 0.5);
       text-align: left;
       width: 1200px;
+      max-width: 100%;
+      padding: 0 16px;
       font-family: 'audiowide'
     }
 
@@ -111,4 +115,12 @@
       }
     }
   }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .orders_cont_item_info { flex-direction: column; align-items: stretch; }
+  .orders_cont_item_info h4 { width: 100%; border-radius: 0; }
+  .orders_cont_item_info_text { width: 100%; }
+  .orders_cont_item button { width: 100%; border-left: none; border-top: 1px solid rgba(124,124,124,.5); }
+}
 }

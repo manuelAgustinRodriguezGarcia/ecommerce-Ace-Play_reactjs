@@ -8,25 +8,28 @@
 }
 
 .landing {
-  margin: 70px 0px;
+  margin: 90px 0px; /* extra top spacing so nav doesn't overlap */
   width: 1200px;
+  max-width: 100%;
+  padding: 0 16px;
   @include d-flex-col;
   align-items: center;
   justify-content: start;
   position: relative;
 
   &_datos {
-    font-size: 25px;
+    font-size: 1.563rem;
     animation: appear 1s ease-in;
     height: calc(20vh - 70px);
+    font-weight: bold;
     width: 1200px;
+    max-width: 100%;
     @include d-flex-row;
     justify-content: space-between;
     align-items: center;
     
     &--item {
       @include d-flex-row;
-      border-bottom: solid 1px rgba(124, 124, 124, 0.5);
       align-items: center;
       justify-content: center;
       gap: 10px;
@@ -51,15 +54,16 @@
     height: calc(80dvh - 70px);
 
     h1 {
-      font-size: 150px;
+      font-size: 10.5rem; /* larger title */
       width: 100%;
       animation: appear 1s ease-in;
+      margin-top: 10px; /* prevent overlap with fixed nav */
     }
 
     h2 {
-      font-size: 35px;
+      font-size: 38px;
       color: #fff;
-      font-weight: normal;
+      font-weight: bold;
       text-align: center;
       animation: appear 1s ease-in;
     }
@@ -68,7 +72,7 @@
   &_links {
     width: 100%;
     height: calc(50dvh - 70px);
-    margin-top: 100px;
+    margin-top: 110px;
     @include d-flex-row;
     justify-content: space-between;
     align-items: center;
@@ -76,7 +80,7 @@
     &--item {
       width: 30%;
       height: 300px;
-      padding: 50px;
+      padding: 32px;
       align-content: center;
       background-color: rgba(0, 0, 0, 0.2);
       transition: all 0.5s ease-in-out;
@@ -85,7 +89,7 @@
       border-radius: 10px;
       box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
       cursor: pointer;
-      gap: 25px;
+      gap: 20px; /* more breathing room inside cards */
       &::selection {
         background-color: transparent;
       }
@@ -122,8 +126,8 @@
     position: absolute;
     animation: bubble-up 2s;
     background: radial-gradient(circle, rgb(255, 0, 183, 0.7) 0%, rgba(255, 222, 89, 0) 70%);
-    width: 1100px;
-    height: 1100px;
+    width: 900px;
+    height: 900px;
     top: 400px;
     left: -750px;
     transform: translateY(-400px);
@@ -164,5 +168,53 @@
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+//MOBILE
+@media (max-width:250px) {
+  .landing {
+    margin: 0;
+    padding: 0 8px;
+  }
+}
+@media (max-width: 480px) {
+  .home {
+    @include d-flex-col;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    cursor: default;
+  }
+
+  .landing {
+    margin: 56px 0px; /* a bit more space below nav on mobile */
+    width: 100%;
+    padding: 0 12px;
+    position: relative;
+
+    &_datos {
+      display: none;
+      }
+
+    &_welcome {
+      height: auto;
+      h1 { font-size: 54px; margin-top: 8px; }
+      h2 { font-size: 18px; }
+    }
+
+    &_links {
+      height: auto;
+      margin-top: 40px;
+      padding: 0 10px;
+      flex-direction: column;
+      gap: 15px;
+      &--item { width: 100%; height: 90px; padding: 16px; gap: 15px; }
+      h2 { font-size: 18px; }
+    }
+
+    .bubble { width: 500px; height: 500px; left: -300px; }
+    .b-1 { top: 500px; left: 60%; }
   }
 }

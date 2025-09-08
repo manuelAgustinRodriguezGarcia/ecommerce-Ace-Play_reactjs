@@ -19,6 +19,8 @@
     border-bottom: solid 1px rgba(124, 124, 124, 0.5);
     text-align: left;
     width: 1200px;
+    max-width: 100%;
+    padding: 0 16px;
     font-weight: normal;
     font-family: 'audiowide';
 
@@ -30,6 +32,9 @@
     align-items: flex-start;
     padding-top: 20px;
     width: 1200px;
+    max-width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
     gap: 20px;
 
 
@@ -473,6 +478,23 @@
       }
     }
   }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .checkout_cont { flex-direction: column; }
+  .checkout_cont_info { width: 100%; }
+  .checkout_cont_cta { width: 100%; position: static; top: auto; }
+}
+
+@media (max-width: 600px) {
+  .checkout_title { padding: 0 12px; }
+  .checkout_cont { padding-left: 12px; padding-right: 12px; }
+  .checkout_cont_info_data--personal { width: 100%; }
+  .checkout_cont_info_data .st { width: 100%; }
+  .checkout_cont_info_data .number { width: 100%; }
+  .checkout_cont_info_data .city, .checkout_cont_info_data .country { width: 100%; }
+  .checkout_cont_info_payment_item, .checkout_cont_info_payment_item--checked { height: auto; align-items: center; }
 }
 
 @keyframes ready {

@@ -7,6 +7,8 @@
 
   &_cont {
     width: 1200px;
+    max-width: 100%;
+    padding: 0 16px;
 
     h2 {
       margin-bottom: 20px;
@@ -76,4 +78,14 @@
       opacity: 0;
     }
   }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .results_cont h2 { font-size: 22px; }
+}
+
+@media (max-width: 480px) {
+  .results_cont { padding: 0 12px; }
+  .results_pages a, .results_pages h3 { height: 40px; width: 40px; font-size: 16px; }
 }

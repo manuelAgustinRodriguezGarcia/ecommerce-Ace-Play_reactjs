@@ -11,6 +11,9 @@
     border-bottom: solid 1px rgba(124, 124, 124, 0.5);
     text-align: left;
     width: 1200px;
+    max-width: 100%;
+    padding-right: 16px;
+    padding-left: 16px;
     font-weight: normal;
     font-family: 'audiowide';
   }
@@ -21,6 +24,8 @@
     position: relative;
     padding-top: 20px;
     width: 1200px;
+    max-width: 100%;
+    padding: 0 16px;
     gap: 20px;
 
     &_list {
@@ -287,6 +292,8 @@
   &_vacio {
     @include d-flex-row;
     width: 1200px;
+    max-width: 100%;
+    padding: 0 16px;
     height: calc(100dvh - 170px);
     justify-content: space-between;
 
@@ -317,4 +324,24 @@
       }
     }
   }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .carrito_info { flex-direction: column; }
+  .carrito_info_list { width: 100%; }
+  .carrito_info_check { width: 100%; position: static; top: auto; }
+}
+
+@media (max-width: 768px) {
+  .carrito_info_list_item { height: auto; flex-direction: column; padding-right: 10px; }
+  .carrito_info_list_item_image { width: 100%; height: 160px; }
+  .carrito_info_list_item_data { margin-left: 0; }
+  .carrito_info_list_item_data_title h3 { font-size: 18px; }
+}
+
+@media (max-width: 480px) {
+  .carrito_title { padding-left: 12px; padding-right: 12px; }
+  .carrito_info { padding: 0 12px; }
+  .carrito_related_list .juegos_list_item { width: calc(50% - 6px); }
 }

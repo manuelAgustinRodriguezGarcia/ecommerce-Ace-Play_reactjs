@@ -1,3 +1,4 @@
+@use './utilities' as *;
 .carrito {
   @include d-flex-col;
   align-items: center;

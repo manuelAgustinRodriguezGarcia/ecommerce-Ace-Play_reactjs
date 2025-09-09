@@ -1,3 +1,5 @@
+
+@use './utilities' as *;
 .data {
   min-height: 1020px;
   @include d-flex-col;

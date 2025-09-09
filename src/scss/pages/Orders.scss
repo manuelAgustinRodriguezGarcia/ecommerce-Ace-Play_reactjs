@@ -1,3 +1,5 @@
+@use './utilities' as *;
+
 .orders {
   min-height: calc(100dvh - 70px);
   margin-top: 70px;

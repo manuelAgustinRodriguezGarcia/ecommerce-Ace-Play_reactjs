@@ -1,3 +1,5 @@
+@use './utilities' as *;
+
 .home {
   @include d-flex-row;
   justify-content: center;

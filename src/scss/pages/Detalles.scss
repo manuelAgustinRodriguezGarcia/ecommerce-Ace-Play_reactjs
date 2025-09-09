@@ -1,3 +1,5 @@
+@use './utilities' as *;
+
 .detail {
   @include d-flex-col;
   width: 100%;

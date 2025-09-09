@@ -1,3 +1,5 @@
+@use './utilities' as *;
+
 .juegos {
   @include d-flex-col;
   justify-content: center;

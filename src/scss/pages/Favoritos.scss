@@ -239,10 +239,12 @@
   .favoritos_list_item_image { width: 100%; height: 180px; }
   .favoritos_list_item_image img { width: 100%; height: 100%; }
   .favoritos_list_item_info_cta { position: static; align-self: stretch; }
+  .favoritos_list { min-height: 400px; }
 }
 
 @media (max-width: 480px) {
   .favoritos_title, .favoritos_list { padding: 0 12px; }
   .favoritos_list_item_info_title a h3 { font-size: 18px; }
   .favoritos_list_item_info_cta h3 { font-size: 16px; }
+  .favoritos_list { min-height: 300px; }
 }

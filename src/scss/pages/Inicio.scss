@@ -4,6 +4,7 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
+  overflow-x: hidden;
   cursor: default;
 }
 
@@ -126,10 +127,10 @@
     position: absolute;
     animation: bubble-up 2s;
     background: radial-gradient(circle, rgb(255, 0, 183, 0.7) 0%, rgba(255, 222, 89, 0) 70%);
-    width: 900px;
-    height: 900px;
+    width: 600px;
+    height: 600px;
     top: 400px;
-    left: -750px;
+    left: -300px;
     transform: translateY(-400px);
     border-radius: 50%;
     filter: blur(60px);
@@ -140,7 +141,7 @@
     background: radial-gradient(circle, rgba(0, 200, 255, 0.7) 0%, rgba(255, 222, 89, 0) 70%);
     z-index: -10;
     top: 700px;
-    left: 800px;
+    left: 50%;
     transform: translateY(-400px);
   }
 }

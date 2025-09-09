@@ -1,17 +1,17 @@
-@import 'base/reset.scss';
-@import 'base/utilities.scss';
-@import 'base/onWorkingPage.scss';
+@use 'base/reset';
+@use 'base/utilities';
+@use 'base/onWorkingPage';
 
-@import 'components/NavBar.scss';
-@import 'components/Footer.scss';
+@use 'components/NavBar';
+@use 'components/Footer';
 
-@import 'pages/Categorias.scss';
-@import 'pages/Inicio.scss';
-@import 'pages/Carrito.scss';
-@import 'pages/Checkout.scss';
-@import 'pages/Favoritos.scss';
-@import 'pages/Juegos.scss';
-@import 'pages/DataJuego.scss';
-@import 'pages/Results.scss';
-@import 'pages/Lanzamientos.scss';
-@import 'pages/Orders.scss';
+@use 'pages/Categorias';
+@use 'pages/Inicio';
+@use 'pages/Carrito';
+@use 'pages/Checkout';
+@use 'pages/Favoritos';
+@use 'pages/Juegos';
+@use 'pages/DataJuego';
+@use 'pages/Results';
+@use 'pages/Lanzamientos';
+@use 'pages/Orders';

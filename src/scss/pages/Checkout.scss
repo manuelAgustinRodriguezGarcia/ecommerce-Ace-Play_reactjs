@@ -1,4 +1,4 @@
-@use './utilities' as *;
+@use '../base/utilities' as *;
 .checkout {
   @include d-flex-col;
   align-items: center;

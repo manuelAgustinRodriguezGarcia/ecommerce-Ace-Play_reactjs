@@ -1,17 +1,17 @@
-@use 'base/reset';
-@use 'base/utilities';
-@use 'base/onWorkingPage';
+@use './base/reset';
+@use './base/utilities';
+@use './base/onWorkingPage';
 
-@use 'components/NavBar';
-@use 'components/Footer';
+@use './components/NavBar';
+@use './components/Footer';
 
-@use 'pages/Categorias';
-@use 'pages/Inicio';
-@use 'pages/Carrito';
-@use 'pages/Checkout';
-@use 'pages/Favoritos';
-@use 'pages/Juegos';
-@use 'pages/DataJuego';
-@use 'pages/Results';
-@use 'pages/Lanzamientos';
-@use 'pages/Orders';
+@use './pages/Categorias';
+@use './pages/Inicio';
+@use './pages/Carrito';
+@use './pages/Checkout';
+@use './pages/Favoritos';
+@use './pages/Juegos';
+@use './pages/DataJuego';
+@use './pages/Results';
+@use './pages/Lanzamientos';
+@use './pages/Orders';

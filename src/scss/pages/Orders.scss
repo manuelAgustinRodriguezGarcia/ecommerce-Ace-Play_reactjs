@@ -1,4 +1,4 @@
-@use './utilities' as *;
+@use '../base/utilities' as *;
 
 .orders {
   min-height: calc(100dvh - 70px);

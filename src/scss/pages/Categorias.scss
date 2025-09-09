@@ -1,4 +1,4 @@
-@use './utilities' as *;
+@use '../base/utilities' as *;
 .categorias {
   min-height: calc(100dvh - 70px);
   margin-top: 70px;

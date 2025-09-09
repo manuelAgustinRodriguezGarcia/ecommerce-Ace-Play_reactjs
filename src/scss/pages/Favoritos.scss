@@ -1,4 +1,4 @@
-@use './utilities' as *;
+@use '../base/utilities' as *;
 
 .favoritos {
   @include d-flex-col;

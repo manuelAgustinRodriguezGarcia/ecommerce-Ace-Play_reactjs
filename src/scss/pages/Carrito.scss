@@ -1,4 +1,5 @@
 @use '../base/utilities' as *;
+
 .carrito {
   @include d-flex-col;
   align-items: center;
@@ -329,35 +330,94 @@
 
 /* Responsive */
 @media (max-width: 1024px) {
-  .carrito_info { flex-direction: column; }
-  .carrito_info_list { width: 100%; }
-  .carrito_info_check { width: 100%; position: static; top: auto; }
+  .carrito_info {
+    flex-direction: column;
+  }
+
+  .carrito_info_list {
+    width: 100%;
+  }
+
+  .carrito_info_check {
+    width: 100%;
+    position: static;
+    top: auto;
+  }
 }
 
 @media (max-width: 768px) {
-  .carrito_info_list_item { height: auto; flex-direction: column; padding-right: 10px; }
-  .carrito_info_list_item_image { width: 100%; height: 160px; }
-  .carrito_info_list_item_data { margin-left: 0; }
-  .carrito_info_list_item_data_title h3 { font-size: 18px; }
-  .carrito_vacio { 
-    flex-direction: column; 
-    text-align: center; 
-    padding: 0 20px; 
-    height: auto; 
+  .carrito_info_list_item {
+    height: auto;
+    flex-direction: column;
+    padding-right: 10px;
+  }
+
+  .carrito_info_list_item_image {
+    width: 100%;
+    height: 160px;
+  }
+
+  .carrito_info_list_item_data {
+    margin-left: 0;
+  }
+
+  .carrito_info_list_item_data_title h3 {
+    font-size: 18px;
+  }
+
+  .carrito_vacio {
+    flex-direction: column;
+    text-align: center;
+    padding: 0 20px;
+    height: auto;
     min-height: 400px;
     justify-content: center;
     align-items: center;
     gap: 20px;
   }
-  .carrito_vacio i { font-size: 120px; margin-bottom: 0; }
-  .carrito_vacio h2 { font-size: 24px; width: 100%; text-align: center; }
+
+  .carrito_vacio i {
+    font-size: 120px;
+    margin-bottom: 0;
+  }
+
+  .carrito_vacio h2 {
+    font-size: 24px;
+    width: 100%;
+    text-align: center;
+  }
 }
 
 @media (max-width: 480px) {
-  .carrito_title { padding-left: 12px; padding-right: 12px; }
-  .carrito_info { padding: 0 12px; }
-  .carrito_related_list .juegos_list_item { width: calc(50% - 6px); }
-  .carrito_vacio { padding: 0 16px; min-height: 300px; gap: 20px; }
-  .carrito_vacio i { font-size: 80px; }
-  .carrito_vacio h2 { font-size: 18px; }
+  .carrito_title {
+    padding-left: 12px;
+    padding-right: 12px;
+    font-size: 18px;
+  }
+
+  .carrito_info {
+    padding: 0 12px;
+    &_list {
+      margin-top: 20px;
+    }
+
+  }
+
+  .carrito_related_list .juegos_list_item {
+    width: calc(50% - 6px);
+  }
+
+  .carrito_vacio {
+    padding: 0 16px;
+    min-height: 300px;
+    gap: 20px;
+  }
+
+  .carrito_vacio i {
+    font-size: 80px;
+  }
+
+  .carrito_vacio h2 {
+    font-size: 18px;
+  }
 }

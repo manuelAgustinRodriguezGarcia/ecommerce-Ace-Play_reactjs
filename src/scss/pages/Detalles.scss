@@ -6,6 +6,7 @@
   margin-top: 70px;
   align-items: center;
   position: relative;
+
   &-link {
     transition: .3s;
     position: absolute;
@@ -14,11 +15,13 @@
     left: 15%;
     font-size: 35px;
     font-weight: bold;
+
     &:hover {
       opacity: 100%;
       text-decoration: underline;
     }
   }
+
   &-game {
     @include d-flex-col;
     align-items: center;
@@ -34,51 +37,63 @@
     padding: 0 16px;
     height: auto;
     background-color: rgb(54, 54, 54);
+
     i {
       position: absolute;
       transition: .3s;
       top: 30px;
       right: 20px;
       font-size: 25px;
+
       &:hover {
         color: #ff00ff;
         cursor: pointer;
       }
     }
+
     &-data {
       @include d-flex-row;
       gap: 15px;
+
       img {
         align-self: flex-start;
         width: 50%;
         height: 300px;
         object-fit: cover;
       }
+
       &-text {
         @include d-flex-col;
         justify-content: center;
         height: 300px;
+
         h2 {
           font-size: 35px;
         }
+
         h3 {
           font-size: 30px;
           text-align: right;
         }
+
         p {
           font-size: 18px;
         }
       }
     }
+
     &-buttons {
       @include d-flex-row;
       gap: 15px;
+
       &-cant {
         font-size: 18px;
+
         &-hide {
           display: none;
         }
       }
+
       &-btn {
         transition: .3s;
         cursor: pointer;
@@ -88,15 +103,18 @@
         border-radius: 5px;
         font-size: 25px;
         width: 55px;
+
         &:hover {
           background-color: rgb(100, 100, 100);
           color: #fff;
         }
+
         &-hide {
           display: none;
         }
       }
-      &-add{
+
+      &-add {
         outline: none;
         color: rgba(255, 255, 255, 0.6);
         transition: .3s;
@@ -107,12 +125,14 @@
         border-radius: 10px;
         cursor: pointer;
         background-color: rgb(80, 80, 80);
+
         &:hover {
           color: #fff;
           background-color: #ff00ff;
           box-shadow: 0px 0px 10px 4px rgba(255, 0, 255, 0.7);
         }
       }
+
       &-apretado {
         cursor: default;
         @include d-flex-row;
@@ -122,6 +142,7 @@
         outline: none;
         border: none;
         width: 180px;
+
         a {
           @include d-flex-row;
           align-items: center;
@@ -132,6 +153,7 @@
           border-radius: 10px;
           width: 100%;
           font-size: 18px;
+
           &:hover {
             opacity: 100;
             background-color: #ff00ff;
@@ -141,6 +163,7 @@
       }
     }
   }
+
   &-suggest {
     @include d-flex-row;
     justify-content: space-around;
@@ -152,10 +175,12 @@
     padding: 40px 20px;
     padding: 50px 20px 10px 20px;
     position: relative;
+
     h2 {
       position: absolute;
       top: 20px;
     }
+
     &-item {
       width: 410px;
       border-radius: 10px;
@@ -163,16 +188,19 @@
       text-align: center;
       margin-top: 20px;
       overflow: hidden;
+
       img {
         transition: .3s;
         border-radius: 10px;
         width: 100%;
       }
+
       h3 {
         transition: .3s;
         font-size: 18px;
         opacity: 70%;
       }
+
       p {
         position: absolute;
         top: 100px;
@@ -183,19 +211,23 @@
         text-shadow: 0px 0px 5px black;
         transition: .3s;
       }
+
       &:hover {
         img {
           filter: blur(4px);
         }
+
         p {
           opacity: 100%;
         }
+
         h3 {
           opacity: 100%;
         }
       }
     }
   }
+
   &-loading {
     height: 80vh;
     width: 100%;
@@ -210,18 +242,42 @@
 
 /* Responsive */
 @media (max-width: 1024px) {
-  .detail-game { width: 90%; }
+  .detail-game {
+    width: 90%;
+  }
 }
 
 @media (max-width: 768px) {
-  .detail-game { padding: 16px; }
-  .detail-game-data { flex-direction: column; }
-  .detail-game-data img { width: 100%; height: 220px; }
-  .detail-game-data-text { height: auto; }
-  .detail-game-data-text h2 { font-size: 26px; }
-  .detail-game-data-text h3 { font-size: 22px; text-align: left; }
+  .detail-game {
+    padding: 16px;
+  }
+
+  .detail-game-data {
+    flex-direction: column;
+  }
+
+  .detail-game-data img {
+    width: 100%;
+    height: 220px;
+  }
+
+  .detail-game-data-text {
+    height: auto;
+  }
+
+  .detail-game-data-text h2 {
+    font-size: 26px;
+  }
+
+  .detail-game-data-text h3 {
+    font-size: 22px;
+    text-align: left;
+  }
 }
 
 @media (max-width: 480px) {
-  .detail-link { left: 16px; font-size: 28px; }
+  .detail-link {
+    left: 16px;
+    font-size: 28px;
+  }
 }
